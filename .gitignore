@@ -1,0 +1,22 @@
+﻿
+# ignore the settings folder and files for VSCode and PSS
+.vscode/*
+*.psproj
+*TempPoint*
+
+# Ignore staging info from Visual Studio
+library/ax2012.tools/.vs/*
+library/ax2012.tools/ax2012.tools/bin/*
+library/ax2012.tools/ax2012.tools/obj/*
+
+# ignore PowerShell Studio MetaData
+ax2012.tools/ax2012.tools.psproj
+ax2012.tools/ax2012.tools.psproj.bak
+ax2012.tools/ax2012.tools.psprojs
+ax2012.tools/ax2012.tools.psproj
+
+# ignore the TestResults
+TestResults/*
+
+# ignore the publishing Directory
+publish/*
