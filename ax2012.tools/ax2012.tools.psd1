@@ -41,8 +41,12 @@
 	
     # Functions to export from this module
 	FunctionsToExport = @(
+                            'Export-AxModelV2',
                             'Get-AxAosInstance',
-                            'Invoke-AxExportModelstore'
+
+                            'Invoke-AxExportModelstore',
+                            'Import-AxModelV2'
+
 	)
 	
     # Cmdlets to export from this module

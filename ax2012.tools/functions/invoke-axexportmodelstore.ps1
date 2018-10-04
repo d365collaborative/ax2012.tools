@@ -1,9 +1,9 @@
-<#
+﻿<#
 .SYNOPSIS
-Export a modelstore file
+Export an AX 2012 modelstore file
 
 .DESCRIPTION
-Export a modelstore file from the database
+Export an AX 2012 modelstore file from the modelstore database
 
 .PARAMETER DatabaseServer
 Server name of the database server
@@ -88,7 +88,7 @@ Function Invoke-AxExportModelstore {
 
     if($GenerateScript) 
     {
-        $arguments = Convert-HashToArgString -Inputs $params
+        $arguments = Convert-HashToArgString -InputObject $params
 
         "Export-AxModelStore $($arguments -join ' ')"
     }

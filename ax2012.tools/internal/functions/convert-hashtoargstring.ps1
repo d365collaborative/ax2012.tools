@@ -8,6 +8,16 @@ Convert HashTable into an array of Key and Value
 .PARAMETER Inputs
 The HashTable object that you want to work against
 
+.PARAMETER KeyPrefix
+The prefix that you want to append to the key of the HashTable
+
+The default value is "-"
+
+.PARAMETER ValuePrefix
+The prefix that you want to append to the value of the HashTable
+
+The default value is " "
+
 .EXAMPLE
 $params = @{DatabaseServer = "Localhost"; DatabaseName = "MicrosoftDynamicsAx_model"}
 $arguments = Convert-HashToArgString -Inputs $params
@@ -21,8 +31,12 @@ Author: Mötz Jensen (@Splaxi)
 function Convert-HashToArgString {
     [CmdletBinding()]
     param (
-        [HashTable] $Inputs
+        [HashTable] $InputObject,
+
+        [string] $KeyPrefix = "-",
+
+        [string] $ValuePrefix = " "
     )
 
-    $Inputs.Keys | ForEach-Object { "-$_ `"$($params.Item($_))`""}
+    $InputObject.Keys | ForEach-Object { "$KeyPrefix$($_)$ValuePrefix`"$($InputObject.Item($_))`""}
 }

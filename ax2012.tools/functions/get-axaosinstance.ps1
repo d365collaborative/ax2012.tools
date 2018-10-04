@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Get AX 2012 AOS Instance
 

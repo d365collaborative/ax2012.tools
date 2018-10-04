@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 Test multiple paths
 
@@ -18,14 +18,14 @@ Either 'Leaf' or 'Container'
 .EXAMPLE
 Test-PathExists "c:\temp",c:\temp\dir" -Type Container
 
-This will test if the mentioned paths (folders) exists and the current
-context has enough permission. 
+This will test if the mentioned paths (folders) exists and the current context has enough permission. 
 
 .NOTES
 Author: Mötz Jensen (@splaxi)
 
 #>
 function Test-PathExists {
+
     # [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns')]
     [CmdletBinding()]
     [OutputType([System.Boolean])]
