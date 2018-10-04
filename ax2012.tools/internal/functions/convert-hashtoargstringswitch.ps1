@@ -5,7 +5,7 @@ Convert HashTable into an array
 .DESCRIPTION
 Convert HashTable with switches inside into an array of Key:Value
 
-.PARAMETER Inputs
+.PARAMETER InputObject
 The HashTable object that you want to work against
 
 Shold only contain Key / Vaule, where value is $true or $false
