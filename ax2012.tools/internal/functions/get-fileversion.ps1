@@ -25,31 +25,18 @@ function Get-FileVersion {
         [Parameter(Mandatory = $true)]
         [string] $Path
     )
-    BEGIN { 
-        Write-Verbose "Starting the BEGIN section of $($MyInvocation.MyCommand.Name)"
-       
-        if ([System.String]::IsNullOrEmpty($Path)) {
-            Write-Warning "You didn't supply a valid Path ($Path) for Get-FileVersion. Run the script again if you need to continue."
-            Write-Error -Message"You didn't supply a valid Path ($Path) for Get-FileVersion. Run the script again if you need to continue." -ErrorAction Stop
-        }
 
-        Write-Verbose "End the BEGIN section of $($MyInvocation.MyCommand.Name)"
+    if (-not (Test-PathExists -Path $Path -Type Leaf)) { return }
+
+    Write-PSFMessage -Level Verbose -Message "Extracting the file properties for: $Path" -Target $Path
+    
+    $Filepath = Get-Item -Path $Path
+
+    [PSCustomObject]@{
+        FileVersion           = $Filepath.VersionInfo.FileVersion
+        ProductVersion        = $Filepath.VersionInfo.ProductVersion
+        FileVersionUpdated    = "$($Filepath.VersionInfo.FileMajorPart).$($Filepath.VersionInfo.FileMinorPart).$($Filepath.VersionInfo.FileBuildPart).$($Filepath.VersionInfo.FilePrivatePart)"
+        ProductVersionUpdated = "$($Filepath.VersionInfo.ProductMajorPart).$($Filepath.VersionInfo.ProductMinorPart).$($Filepath.VersionInfo.ProductBuildPart).$($Filepath.VersionInfo.ProductPrivatePart)"
     }
-
-    PROCESS {
-        Write-Verbose "Starting the PROCESS section of $($MyInvocation.MyCommand.Name)"
-        $Filepath = Get-Item -Path $Path
-
-        [PSCustomObject]@{
-            FileVersion = $Filepath.VersionInfo.FileVersion
-            ProductVersion = $Filepath.VersionInfo.ProductVersion
-            FileVersionUpdated = "$($Filepath.VersionInfo.FileMajorPart).$($Filepath.VersionInfo.FileMinorPart).$($Filepath.VersionInfo.FileBuildPart).$($Filepath.VersionInfo.FilePrivatePart)"
-            ProductVersionUpdated = "$($Filepath.VersionInfo.ProductMajorPart).$($Filepath.VersionInfo.ProductMinorPart).$($Filepath.VersionInfo.ProductBuildPart).$($Filepath.VersionInfo.ProductPrivatePart)"
-        }
-
-        Write-Verbose "End the PROCESS section of $($MyInvocation.MyCommand.Name)"        
-    }
-
-    END {}
 }
 

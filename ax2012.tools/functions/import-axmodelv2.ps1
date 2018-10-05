@@ -42,7 +42,7 @@ This makes sense if you are import more than 1-2 AX 2012 models at the same time
 Switch to instruct the cmdlet not to prompt you with anything
 
 .PARAMETER GenerateScript
-Switch to instruct the cmdlet to output a script that you can execute manually later 
+Switch to instruct the cmdlet to output a script that you can execute manually later
 
 Using this will not import any AX 2012 models into the model store
 
@@ -92,7 +92,7 @@ Function Import-AxModelV2 {
     PROCESS {
         if (Test-PSFFunctionInterrupt) { return }
 
-        Invoke-TimeSignal -Start        
+        Invoke-TimeSignal -Start
 
         $AxModelsPath = (Get-ChildItem -Path $Path | Where-Object {$_.PSIsContainer} | Sort-Object CreationTime -Descending | Select-Object -First 1 | Select-Object Fullname).FullName
         Write-PSFMessage -Level Verbose -Message "The newest / latest folder is: $AxModelsPath" -Target $AxModelsPath

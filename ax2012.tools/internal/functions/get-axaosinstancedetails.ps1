@@ -22,7 +22,7 @@ function Get-AxAosInstanceDetails {
         [string] $RegistryPath
     )
 
-    Write-PSFMessage -Level Verbose -Message "Working against $RegistryPath" -Target $RegistryPath 
+    Write-PSFMessage -Level Verbose -Message "Working against $RegistryPath" -Target $RegistryPath
 
     $RegKey = Get-Item -Path $RegistryPath.Replace("HKEY_LOCAL_MACHINE", "HKLM:")
     $RegOuter = Get-ItemProperty -Path ($RegKey.Name).Replace("HKEY_LOCAL_MACHINE", "HKLM:")
@@ -32,7 +32,7 @@ function Get-AxAosInstanceDetails {
     $InstanceDetail = [Ordered]@{}
     
     $InstanceDetail.InstanceName = $RegOuter.InstanceName
-    $InstanceDetail.ConfigurationName = $RegOuter.Current        
+    $InstanceDetail.ConfigurationName = $RegOuter.Current
     $InstanceDetail.BinDirectory = $RegInner.bindir
 
     $InstanceDetail.FileVersion = $BuildNumbers.FileVersion

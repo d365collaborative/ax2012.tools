@@ -5,7 +5,7 @@ Convert HashTable into an array
 .DESCRIPTION
 Convert HashTable into an array of Key and Value
 
-.PARAMETER Inputs
+.PARAMETER InputObject
 The HashTable object that you want to work against
 
 .PARAMETER KeyPrefix
