@@ -1,39 +1,62 @@
 ﻿<#
 .SYNOPSIS
-Short description
+Import AX 2012 model
 
 .DESCRIPTION
-Long description
+Import AX 2012 model into the AX 2012 Model store
 
 .PARAMETER DatabaseServer
-Parameter description
+Server name of the database server
+
+Default value is: "localhost"
 
 .PARAMETER ModelstoreDatabase
-Parameter description
+Name of the modelstore database
+
+Default value is: "MicrosoftDynamicsAx_model"
+
+Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
 
 .PARAMETER Path
-Parameter description
+Path to the folder containing the AX model file(s) that you want to import
+
+The cmdlet will traverse all sub folders for files and import them based on their names
 
 .PARAMETER ConflictMode
-Parameter description
+Instructs the cmdlet to handle conflicts
+
+The list of options is:
+"Reject"
+"Push"
+"Overwrite"
 
 .PARAMETER CreateParents
-Parameter description
+Switch to instruct the cmdlet to create missing parents on import
 
 .PARAMETER NoOptimize
-Parameter description
+Switch to instruct the cmdlet to skip the optimization on import
+
+This makes sense if you are import more than 1-2 AX 2012 models at the same time
 
 .PARAMETER NoPrompt
-Parameter description
+Switch to instruct the cmdlet not to prompt you with anything
 
 .PARAMETER GenerateScript
-Parameter description
+Switch to instruct the cmdlet to output a script that you can execute manually later 
+
+Using this will not import any AX 2012 models into the model store
 
 .EXAMPLE
-An example
+Import-AxModelV2 -Path "c:\temp\ax2012.tools\dev-models"
+
+The cmdlet will look for all the AX 2012 models located in "c:\temp\ax2012.tools\dev-models" or any of its sub folders.
+The ConflictMode is set to the default value of "OverWrite".
+The Database Server is set to the default value of "localhost".
+The Modelstore Database is set to the default value of "MicrosoftDynamicsAx_model".
 
 .NOTES
-General notes
+Author: Mötz Jensen (@Splaxi)
+
 #>
 Function Import-AxModelV2 {
     [CmdletBinding()]

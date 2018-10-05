@@ -8,6 +8,9 @@ Create a new folder with current date and time as part of its name
 .PARAMETER Path
 Path to the parent folder where you want the new folder created
 
+.PARAMETER NoCreate
+Switch to instruct the cmdlet not to create the folder
+
 .EXAMPLE
 New-FolderWithDateTime -Path "c:\temp\ax2012.tools"
 

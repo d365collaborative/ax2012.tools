@@ -13,10 +13,15 @@ They have to be the same type, either file/leaf or folder/container
 .PARAMETER Type
 Type of path you want to test
 
-Either 'Leaf' or 'Container'
+Valid options are: 
+"Leaf"
+"Container"
+
+.PARAMETER Create
+Switch to instruct the cmdlet to create the folder
 
 .EXAMPLE
-Test-PathExists "c:\temp",c:\temp\dir" -Type Container
+Test-PathExists "c:\temp","c:\temp\dir" -Type Container
 
 This will test if the mentioned paths (folders) exists and the current context has enough permission. 
 

@@ -39,9 +39,9 @@ function Get-AxAosInstance {
     )
     $Instances = Get-ChildItem -Path $Script:RegistryAos
         
-    $res = New-Object System.Collections.ArrayList 
+    $res = New-Object System.Collections.ArrayList
     
-    $Instances | ForEach-Object {                
+    $Instances | ForEach-Object {
         $null = $res.Add((Get-AxAosInstanceDetails $_.Name))
     }
 
@@ -51,4 +51,4 @@ function Get-AxAosInstance {
 
         $obj
     }
-}    
+}

@@ -49,13 +49,13 @@ The path where the exported modelstore file will be saved is: "c:\temp\ax2012.to
 Author: Mötz Jensen (@Splaxi)
 
 #>
-Function Invoke-AxExportModelstore {    
+Function Invoke-AxExportModelstore {
     Param(
         [string] $DatabaseServer = "localhost",
 
         [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
 
-        [string] $InstanceName, 
+        [string] $InstanceName,
 
         [string] $Suffix = $((Get-Date).ToString("yyyyMMdd")),
         
@@ -64,7 +64,7 @@ Function Invoke-AxExportModelstore {
         [switch] $GenerateScript
     )
 
-    Invoke-TimeSignal -Start       
+    Invoke-TimeSignal -Start
 
     if (-not (Test-PathExists -Path $Path -Type Container -Create)) { return }
 
@@ -86,7 +86,7 @@ Function Invoke-AxExportModelstore {
         File = $ExportPath
     }
 
-    if($GenerateScript) 
+    if($GenerateScript)
     {
         $arguments = Convert-HashToArgString -InputObject $params
 

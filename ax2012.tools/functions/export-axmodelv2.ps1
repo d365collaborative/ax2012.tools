@@ -136,7 +136,7 @@ Function Export-AxModelV2 {
             if ($modelId -NotLike $Id) { continue }
             if ($modelLayer -NotLike $Layer) { continue }
 
-            if ($Script:LayerDictionary.ContainsKey($modelLayer.ToUpper()) -and $filenameAxModel -ne "") {        
+            if ($Script:LayerDictionary.ContainsKey($modelLayer.ToUpper()) -and $filenameAxModel -ne "") {
                 $localLayer = $Script:LayerDictionary.Get_Item($modelLayer.ToUpper()) + $modelLayer.ToUpper()
                 $tempPath = Join-Path $backupFilePath $localLayer
         
@@ -160,7 +160,7 @@ Function Export-AxModelV2 {
             }
             else {
                 Write-PSFMessage -Level Verbose -Message "Skipping $filenameAxModel in layer $modelLayer"
-            }    
+            }
         }
 
         Invoke-TimeSignal -End
