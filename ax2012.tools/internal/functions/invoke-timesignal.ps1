@@ -28,10 +28,10 @@ Author: Mötz Jensen (@Splaxi)
 function Invoke-TimeSignal {
     [CmdletBinding(DefaultParameterSetName = 'Start')]
     param (
-        [Parameter(Mandatory = $true, ParameterSetName = 'Start', Position = 1 )]                    
-        [switch] $Start,    
+        [Parameter(Mandatory = $true, ParameterSetName = 'Start', Position = 1 )]
+        [switch] $Start,
         
-        [Parameter(Mandatory = $True, ParameterSetName = 'End', Position = 2 )]                    
+        [Parameter(Mandatory = $True, ParameterSetName = 'End', Position = 2 )]
         [switch] $End
     )
     $Time = (Get-Date)
@@ -55,7 +55,7 @@ function Invoke-TimeSignal {
             $Script:TimeSignals.Remove($Command)
         }
         else {
-            Write-PSFMessage -Level Verbose -Message "The command '$Command' was never started to take part in time measurement."        
+            Write-PSFMessage -Level Verbose -Message "The command '$Command' was never started to take part in time measurement."
         }
     }
 }

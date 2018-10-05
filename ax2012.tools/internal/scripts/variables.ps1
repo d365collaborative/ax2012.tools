@@ -6,5 +6,5 @@ $Script:AxPowerShellModule = "C:\Program Files\Microsoft Dynamics AX\60\Manageme
 
 $Script:RegistryAos = "HKLM:\SYSTEM\ControlSet001\Services\Dynamics Server\6.0"
 
-[System.Collections.ArrayList] $layerList = New-Object System.Collections.ArrayList        
+[System.Collections.ArrayList] $layerList = New-Object System.Collections.ArrayList
 $Script:LayerDictionary = @{"ISV" = "01."; "ISP" = "02."; "VAR" = "03."; "VAP" = "04."; "CUS" = "05."; "CUP" = "06."; "USR" = "07." ; "USP" = "08."}

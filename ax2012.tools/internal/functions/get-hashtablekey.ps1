@@ -14,7 +14,7 @@ Names of the key(s) that you want to to extract from the HashTable
 .EXAMPLE
 $params = @{NoPrompt = $true; CreateParent = $false}
 
-Get-HashtableKey -InputObject $params -Keys "NoPrompt"  
+Get-HashtableKey -InputObject $params -Keys "NoPrompt"
 
 This will return a new HashTable only containing the "NoPrompt" entry.
 
