@@ -43,6 +43,7 @@
 	FunctionsToExport = @(
                             'Export-AxModelV2',
                             'Get-AxAosInstance',
+                            'Get-AxEnvironment'
 
                             'Invoke-AxExportModelstore',
                             'Import-AxModelV2'

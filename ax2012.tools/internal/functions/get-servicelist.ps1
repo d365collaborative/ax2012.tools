@@ -47,23 +47,30 @@ Function Get-ServiceList {
     }
 
     Write-PSFMessage -Level Verbose -Message "The PSBoundParameters was" -Target $PSBoundParameters
-
-    $aosname = "w3svc"
-    $ManagementReporter = "MR2012ProcessService"
+    
+    $MRService = "MR2012ProcessService"
     $dixfname = "Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe"
 
     [System.Collections.ArrayList]$Services = New-Object -TypeName "System.Collections.ArrayList"
 
     if ($All) {
-        $null = $Services.AddRange(@($aosname, $ManagementReporter))
+        for ($i = 1; $i -lt 100; $i++) {
+            $null = $Services.Add("AOS60`$$($i.ToString("00"))")
+        }
+
+        $null = $Services.AddRange(@($MRService, $dixfname))
     }
     else {
         if ($Aos) {
-            $null = $Services.Add($aosname)
+            for ($i = 1; $i -lt 100; $i++) {
+                $null = $Services.Add("AOS60`$$($i.ToString("00"))")
+            }
         }
+
         if ($ManagementReporter) {
             $null = $Services.Add($ManagementReporter)
         }
+
         if ($DIXF) {
             $null = $Services.Add($dixfname)
         }
