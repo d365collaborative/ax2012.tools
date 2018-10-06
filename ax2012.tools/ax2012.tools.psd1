@@ -1,6 +1,6 @@
 ﻿@{
     # Script module or binary module file associated with this manifest
-    RootModule   = 'ax2012.tools.psm1'
+    RootModule        = 'ax2012.tools.psm1'
 	
     # Version number of this module.
     ModuleVersion     = '0.1.1'
@@ -40,15 +40,16 @@
     # FormatsToProcess = @('xml\ax2012.tools.Format.ps1xml')
 	
     # Functions to export from this module
-	FunctionsToExport = @(
+    FunctionsToExport = @(
                             'Export-AxModelV2',
                             'Get-AxAosInstance',
                             'Get-AxEnvironment'
 
                             'Invoke-AxExportModelstore',
-                            'Import-AxModelV2'
-
-	)
+                            'Import-AxModelV2',
+                            'Start-AxEnvironment',
+                            'Stop-AxEnvironment'
+    )
 	
     # Cmdlets to export from this module
     CmdletsToExport   = ''
@@ -86,8 +87,8 @@
             # ReleaseNotes of this module
             # ReleaseNotes = ''
 
-			# Indicates this is a pre-release/testing version of the module.
-			IsPrerelease = 'True'
+            # Indicates this is a pre-release/testing version of the module.
+            IsPrerelease = 'True'
 
         } # End of PSData hashtable
 		

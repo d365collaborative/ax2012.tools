@@ -1,9 +1,9 @@
 ﻿<#
 .SYNOPSIS
-Get the status of an AX 2012 environment
+Stop an AX 2012 environment
 
 .DESCRIPTION
-Get the status of AX 2012 services in your environment
+Stop an AX 2012 services in your environment
 
 .PARAMETER ComputerName
 Name of the computer(s) that you want to work against
@@ -21,15 +21,15 @@ Switch to instruct the cmdlet to include the ManagementReporter service
 Switch to instruct the cmdlet to include the DIXF service
 
 .EXAMPLE
-Get-AxEnvironment
+Stop-AxEnvironment
 
-This will get the status for all the default services from your environment.
+This will stop all the known AX 2012 services on the machine that you are executing it on.
 
 .NOTES
 Author: Mötz Jensen (@Splaxi)
 
 #>
-function Get-AxEnvironment {
+function Stop-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
         [string[]] $ComputerName = @($env:computername),
@@ -63,9 +63,15 @@ function Get-AxEnvironment {
     $Services = Get-ServiceList @Params
     
     $Results = foreach ($server in $ComputerName) {
+        Write-PSFMessage -Level Verbose -Message "Working against: $server - stopping services" -Target $server
+        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
+    }
+
+    $Results = foreach ($server in $ComputerName) {
         Write-PSFMessage -Level Verbose -Message "Working against: $server - listing services" -Target $server
         Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
     }
     
+
     $Results | Select-Object Server, DisplayName, Status, Name
 }
