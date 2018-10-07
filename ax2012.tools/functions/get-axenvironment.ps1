@@ -1,32 +1,32 @@
 ﻿<#
-.SYNOPSIS
-Get the status of an AX 2012 environment
-
-.DESCRIPTION
-Get the status of AX 2012 services in your environment
-
-.PARAMETER ComputerName
-Name of the computer(s) that you want to work against
-
-.PARAMETER All
-Switch to instruct the cmdlet to include all known AX 2012 services
-
-.PARAMETER Aos
-Switch to instruct the cmdlet to include the AOS service
-
-.PARAMETER ManagementReporter
-Switch to instruct the cmdlet to include the ManagementReporter service
-
-.PARAMETER DIXF
-Switch to instruct the cmdlet to include the DIXF service
-
-.EXAMPLE
-PS C:\> Get-AxEnvironment
-
-This will get the status for all the default services from your environment.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Get the status of an AX 2012 environment
+        
+    .DESCRIPTION
+        Get the status of AX 2012 services in your environment
+        
+    .PARAMETER ComputerName
+        Name of the computer(s) that you want to work against
+        
+    .PARAMETER All
+        Switch to instruct the cmdlet to include all known AX 2012 services
+        
+    .PARAMETER Aos
+        Switch to instruct the cmdlet to include the AOS service
+        
+    .PARAMETER ManagementReporter
+        Switch to instruct the cmdlet to include the ManagementReporter service
+        
+    .PARAMETER DIXF
+        Switch to instruct the cmdlet to include the DIXF service
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment
+        
+        This will get the status for all the default services from your environment.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 function Get-AxEnvironment {

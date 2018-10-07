@@ -1,33 +1,33 @@
 ﻿<#
-.SYNOPSIS
-Stop an AX 2012 environment
-
-.DESCRIPTION
-Stop an AX 2012 services in your environment
-
-.PARAMETER ComputerName
-Name of the computer(s) that you want to work against
-
-.PARAMETER All
-Switch to instruct the cmdlet to include all known AX 2012 services
-
-.PARAMETER Aos
-Switch to instruct the cmdlet to include the AOS service
-
-.PARAMETER ManagementReporter
-Switch to instruct the cmdlet to include the ManagementReporter service
-
-.PARAMETER DIXF
-Switch to instruct the cmdlet to include the DIXF service
-
-.EXAMPLE
-PS C:\> Stop-AxEnvironment
-
-This will stop all the known AX 2012 services on the machine that you are executing it on.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+    .SYNOPSIS
+        Stop an AX 2012 environment
+        
+    .DESCRIPTION
+        Stop an AX 2012 services in your environment
+        
+    .PARAMETER ComputerName
+        Name of the computer(s) that you want to work against
+        
+    .PARAMETER All
+        Switch to instruct the cmdlet to include all known AX 2012 services
+        
+    .PARAMETER Aos
+        Switch to instruct the cmdlet to include the AOS service
+        
+    .PARAMETER ManagementReporter
+        Switch to instruct the cmdlet to include the ManagementReporter service
+        
+    .PARAMETER DIXF
+        Switch to instruct the cmdlet to include the DIXF service
+        
+    .EXAMPLE
+        PS C:\> Stop-AxEnvironment
+        
+        This will stop all the known AX 2012 services on the machine that you are executing it on.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Stop-AxEnvironment {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]

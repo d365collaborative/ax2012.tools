@@ -1,59 +1,59 @@
 ﻿<#
-.SYNOPSIS
-Export AX 2012 model
-
-.DESCRIPTION
-Export AX 2012 model from the AX 2012 model store
-
-.PARAMETER DatabaseServer
-Server name of the database server
-
-Default value is: "localhost"
-
-.PARAMETER ModelstoreDatabase
-Name of the modelstore database
-
-Default value is: "MicrosoftDynamicsAx_model"
-
-Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
-
-.PARAMETER Path
-Path to the location where you want the file to be exported
-
-Default value is: "c:\temp\ax2012.tools"
-
-.PARAMETER Name
-Name of the AX 2012 model that you are looking for
-
-Accepts wildcards for searching. E.g. -Name "ISV*MODULE*"
-
-Default value is "*" which will search for all models
-
-.PARAMETER Id
-Id of the AX 2012 model that you are looking for
-
-Accepts wildcards for searching. E.g. -Id "2*"
-
-Default value is "*" which will search for all models
-
-.PARAMETER Layer
-Layer where the AX 2012 model that you are looking for should reside
-
-Accepts wildcards for searching. E.g. -Layer "IS*"
-
-Default value is "*" which will search for models in all layers
-
-.PARAMETER GenerateScript
-Switch to instruct the cmdlet to output the script to execute the command in hand
-
-.EXAMPLE
-PS C:\> Get-AxAosInstance | Export-AxModelV2
-
-This will fetch all the AX 2012 AOS instances that are configured on the machine.
-Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Export AX 2012 model
+        
+    .DESCRIPTION
+        Export AX 2012 model from the AX 2012 model store
+        
+    .PARAMETER DatabaseServer
+        Server name of the database server
+        
+        Default value is: "localhost"
+        
+    .PARAMETER ModelstoreDatabase
+        Name of the modelstore database
+        
+        Default value is: "MicrosoftDynamicsAx_model"
+        
+        Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
+        
+    .PARAMETER Path
+        Path to the location where you want the file to be exported
+        
+        Default value is: "c:\temp\ax2012.tools"
+        
+    .PARAMETER Name
+        Name of the AX 2012 model that you are looking for
+        
+        Accepts wildcards for searching. E.g. -Name "ISV*MODULE*"
+        
+        Default value is "*" which will search for all models
+        
+    .PARAMETER Id
+        Id of the AX 2012 model that you are looking for
+        
+        Accepts wildcards for searching. E.g. -Id "2*"
+        
+        Default value is "*" which will search for all models
+        
+    .PARAMETER Layer
+        Layer where the AX 2012 model that you are looking for should reside
+        
+        Accepts wildcards for searching. E.g. -Layer "IS*"
+        
+        Default value is "*" which will search for models in all layers
+        
+    .PARAMETER GenerateScript
+        Switch to instruct the cmdlet to output the script to execute the command in hand
+        
+    .EXAMPLE
+        PS C:\> Get-AxAosInstance | Export-AxModelV2
+        
+        This will fetch all the AX 2012 AOS instances that are configured on the machine.
+        Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 Function Export-AxModelV2 {
