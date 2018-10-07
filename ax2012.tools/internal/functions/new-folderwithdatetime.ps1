@@ -20,7 +20,8 @@ This will create a new folder with the current date and time as a child to the "
 Author: Mötz Jensen (@Splaxi)
 
 #>
-    Function New-FolderWithDateTime {
+Function New-FolderWithDateTime {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true, Position = 1)]

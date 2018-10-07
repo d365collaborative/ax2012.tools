@@ -75,8 +75,6 @@ Function Invoke-AxExportModelstore {
 
     $null = Import-Module $Script:AxPowerShellModule
         
-    $DateString = $((Get-Date).ToString("yyyyMMdd"))
-        
     if ([System.String]::IsNullOrEmpty($InstanceName)) {
         $InstanceName = "{0}" -f $ModelstoreDatabase.Replace("_model", "")
     }
