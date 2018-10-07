@@ -26,7 +26,7 @@ function Get-WMDPDetailsFromIIS {
         Stop-PSFFunction -Message "Stopping because of missing parameters" -StepsUpward 1
         return
     } else {
-        $null Import-Module -name "IISAdministration" -Force
+        $null = Import-ModuleImport-Module -name "IISAdministration" -Force
     }
 
     $sites = Get-IISSite | Where-Object {$_.Applications.VirtualDirectories.PhysicalPath -like "*AX*warehouse*portal*"}
