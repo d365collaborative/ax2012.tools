@@ -32,6 +32,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 function Convert-HashToArgStringSwitch {
     [CmdletBinding()]
+    [OutputType([System.String])]
     param (
         [HashTable] $InputObject,
 

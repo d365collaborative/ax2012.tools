@@ -30,7 +30,7 @@ Author: Mötz Jensen (@splaxi)
 
 #>
 function Test-PathExists {
-    # [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]
     [OutputType([HashTable])]
     param (
