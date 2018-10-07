@@ -58,7 +58,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 Function Export-AxModelV2 {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName=""Generate"")]
+    [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
         [string] $DatabaseServer = "localhost",
