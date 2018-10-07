@@ -1,4 +1,5 @@
-﻿<#
+﻿
+<#
     .SYNOPSIS
         Get WMDP details from the IIS
         
@@ -12,18 +13,33 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Get-WMDPDetailsFromIIS {
-    [CmdletBinding()]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+    [CmdletBinding()]
     param ( )
 
-    if ((Get-Module Webadministration).Count -lt 1) {
-        Write-PSFMessage -Level Host -Message "It seems that you didn't have the <c='em'>IIS powershell</c> administration tools installed."
+    if ((Get-Module -ListAvailable -Name "IISAdministration").Count -lt 1) {
+        Write-PSFMessage -Level Host -Message "It seems that you didn't have the <c='em'>extended</c> powershell administration tools for IIS installed. For Windows Server 2012 and 2012 R2 it is required that you install this module directly."
+        Write-PSFMessage -Level Host -Message "Install-Module IISAdministration -Force -Confirm:`$false"
         Stop-PSFFunction -Message "Stopping because of missing parameters" -StepsUpward 1
         return
+    } else {
+        $null Import-Module -name "IISAdministration" -Force
     }
 
-    Get-WebSite | Where-Object physicalpath -like "*wmdp*" | Select-Object
+    $sites = Get-IISSite | Where-Object {$_.Applications.VirtualDirectories.PhysicalPath -like "*AX*warehouse*portal*"}
+
+    foreach ($site in $sites) {
+        $res = [Ordered]@{SiteId = $site.Id; SiteName = $site.Name;
+                SiteStatus = $site.State; SiteBindings = $site.Bindings}
+        
+        $appPool = Get-IISAppPool | Where-Object Name -eq $site.Applications.ApplicationPoolName
+        $res.AppPoolName = $appPool.Name
+        $res.AppPoolStatus = $appPool.Status
+        $res.AppPoolIdentity = $appPool.ProcessModel.Username
+
+        [PSCustomObject]$res
+    }
 }

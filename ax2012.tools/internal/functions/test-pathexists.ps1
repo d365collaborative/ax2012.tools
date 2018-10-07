@@ -1,4 +1,5 @@
-﻿<#
+﻿
+<#
     .SYNOPSIS
         Test multiple paths
         
@@ -27,7 +28,7 @@
         
     .NOTES
         Author: Mötz Jensen (@splaxi)
-
+        
 #>
 function Test-PathExists {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]

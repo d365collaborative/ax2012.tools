@@ -1,4 +1,5 @@
-﻿<#
+﻿
+<#
     .SYNOPSIS
         Stop an AX 2012 environment
         
@@ -27,7 +28,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-        
+
 #>
 function Stop-AxEnvironment {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
