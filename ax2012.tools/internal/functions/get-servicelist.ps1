@@ -1,29 +1,29 @@
 ﻿<#
-.SYNOPSIS
-Get service list from HashTable
-
-.DESCRIPTION
-Extract the services from the list of entries in the HashTable
-
-.PARAMETER All
-Switch to instruct the cmdlet to return all services
-
-.PARAMETER Aos
-Switch to instruct the cmdlet to return AOS
-
-.PARAMETER ManagementReporter
-Switch to instruct the cmdlet to return ManagementReporter
-
-.PARAMETER DIXF
-Switch to instruct the cmdlet to return DIXF
-
-.EXAMPLE
-PS C:\> Get-ServiceList -All
-
-This will return all services that the cmdlet knows about.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Get service list from HashTable
+        
+    .DESCRIPTION
+        Extract the services from the list of entries in the HashTable
+        
+    .PARAMETER All
+        Switch to instruct the cmdlet to return all services
+        
+    .PARAMETER Aos
+        Switch to instruct the cmdlet to return AOS
+        
+    .PARAMETER ManagementReporter
+        Switch to instruct the cmdlet to return ManagementReporter
+        
+    .PARAMETER DIXF
+        Switch to instruct the cmdlet to return DIXF
+        
+    .EXAMPLE
+        PS C:\> Get-ServiceList -All
+        
+        This will return all services that the cmdlet knows about.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 Function Get-ServiceList {

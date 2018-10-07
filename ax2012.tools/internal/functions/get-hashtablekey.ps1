@@ -1,25 +1,25 @@
 ﻿<#
-.SYNOPSIS
-Get key from HashTable
-
-.DESCRIPTION
-Get specific key(s) from a HashTable returned as a HashTable
-
-.PARAMETER InputObject
-The HashTable that you want to extract key(s) from
-
-.PARAMETER Keys
-Names of the key(s) that you want to to extract from the HashTable
-
-.EXAMPLE
-PS C:\> $params = @{NoPrompt = $true; CreateParent = $false}
-
-Get-HashtableKey -InputObject $params -Keys "NoPrompt"
-
-This will return a new HashTable only containing the "NoPrompt" entry.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Get key from HashTable
+        
+    .DESCRIPTION
+        Get specific key(s) from a HashTable returned as a HashTable
+        
+    .PARAMETER InputObject
+        The HashTable that you want to extract key(s) from
+        
+    .PARAMETER Keys
+        Names of the key(s) that you want to to extract from the HashTable
+        
+    .EXAMPLE
+        PS C:\> $params = @{NoPrompt = $true; CreateParent = $false}
+        
+        Get-HashtableKey -InputObject $params -Keys "NoPrompt"
+        
+        This will return a new HashTable only containing the "NoPrompt" entry.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 function Get-HashtableKey {

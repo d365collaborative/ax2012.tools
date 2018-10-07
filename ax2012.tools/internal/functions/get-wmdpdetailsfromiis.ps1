@@ -1,17 +1,17 @@
 ﻿<#
-.SYNOPSIS
-Get WMDP details from the IIS
-
-.DESCRIPTION
-Get all the necessary details from the IIS about the WMDP installation
-
-.EXAMPLE
-PS C:\> Get-WMDPDetailsFromIIS
-
-This will get details from all the WMDP installations on the server.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Get WMDP details from the IIS
+        
+    .DESCRIPTION
+        Get all the necessary details from the IIS about the WMDP installation
+        
+    .EXAMPLE
+        PS C:\> Get-WMDPDetailsFromIIS
+        
+        This will get details from all the WMDP installations on the server.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 function Get-WMDPDetailsFromIIS {

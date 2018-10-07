@@ -1,20 +1,20 @@
 ﻿<#
-.SYNOPSIS
-Get details about an AX 2012 AOS instance
-
-.DESCRIPTION
-Get all the technical details about an AX 2012 AOS instance
-
-.PARAMETER RegistryPath
-Path to the registry for the specific AX 2012 AOS instance
-
-.EXAMPLE
-PS C:\> Get-AxAosInstanceDetails -RegistryPath "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Dynamics Server\6.0\01"
-
-This will traverse all the details about the first installed AX 2012 AOS instance in the registry.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Get details about an AX 2012 AOS instance
+        
+    .DESCRIPTION
+        Get all the technical details about an AX 2012 AOS instance
+        
+    .PARAMETER RegistryPath
+        Path to the registry for the specific AX 2012 AOS instance
+        
+    .EXAMPLE
+        PS C:\> Get-AxAosInstanceDetails -RegistryPath "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Dynamics Server\6.0\01"
+        
+        This will traverse all the details about the first installed AX 2012 AOS instance in the registry.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 function Get-AxAosInstanceDetails {
@@ -55,4 +55,3 @@ function Get-AxAosInstanceDetails {
        
     [PSCustomObject] $InstanceDetail
 }
-

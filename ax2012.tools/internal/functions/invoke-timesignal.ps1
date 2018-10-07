@@ -1,28 +1,28 @@
 ﻿<#
-.SYNOPSIS
-Invoke timing logic
-
-.DESCRIPTION
-Invoke timing logic that keeps track of the time spend inside a function
-
-.PARAMETER Start
-Switch to instruct the cmdlet that the starting of measurement
-
-.PARAMETER End
-Switch to instruct the cmdlet that the ending of measurement
-
-.EXAMPLE
-PS C:\> Invoke-TimeSignal -Start
-
-This will start the timing measurement.
-
-.EXAMPLE
-PS C:\> Invoke-TimeSignal -End
-
-This will end the timing measurement and have the cmdlet write the details into the verbose log.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .SYNOPSIS
+        Invoke timing logic
+        
+    .DESCRIPTION
+        Invoke timing logic that keeps track of the time spend inside a function
+        
+    .PARAMETER Start
+        Switch to instruct the cmdlet that the starting of measurement
+        
+    .PARAMETER End
+        Switch to instruct the cmdlet that the ending of measurement
+        
+    .EXAMPLE
+        PS C:\> Invoke-TimeSignal -Start
+        
+        This will start the timing measurement.
+        
+    .EXAMPLE
+        PS C:\> Invoke-TimeSignal -End
+        
+        This will end the timing measurement and have the cmdlet write the details into the verbose log.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 
 #>
 function Invoke-TimeSignal {
