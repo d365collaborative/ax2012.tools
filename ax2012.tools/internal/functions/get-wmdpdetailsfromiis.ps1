@@ -25,5 +25,5 @@ function Get-WMDPDetailsFromIIS {
         return
     }
 
-    Get-WebSite | Where-Object physicalpath -like "*wmdp*" | Select-Object 
+    Get-WebSite | Where-Object physicalpath -like "*wmdp*" | Select-Object
 }
