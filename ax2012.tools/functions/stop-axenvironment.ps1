@@ -30,6 +30,7 @@ Author: Mötz Jensen (@Splaxi)
 
 #>
 function Stop-AxEnvironment {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
         [string[]] $ComputerName = @($env:computername),

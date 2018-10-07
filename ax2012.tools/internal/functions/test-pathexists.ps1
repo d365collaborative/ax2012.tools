@@ -31,8 +31,9 @@ Author: Mötz Jensen (@splaxi)
 #>
 function Test-PathExists {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
-    [OutputType([HashTable])]
+    [OutputType([System.Boolean])]
     param (
         [Parameter(Mandatory = $True, Position = 1 )]
         [string[]] $Path,

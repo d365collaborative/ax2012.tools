@@ -19,7 +19,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 function Get-AxAosInstanceDetails {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [CmdletBinding()]
+    [CmdletBinding()]    
     param(
         [string] $RegistryPath
     )
