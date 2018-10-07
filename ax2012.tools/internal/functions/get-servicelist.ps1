@@ -18,7 +18,7 @@ Switch to instruct the cmdlet to return ManagementReporter
 Switch to instruct the cmdlet to return DIXF
 
 .EXAMPLE
-Get-ServiceList -All
+PS C:\> Get-ServiceList -All
 
 This will return all services that the cmdlet knows about.
 

@@ -19,8 +19,8 @@ The prefix that you want to append to the value of the HashTable
 The default value is " "
 
 .EXAMPLE
-$params = @{DatabaseServer = "Localhost"; DatabaseName = "MicrosoftDynamicsAx_model"}
-$arguments = Convert-HashToArgString -Inputs $params
+PS C:\> $params = @{DatabaseServer = "Localhost"; DatabaseName = "MicrosoftDynamicsAx_model"}
+PS C:\> $arguments = Convert-HashToArgString -Inputs $params
 
 This will convert the $params into an array of strings, each with the Key and Value.
 

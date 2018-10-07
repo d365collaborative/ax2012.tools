@@ -21,7 +21,7 @@ Switch to instruct the cmdlet to include the ManagementReporter service
 Switch to instruct the cmdlet to include the DIXF service
 
 .EXAMPLE
-Get-AxEnvironment
+PS C:\> Get-AxEnvironment
 
 This will get the status for all the default services from your environment.
 

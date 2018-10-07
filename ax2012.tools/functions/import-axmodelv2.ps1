@@ -47,7 +47,7 @@ Switch to instruct the cmdlet to output a script that you can execute manually l
 Using this will not import any AX 2012 models into the model store
 
 .EXAMPLE
-Import-AxModelV2 -Path "c:\temp\ax2012.tools\dev-models"
+PS C:\> Import-AxModelV2 -Path "c:\temp\ax2012.tools\dev-models"
 
 The cmdlet will look for all the AX 2012 models located in "c:\temp\ax2012.tools\dev-models" or any of its sub folders.
 The ConflictMode is set to the default value of "OverWrite".

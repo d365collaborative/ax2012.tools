@@ -9,7 +9,7 @@ Get the file version details for any given file
 Path to the file that you want to extract the file version details from
 
 .EXAMPLE
-Get-FileVersion -Path "C:\Program Files\Microsoft Dynamics AX\60\Server\MicrosoftDynamicsAX\Bin\AxServ32.exe"
+PS C:\> Get-FileVersion -Path "C:\Program Files\Microsoft Dynamics AX\60\Server\MicrosoftDynamicsAX\Bin\AxServ32.exe"
 
 This will get the file version details for the AX AOS executable (AxServ32.exe).
 

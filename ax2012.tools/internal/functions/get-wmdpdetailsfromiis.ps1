@@ -6,7 +6,7 @@ Get WMDP details from the IIS
 Get all the necessary details from the IIS about the WMDP installation
 
 .EXAMPLE
-Get-WMDPDetailsFromIIS
+PS C:\> Get-WMDPDetailsFromIIS
 
 This will get details from all the WMDP installations on the server.
 

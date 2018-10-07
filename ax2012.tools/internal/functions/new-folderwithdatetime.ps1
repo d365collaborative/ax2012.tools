@@ -12,7 +12,7 @@ Path to the parent folder where you want the new folder created
 Switch to instruct the cmdlet not to create the folder
 
 .EXAMPLE
-New-FolderWithDateTime -Path "c:\temp\ax2012.tools"
+PS C:\> New-FolderWithDateTime -Path "c:\temp\ax2012.tools"
 
 This will create a new folder with the current date and time as a child to the "c:\temp\ax2012.tools" folder.
 

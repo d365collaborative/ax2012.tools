@@ -20,7 +20,7 @@ The parameter supports wildcards. E.g. -InstanceNo "*1*"
 Default value is "*" and will give you all the instances
 
 .EXAMPLE
-Get-AxAosInstance
+PS C:\> Get-AxAosInstance
 
 This will get you all the installed AX 2012 AOS instances on the machine
 

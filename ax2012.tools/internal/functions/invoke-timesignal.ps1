@@ -12,12 +12,12 @@ Switch to instruct the cmdlet that the starting of measurement
 Switch to instruct the cmdlet that the ending of measurement
 
 .EXAMPLE
-Invoke-TimeSignal -Start
+PS C:\> Invoke-TimeSignal -Start
 
 This will start the timing measurement.
 
 .EXAMPLE
-Invoke-TimeSignal -End
+PS C:\> Invoke-TimeSignal -End
 
 This will end the timing measurement and have the cmdlet write the details into the verbose log.
 

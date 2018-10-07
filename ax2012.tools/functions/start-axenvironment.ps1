@@ -21,7 +21,7 @@ Switch to instruct the cmdlet to include the ManagementReporter service
 Switch to instruct the cmdlet to include the DIXF service
 
 .EXAMPLE
-Start-AxEnvironment
+PS C:\> Start-AxEnvironment
 
 This will start all the known AX 2012 services on the machine that you are executing it on.
 

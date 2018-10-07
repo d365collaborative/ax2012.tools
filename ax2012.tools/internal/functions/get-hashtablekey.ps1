@@ -12,7 +12,7 @@ The HashTable that you want to extract key(s) from
 Names of the key(s) that you want to to extract from the HashTable
 
 .EXAMPLE
-$params = @{NoPrompt = $true; CreateParent = $false}
+PS C:\> $params = @{NoPrompt = $true; CreateParent = $false}
 
 Get-HashtableKey -InputObject $params -Keys "NoPrompt"
 

@@ -38,7 +38,7 @@ Default value is: "c:\temp\ax2012.tools"
 Switch to instruct the cmdlet to only generate the needed command and not execute it
 
 .EXAMPLE
-Invoke-AxExportModelstore
+PS C:\> Invoke-AxExportModelstore
 
 This will execute the cmdlet will all the default values.
 This will work against the SQL server that is on localhost.

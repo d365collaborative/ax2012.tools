@@ -47,7 +47,7 @@ Default value is "*" which will search for models in all layers
 Switch to instruct the cmdlet to output the script to execute the command in hand
 
 .EXAMPLE
-Get-AxAosInstance | Export-AxModelV2
+PS C:\> Get-AxAosInstance | Export-AxModelV2
 
 This will fetch all the AX 2012 AOS instances that are configured on the machine.
 Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
