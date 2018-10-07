@@ -1,4 +1,4 @@
-# **ax2012.tools**
+﻿# **ax2012.tools**
 Powershell module to handle the different management tasks during a Dynamics AX 2012 project lifecycle.
 
 Available on Powershellgallery
