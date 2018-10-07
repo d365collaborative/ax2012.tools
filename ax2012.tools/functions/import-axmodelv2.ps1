@@ -60,6 +60,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 Function Import-AxModelV2 {
     [CmdletBinding()]
+    [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
         [string] $DatabaseServer = "localhost",
@@ -80,6 +81,7 @@ Function Import-AxModelV2 {
 
         [switch] $NoPrompt,
 
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $GenerateScript
     )
 
@@ -99,8 +101,6 @@ Function Import-AxModelV2 {
 
         $AxModelFiles = Get-ChildItem -Path $AxModelsPath -Recurse -File
         
-        $res = New-Object System.Collections.ArrayList
-
         $params = @{ Server = $DatabaseServer; Conflict = $ConflictMode;
             Database = $ModelstoreDatabase
         }

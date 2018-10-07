@@ -50,6 +50,8 @@ Author: Mötz Jensen (@Splaxi)
 
 #>
 Function Invoke-AxExportModelstore {
+    [CmdletBinding()]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     Param(
         [string] $DatabaseServer = "localhost",
 
@@ -61,6 +63,7 @@ Function Invoke-AxExportModelstore {
         
         [string] $Path = "c:\temp\ax2012.tools",
 
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $GenerateScript
     )
 
@@ -81,13 +84,12 @@ Function Invoke-AxExportModelstore {
     $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix)"
 
     $params = @{
-        DatabaseServer = $DatabaseServer
+        DatabaseServer     = $DatabaseServer
         ModelstoreDatabase = $ModelstoreDatabase
-        File = $ExportPath
+        File               = $ExportPath
     }
 
-    if($GenerateScript)
-    {
+    if ($GenerateScript) {
         $arguments = Convert-HashToArgString -InputObject $params
 
         "Export-AxModelStore $($arguments -join ' ')"
