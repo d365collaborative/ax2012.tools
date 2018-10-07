@@ -29,7 +29,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Convert-HashToArgStringSwitch {
     [CmdletBinding()]

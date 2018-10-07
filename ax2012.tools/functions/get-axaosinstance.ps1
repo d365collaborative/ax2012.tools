@@ -27,7 +27,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Get-AxAosInstance {
     [CmdletBinding()]

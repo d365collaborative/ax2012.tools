@@ -1,4 +1,5 @@
-﻿<#
+﻿
+<#
     .SYNOPSIS
         Get the status of an AX 2012 environment
         
@@ -27,7 +28,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Get-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]

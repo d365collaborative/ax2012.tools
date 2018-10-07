@@ -28,7 +28,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Stop-AxEnvironment {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]

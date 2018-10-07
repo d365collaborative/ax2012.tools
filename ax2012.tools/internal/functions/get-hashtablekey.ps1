@@ -21,7 +21,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 function Get-HashtableKey {
     [CmdletBinding()]

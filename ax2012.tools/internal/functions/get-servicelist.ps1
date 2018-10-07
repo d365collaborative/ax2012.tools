@@ -25,7 +25,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-
+        
 #>
 Function Get-ServiceList {
     [CmdletBinding(DefaultParameterSetName = 'Default')]

@@ -18,7 +18,7 @@
         Author: Mötz Jensen (@Splaxi)
         
         Inspired by https://blogs.technet.microsoft.com/askpfeplat/2014/12/07/how-to-correctly-check-file-versions-with-powershell/
-
+        
 #>
 function Get-FileVersion {
     [CmdletBinding()]
