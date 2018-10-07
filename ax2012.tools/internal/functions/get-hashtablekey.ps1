@@ -24,7 +24,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 function Get-HashtableKey {
     [CmdletBinding()]
-    [OutputType('System.Collections.Hashtable')]
+    [OutputType([HashTable])]
     param (
         [parameter(Mandatory = $true, Position = 1)]
         [HashTable] $InputObject,

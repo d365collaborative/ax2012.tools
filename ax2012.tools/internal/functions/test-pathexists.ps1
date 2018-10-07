@@ -30,10 +30,9 @@ Author: Mötz Jensen (@splaxi)
 
 #>
 function Test-PathExists {
-
     # [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns')]
     [CmdletBinding()]
-    [OutputType([System.Boolean])]
+    [OutputType([HashTable])]
     param (
         [Parameter(Mandatory = $True, Position = 1 )]
         [string[]] $Path,

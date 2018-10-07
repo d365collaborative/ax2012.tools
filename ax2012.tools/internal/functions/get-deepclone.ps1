@@ -19,7 +19,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 function Get-DeepClone {
     [CmdletBinding()]
-    [OutputType([hashtable])]
+    [OutputType([HashTable])]
     param(
         [parameter(Mandatory = $true)]
         $InputObject

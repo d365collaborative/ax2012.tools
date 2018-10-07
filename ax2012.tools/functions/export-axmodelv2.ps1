@@ -58,6 +58,7 @@ Author: Mötz Jensen (@Splaxi)
 #>
 Function Export-AxModelV2 {
     [CmdletBinding()]
+    [OutputType([System.String], ParameterSetName=""Generate"")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
         [string] $DatabaseServer = "localhost",
@@ -77,6 +78,7 @@ Function Export-AxModelV2 {
         [Parameter(Mandatory = $false, Position = 6)]
         [string] $Layer = "*",
 
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $GenerateScript
     )
 
@@ -96,16 +98,11 @@ Function Export-AxModelV2 {
     PROCESS {
         Invoke-TimeSignal -Start
 
-        [System.Xml.XmlDocument] $xmlge
-        [System.Xml.XmlNode] $obj
-        [System.Xml.XmlNode] $property
-
         $xml = (Get-AXModel -Server $DatabaseServer -Database $ModelstoreDatabase | ConvertTo-Xml )
         $nodes = $xml.SelectNodes("Objects/Object")
 
         foreach ($obj in $nodes) {
             $filenameAxModel = ""
-            $elementCount = ""
             $modelId = ""
             $modelLayer = ""
             $modelName = ""
@@ -120,10 +117,6 @@ Function Export-AxModelV2 {
                     $modelLayer = $property.InnerText
                 }
         
-                if ($property.GetAttribute("Name").Equals( "ElementCount" )) {
-                    $elementCount = $property.InnerText
-                }
-
                 if ($property.GetAttribute("Name").Equals( "ModelId" )) {
                     $modelId = $property.InnerText
                 }
