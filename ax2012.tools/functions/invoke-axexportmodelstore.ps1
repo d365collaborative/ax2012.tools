@@ -83,8 +83,8 @@ Function Invoke-AxExportModelstore {
     $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix)"
 
     $params = @{
-        DatabaseServer     = $DatabaseServer
-        ModelstoreDatabase = $ModelstoreDatabase
+        Server     = $DatabaseServer
+        Database = $ModelstoreDatabase
         File               = $ExportPath
     }
 
