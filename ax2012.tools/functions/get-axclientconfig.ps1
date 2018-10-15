@@ -1,23 +1,24 @@
-﻿<#
-.SYNOPSIS
-Get the AX 2012 client configuration
-
-.DESCRIPTION
-Get the AX 2012 client configuration from the registry
-
-.PARAMETER Name
-Name of the configuration that you are looking for
-
-The parameter supports wildcards. E.g. -Name "*DEV*"
-
-.EXAMPLE
-PS C:\> Get-AxClientConfig
-
-This will get all available client configurations from the registry and display them.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+﻿
+<#
+    .SYNOPSIS
+        Get the AX 2012 client configuration
+        
+    .DESCRIPTION
+        Get the AX 2012 client configuration from the registry
+        
+    .PARAMETER Name
+        Name of the configuration that you are looking for
+        
+        The parameter supports wildcards. E.g. -Name "*DEV*"
+        
+    .EXAMPLE
+        PS C:\> Get-AxClientConfig
+        
+        This will get all available client configurations from the registry and display them.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Get-AxClientConfig {
     [CmdletBinding()]

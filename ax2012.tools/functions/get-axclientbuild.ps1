@@ -1,18 +1,19 @@
-﻿<#
-.SYNOPSIS
-Get the build numbers
-
-.DESCRIPTION
-Get the build numbers for the AX 2012 client
-
-.EXAMPLE
-PS C:\> Get-AxClientBuild
-
-This will get the executable path and the build numbers for the client.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+﻿
+<#
+    .SYNOPSIS
+        Get the build numbers
+        
+    .DESCRIPTION
+        Get the build numbers for the AX 2012 client
+        
+    .EXAMPLE
+        PS C:\> Get-AxClientBuild
+        
+        This will get the executable path and the build numbers for the client.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Get-AxClientBuild {
     [CmdletBinding()]

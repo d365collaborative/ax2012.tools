@@ -59,7 +59,7 @@
         
         This will fetch all the AX 2012 AOS instances that are configured on the machine.
         Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
-
+        
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
