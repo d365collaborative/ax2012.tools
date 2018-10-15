@@ -53,6 +53,13 @@
         This will fetch all the AX 2012 AOS instances that are configured on the machine.
         Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
         
+    .EXAMPLE
+        PS C:\> $Test = "1"
+        PS C:\> Export-AxModelV2 -DatabaseServer "localhost" -ModelstoreDatabase "MicrosoftDynamicsAx_model" -Names "*CUS*"
+        
+        This will fetch all the AX 2012 AOS instances that are configured on the machine.
+        Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
+
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
@@ -61,10 +68,10 @@ Function Export-AxModelV2 {
     [CmdletBinding()]
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 1)]
         [string] $DatabaseServer = "localhost",
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 2)]
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 2)]
         [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
         
         [Parameter(Mandatory = $false, Position = 3)]

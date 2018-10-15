@@ -37,6 +37,7 @@ function Get-AxAosInstanceDetails {
     $InstanceDetail.InstanceName = $RegOuter.InstanceName
     $InstanceDetail.ConfigurationName = $RegOuter.Current
     $InstanceDetail.BinDirectory = $RegInner.bindir
+    $InstanceDetail.ExecutablePath = Join-Path $RegInner.bindir "Ax32Serv.exe"
 
     $InstanceDetail.FileVersion = $BuildNumbers.FileVersion
     $InstanceDetail.ProductVersion = $BuildNumbers.ProductVersion
