@@ -42,6 +42,8 @@
     # Functions to export from this module
     FunctionsToExport = @(
                             'Export-AxModelV2',
+
+                            'Get-AxActiveAosConfiguration',
                             'Get-AxAosInstance',
 
                             'Get-AxClientBuild',
@@ -53,6 +55,8 @@
 
                             'Invoke-AxExportModelstore',
                             'Import-AxModelV2',
+
+                            'Set-AxActiveAosConfiguration',
                             'Start-AxEnvironment',
                             'Stop-AxEnvironment'
     )

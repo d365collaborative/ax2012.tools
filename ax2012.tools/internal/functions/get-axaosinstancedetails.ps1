@@ -49,11 +49,12 @@ function Get-AxAosInstanceDetails {
     $InstanceDetail.ModelstoreDatabase = "$($RegInner.database)_model"
 
     $InstanceDetail.AosPort = $RegInner.port
-    $InstanceDetail.WSDLPort = $RegInner.WSDLPort
-    $InstanceDetail.NetTCPPort = $RegInner.NetTCPPort
+    $InstanceDetail.WsdlPort = $RegInner.WSDLPort
+    $InstanceDetail.NetTcpPort = $RegInner.NetTCPPort
     
     $InstanceDetail.RegistryKeyPath = $RegKey.Name
     $InstanceDetail.InstanceNumber = Split-Path -Path $RegKey.Name -Leaf
-       
+    $InstanceDetail.ComputerName = "$env:computername"
+
     [PSCustomObject] $InstanceDetail
 }
