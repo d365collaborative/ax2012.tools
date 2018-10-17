@@ -18,6 +18,7 @@ Author: Mötz Jensen (@Splaxi)
 
 #>
 function Invoke-AxAxBuild {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseOutputTypeCorrectly', '')]
     [CmdletBinding()]
     param (
         [string] $Path = $Script:ActiveAosBindirectory
