@@ -49,6 +49,7 @@ Author: Mötz Jensen (@Splaxi)
 
 #>
 function Set-AxActiveAosConfiguration {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
     [CmdletBinding()]
     param (
 
@@ -73,7 +74,7 @@ function Set-AxActiveAosConfiguration {
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 7)]
         [string] $ModelstoreDatabase,
 
-        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 8)]        
+        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 8)]
         [string] $AosPort,
 
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 9)]
@@ -91,12 +92,12 @@ function Set-AxActiveAosConfiguration {
         Write-PSFMessage -Level Verbose -Message "Working on $key with $value" -Target $value
 
         switch ($key) {
-            "ComputerName" { 
+            "ComputerName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Value $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' }
             }
 
-            "BinDirectory" { 
+            "BinDirectory" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Value $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' }
             }
@@ -111,12 +112,12 @@ function Set-AxActiveAosConfiguration {
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' }
             }
 
-            "DatabaseServer" { 
+            "DatabaseServer" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Value $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' }
             }
 		
-            "DatabaseName" { 
+            "DatabaseName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Value $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' }
             }
@@ -132,7 +133,7 @@ function Set-AxActiveAosConfiguration {
             }
             
 
-            "WsdlPort" { 
+            "WsdlPort" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Value $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' }
             }

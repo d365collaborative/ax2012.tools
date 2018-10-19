@@ -20,7 +20,7 @@
 #>
 function Get-DeepClone {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseOutputTypeCorrectly', '')]
-    [CmdletBinding()]    
+    [CmdletBinding()]
     param(
         [parameter(Mandatory = $true)]
         $InputObject
