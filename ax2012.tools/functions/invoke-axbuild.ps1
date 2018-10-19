@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-Aaaaa aaa a aaa a a aa 
+Aaaaa aaa a aaa a a aa
 
 .DESCRIPTION
 Bbbb b b b b bbbbb  bbbb
@@ -9,7 +9,7 @@ Bbbb b b b b bbbbb  bbbb
 Cccc ccccc ccc cc cc
 
 .EXAMPLE
-PS C:\> Invoke-AxAxBuild
+PS C:\> Invoke-AxBuild
 
 This will work
 
@@ -17,7 +17,7 @@ This will work
 Author: Mötz Jensen (@Splaxi)
 
 #>
-function Invoke-AxAxBuild {
+function Invoke-AxBuild {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseOutputTypeCorrectly', '')]
     [CmdletBinding()]
     param (
