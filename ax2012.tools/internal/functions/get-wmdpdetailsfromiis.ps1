@@ -33,7 +33,11 @@ function Get-WMDPDetailsFromIIS {
 
     foreach ($site in $sites) {
         $res = [Ordered]@{SiteId = $site.Id; SiteName = $site.Name;
-                SiteStatus = $site.State; SiteBindings = $site.Bindings}
+                SiteStatus = $site.State; SiteBindings = $site.Bindings;
+                Path = $site.Applications.VirtualDirectories.PhysicalPath
+                MvcViewPath = Join-Path $site.Applications.VirtualDirectories.PhysicalPath "Views\Execute"
+                CssPath = Join-Path $site.Applications.VirtualDirectories.PhysicalPath "Content\CSS\RFCSS"
+            }
         
         $appPool = Get-IISAppPool | Where-Object Name -eq $site.Applications.ApplicationPoolName
         $res.AppPoolName = $appPool.Name
