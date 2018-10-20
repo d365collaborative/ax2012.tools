@@ -1,18 +1,19 @@
-﻿<#
-.SYNOPSIS
-Get the AX 2012 Client bin directory
-
-.DESCRIPTION
-Get the AX 2012 Client bin directory from the registry
-
-.EXAMPLE
-PS C:\> Get-ClientBinDir
-
-This will get the full path for the AX 2012 client bin directory
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+﻿
+<#
+    .SYNOPSIS
+        Get the AX 2012 Client bin directory
+        
+    .DESCRIPTION
+        Get the AX 2012 Client bin directory from the registry
+        
+    .EXAMPLE
+        PS C:\> Get-ClientBinDir
+        
+        This will get the full path for the AX 2012 client bin directory
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Get-ClientBinDir {
     [CmdletBinding()]

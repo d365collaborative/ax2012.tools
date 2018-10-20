@@ -1,52 +1,53 @@
-﻿<#
-.SYNOPSIS
-Set the active AX 2012 AOS configuration
-
-.DESCRIPTION
-Set the active AX 2012 AOS details and store it into the configuration storage
-
-.PARAMETER ComputerName
-The name of the computer / server that AOS resides on
-
-.PARAMETER BinDirectory
-The full path to the bin directory where the AOS instance is physical installed
-
-.PARAMETER InstanceNumber
-The 2 digit ([0-9][0-9]) number that the AOS instance has on the server
-
-.PARAMETER InstanceName
-The instance name the AOS server is registered with
-
-.PARAMETER DatabaseServer
-The name of the server running SQL Server
-
-.PARAMETER DatabaseName
-The name of the AX 2012 business data database
-
-.PARAMETER ModelstoreDatabase
-The name of the AX 2012 modelstore database
-
-.PARAMETER AosPort
-The TCP port that the AX 2012 AOS server is communicating with the AX clients on
-
-.PARAMETER WsdlPort
-The TCP port that the AX 2012 AOS server is communicating with all WSDL consuming applications on
-
-.PARAMETER NetTcpPort
-The TCP port that the AX 2012 AOS server is communicating with all NetTcp consuming applications on
-
-.PARAMETER Temporary
-Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
-
-.EXAMPLE
-PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
-
-This will get all the AX 2012 AOS instances from the local machine and only select the first output.
-The output from the first AOS instance is saved into the configuration store.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+﻿
+<#
+    .SYNOPSIS
+        Set the active AX 2012 AOS configuration
+        
+    .DESCRIPTION
+        Set the active AX 2012 AOS details and store it into the configuration storage
+        
+    .PARAMETER ComputerName
+        The name of the computer / server that AOS resides on
+        
+    .PARAMETER BinDirectory
+        The full path to the bin directory where the AOS instance is physical installed
+        
+    .PARAMETER InstanceNumber
+        The 2 digit ([0-9][0-9]) number that the AOS instance has on the server
+        
+    .PARAMETER InstanceName
+        The instance name the AOS server is registered with
+        
+    .PARAMETER DatabaseServer
+        The name of the server running SQL Server
+        
+    .PARAMETER DatabaseName
+        The name of the AX 2012 business data database
+        
+    .PARAMETER ModelstoreDatabase
+        The name of the AX 2012 modelstore database
+        
+    .PARAMETER AosPort
+        The TCP port that the AX 2012 AOS server is communicating with the AX clients on
+        
+    .PARAMETER WsdlPort
+        The TCP port that the AX 2012 AOS server is communicating with all WSDL consuming applications on
+        
+    .PARAMETER NetTcpPort
+        The TCP port that the AX 2012 AOS server is communicating with all NetTcp consuming applications on
+        
+    .PARAMETER Temporary
+        Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
+        
+    .EXAMPLE
+        PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
+        
+        This will get all the AX 2012 AOS instances from the local machine and only select the first output.
+        The output from the first AOS instance is saved into the configuration store.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Set-AxActiveAosConfiguration {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
