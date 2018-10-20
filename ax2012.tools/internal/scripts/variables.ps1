@@ -24,4 +24,4 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
 
 foreach ($item in (Get-Variable -Scope Script)) {
     Write-PSFMessage -Level Verbose -Message "$($item.Name) - $($item.Value)" -Target $($item.Value)
-} 
+}
