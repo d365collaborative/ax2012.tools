@@ -42,7 +42,8 @@ Describe "Specific example testing for $commandName" {
             $InstanceDetail.InstanceNumber = ""
             $InstanceDetail.ComputerName = ""
     
-            [PSCustomObject] $InstanceDetail }
+            [PSCustomObject] $InstanceDetail
+        }
 
         Mock $commandName {
             # I am returning true here,

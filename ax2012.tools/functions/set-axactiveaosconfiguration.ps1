@@ -44,6 +44,16 @@
         
         This will get all the AX 2012 AOS instances from the local machine and only select the first output.
         The output from the first AOS instance is saved into the configuration store.
+    
+    .EXAMPLE
+        PS C:\> Set-AxActiveAosConfiguration -ComputerNme AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
+
+        This will update the active AOS configuration store settings.
+        The computer name will be registered to: AX2012PROD
+        The database server will be registered to: SQLSERVER
+        The database name will be registered to: AX2012R3_PROD
+        The model store database will be registered to: AX2012R3_PROD_model
+        The AOS port will be registered to: 2712
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
