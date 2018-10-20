@@ -30,6 +30,14 @@ Get-AxAosInstance | Export-AxModelV2
 This will fetch all the AX 2012 AOS instances that are configured on the machine.
 Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
 
+### EXAMPLE 2
+```
+Export-AxModelV2 -DatabaseServer localhost -ModelstoreDatabase MicrosoftDynamicsAx_model -Name *CUS*
+```
+
+This will fetch all the AX 2012 AOS instances that are configured on the machine.
+Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
+
 ## PARAMETERS
 
 ### -DatabaseServer
@@ -45,7 +53,7 @@ Aliases:
 Required: False
 Position: 2
 Default value: Localhost
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -66,7 +74,7 @@ Aliases:
 Required: False
 Position: 3
 Default value: MicrosoftDynamicsAx_model
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
