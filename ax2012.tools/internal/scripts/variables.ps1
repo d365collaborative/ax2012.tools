@@ -37,3 +37,5 @@ foreach ($item in (Get-Variable -Scope Script)) {
     
     Write-PSFMessage -Level Verbose -Message "$($item.Name) - $val" -Target $val
 }
+
+Write-PSFMessage -Level Verbose -Message "Finished outputting all the variable content."
