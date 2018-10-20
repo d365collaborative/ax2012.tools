@@ -5,12 +5,12 @@
         
     .DESCRIPTION
         Get the build numbers for the AX 2012 client
-    
+        
     .PARAMETER Path
         The path to the Ax32.exe file you want to work against
         
         The default path is read from the registry
-
+        
     .EXAMPLE
         PS C:\> Get-AxClientBuild
         
