@@ -14,3 +14,10 @@ $Script:LayerDictionary = @{"ISV" = "01."; "ISP" = "02."; "VAR" = "03."; "VAP" =
 $Script:ClientBin = Get-ClientBinDir
 
 #Microsoft.Dynamics.BusinessConnectorNet.dll
+
+foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
+    $nameTemp = $item.FullName -replace "^ax2012.tools.", ""
+    $name = ($nameTemp -Split "\." | ForEach-Object { (Get-Culture).TextInfo.ToTitleCase($_) } ) -Join ""
+    
+    New-Variable -Name $name -Value $item.Value -Scope Script
+}

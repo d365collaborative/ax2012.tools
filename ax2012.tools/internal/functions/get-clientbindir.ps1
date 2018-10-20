@@ -19,11 +19,13 @@ function Get-ClientBinDir {
     [OutputType('System.String')]
     param ( )
 
-    $RegKey = Get-Item -Path $Script:RegistryClient
+    $RegKey = Get-Item -Path $Script:RegistryClient -ErrorAction SilentlyContinue
     
-    $RegOuter = Get-ItemProperty -Path $($RegKey.Name.Replace("HKEY_CURRENT_USER", "HKCU:"))
+    if(-not ($null -eq $RegKey)) {
+        $RegOuter = Get-ItemProperty -Path $($RegKey.Name.Replace("HKEY_CURRENT_USER", "HKCU:"))
 
-    $RegInner = Get-ItemProperty -Path (Join-Path $RegKey.Name $RegOuter.Current).Replace("HKEY_CURRENT_USER", "HKCU:")
-
-    $RegInner.bindir
+        $RegInner = Get-ItemProperty -Path (Join-Path $RegKey.Name $RegOuter.Current).Replace("HKEY_CURRENT_USER", "HKCU:")
+    
+        $RegInner.bindir
+    }
 }

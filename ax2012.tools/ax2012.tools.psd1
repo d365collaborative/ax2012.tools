@@ -52,7 +52,7 @@
                             'Get-AxEnvironment',
                             'Get-AxWMDPDetails',
                             
-
+                            'Invoke-AxBuild',
                             'Invoke-AxExportModelstore',
                             'Import-AxModelV2',
 
