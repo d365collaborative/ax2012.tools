@@ -54,8 +54,7 @@
         Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
         
     .EXAMPLE
-        PS C:\> $Test = "1"
-        PS C:\> Export-AxModelV2 -DatabaseServer "localhost" -ModelstoreDatabase "MicrosoftDynamicsAx_model" -Names "*CUS*"
+        PS C:\> Export-AxModelV2 -DatabaseServer localhost -ModelstoreDatabase MicrosoftDynamicsAx_model -Name *CUS*
         
         This will fetch all the AX 2012 AOS instances that are configured on the machine.
         Foreach of the instances it will export all AX 2012 Models into a sub folder to "c:\temp\ax2012.tools".
