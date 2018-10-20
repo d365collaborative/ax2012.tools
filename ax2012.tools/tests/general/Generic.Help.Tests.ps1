@@ -1,5 +1,6 @@
 ﻿$excludeCommands = @(
     "Import-ModuleFile"    
+    , "Get-DeepClone"
 )
 
 $commandsRaw = Get-Command -Module ax2012.tools
