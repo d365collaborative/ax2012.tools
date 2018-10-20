@@ -22,6 +22,12 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
     New-Variable -Name $name -Value $item.Value -Scope Script
 }
 
+$maskOutput = @(
+"AccessToken"
+)
+
 foreach ($item in (Get-Variable -Scope Script)) {
+    if($maskOutput -contains $($item.Name)) { continue }
+    
     Write-PSFMessage -Level Verbose -Message "$($item.Name) - $($item.Value)" -Target $($item.Value)
 }
