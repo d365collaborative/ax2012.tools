@@ -1,5 +1,5 @@
 ﻿$script:ModuleRoot = $PSScriptRoot
-$script:ModuleVersion = "0.1.3"
+$script:ModuleVersion = "0.1.5"
 
 # Detect whether at some level dotsourcing was enforced
 $script:doDotSource = Get-PSFConfigValue -FullName ax2012.tools.Import.DoDotSource -Fallback $false
