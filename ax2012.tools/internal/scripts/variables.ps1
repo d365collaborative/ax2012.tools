@@ -27,7 +27,13 @@ $maskOutput = @(
 )
 
 foreach ($item in (Get-Variable -Scope Script)) {
-    if($maskOutput -contains $($item.Name)) { continue }
+    $val = $null
+
+    if($maskOutput -contains $($item.Name)) { 
+        $val = "The variable was found - but the content masked while outputting."
+    } else {
+        $val = $($item.Value)
+    }
     
-    Write-PSFMessage -Level Verbose -Message "$($item.Name) - $($item.Value)" -Target $($item.Value)
+    Write-PSFMessage -Level Verbose -Message "$($item.Name) - $val" -Target $val
 }
