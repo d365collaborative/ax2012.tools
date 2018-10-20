@@ -46,7 +46,7 @@
         The output from the first AOS instance is saved into the configuration store.
     
     .EXAMPLE
-        PS C:\> Set-AxActiveAosConfiguration -ComputerNme AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
+        PS C:\> Set-AxActiveAosConfiguration -ComputerName AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
 
         This will update the active AOS configuration store settings.
         The computer name will be registered to: AX2012PROD
