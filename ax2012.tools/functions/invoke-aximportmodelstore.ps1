@@ -1,37 +1,59 @@
 ﻿
 <#
-    .SYNOPSIS
-        Short description
+.SYNOPSIS
+        Import an AX 2012 modelstore file
         
     .DESCRIPTION
-        Long description
+        Import an AX 2012 modelstore file into the modelstore database
         
     .PARAMETER DatabaseServer
-        Parameter description
+        Server name of the database server
+        
+        Default value is: "localhost"
         
     .PARAMETER ModelstoreDatabase
-        Parameter description
+        Name of the modelstore database
+        
+        Default value is: "MicrosoftDynamicsAx_model"
+        
+        Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
         
     .PARAMETER SchemaName
-        Parameter description
+        Name of the schema to import the modelstore into
         
+        Default value is: "TempSchema"
+
     .PARAMETER Path
-        Parameter description
+        Path to the location where you want the file to be exported
+        
+        Default value is: "c:\temp\ax2012.tools"
         
     .PARAMETER IdConflictMode
-        Parameter description
+        Parameter to instruct how the import should handle ID conflicts if it hits any during the import
+
+        Valid options:
+        "Reject"
+        "Push"
+        "Overwrite"
         
     .PARAMETER Apply
-        Parameter description
+        Switch to instruct the cmdlet to switch modelstore with the SchemaName in as the current code
         
     .PARAMETER GenerateScript
-        Parameter description
+        Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
-        An example
+        PS C:\> Invoke-AxImportModelstore -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
+        
+        This will execute the cmdlet will all the default values.
+        This will work against the SQL server that is on localhost.
+        The database is expected to be "MicrosoftDynamicsAx_model".
+        The import will import the modelstore into the "TempSchema".
+        The path where the modelstore file you want to import must exists is: "c:\temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore".
         
     .NOTES
-        General notes
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Invoke-AxImportModelstore {
     [CmdletBinding(DefaultParameterSetName = "ImportModelstore")]
