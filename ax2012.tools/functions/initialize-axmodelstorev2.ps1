@@ -1,37 +1,59 @@
 ﻿
 <#
     .SYNOPSIS
-        Short description
+        Initialize an AX 2012 modelstore
         
     .DESCRIPTION
-        Long description
+        Initialize an AX 2012 modelstore against a modelstore database
         
     .PARAMETER DatabaseServer
-        Parameter description
+        Server name of the database server
+        
+        Default value is: "localhost"
         
     .PARAMETER ModelstoreDatabase
-        Parameter description
+        Name of the modelstore database
+        
+        Default value is: "MicrosoftDynamicsAx_model"
+        
+        Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
         
     .PARAMETER SchemaName
-        Parameter description
+        Name of the schema in the modelstore database that you want to work against
+        
+        Default value is: "TempSchema"
         
     .PARAMETER DropSchema
-        Parameter description
+        Switch to instruct the cmdlet to drop the schema supplied with the -SchemaName parameter
         
     .PARAMETER CreateSchema
-        Parameter description
+        Switch to instruct the cmdlet to create the schema supplied with the -SchemaName parameter
         
     .PARAMETER CreateDb
-        Parameter description
+        Switch to instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
         
     .PARAMETER GenerateScript
-        Parameter description
+        Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
-        An example
+        PS C:\> Initialize-AXModelStoreV2 -SchemaName TempSchema -CreateSchema
+        
+        This will execute the cmdlet with some of the default values.
+        This will work against the SQL server that is on localhost.
+        The database is expected to be "MicrosoftDynamicsAx_model".
+        The cmdlet will create the "TempSchema" schema inside the modelstore database.
+        
+    .EXAMPLE
+        PS C:\> Initialize-AXModelStoreV2 -SchemaName TempSchema -DropSchema
+        
+        This will execute the cmdlet with some of the default values.
+        This will work against the SQL server that is on localhost.
+        The database is expected to be "MicrosoftDynamicsAx_model".
+        The cmdlet will drop the "TempSchema" schema inside the modelstore database.
         
     .NOTES
-        General notes
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Initialize-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "CreateSchema")]

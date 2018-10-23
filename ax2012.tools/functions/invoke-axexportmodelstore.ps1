@@ -41,7 +41,7 @@
     .EXAMPLE
         PS C:\> Invoke-AxExportModelstore
         
-        This will execute the cmdlet will all the default values.
+        This will execute the cmdlet with all the default values.
         This will work against the SQL server that is on localhost.
         The database is expected to be "MicrosoftDynamicsAx_model".
         The path where the exported modelstore file will be saved is: "c:\temp\ax2012.tools".

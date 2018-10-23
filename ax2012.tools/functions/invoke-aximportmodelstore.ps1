@@ -45,7 +45,7 @@
     .EXAMPLE
         PS C:\> Invoke-AxImportModelstore -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
         
-        This will execute the cmdlet will all the default values.
+        This will execute the cmdlet with some of the default values.
         This will work against the SQL server that is on localhost.
         The database is expected to be "MicrosoftDynamicsAx_model".
         The import will import the modelstore into the "TempSchema".
