@@ -1,4 +1,38 @@
-﻿function Invoke-AxImportModelstore {
+﻿<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER DatabaseServer
+Parameter description
+
+.PARAMETER ModelstoreDatabase
+Parameter description
+
+.PARAMETER SchemaName
+Parameter description
+
+.PARAMETER Path
+Parameter description
+
+.PARAMETER IdConflictMode
+Parameter description
+
+.PARAMETER Apply
+Parameter description
+
+.PARAMETER GenerateScript
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+function Invoke-AxImportModelstore {
     [CmdletBinding(DefaultParameterSetName = "ImportModelstore")]
     [OutputType([System.String], ParameterSetName = "Generate")]
     Param(
