@@ -1,6 +1,6 @@
 ﻿
 <#
-.SYNOPSIS
+    .SYNOPSIS
         Import an AX 2012 modelstore file
         
     .DESCRIPTION
@@ -22,7 +22,7 @@
         Name of the schema to import the modelstore into
         
         Default value is: "TempSchema"
-
+        
     .PARAMETER Path
         Path to the location where you want the file to be exported
         
@@ -30,7 +30,7 @@
         
     .PARAMETER IdConflictMode
         Parameter to instruct how the import should handle ID conflicts if it hits any during the import
-
+        
         Valid options:
         "Reject"
         "Push"
@@ -53,7 +53,7 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-        
+
 #>
 function Invoke-AxImportModelstore {
     [CmdletBinding(DefaultParameterSetName = "ImportModelstore")]
