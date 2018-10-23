@@ -1,36 +1,37 @@
-﻿<#
-.SYNOPSIS
-Short description
-
-.DESCRIPTION
-Long description
-
-.PARAMETER DatabaseServer
-Parameter description
-
-.PARAMETER ModelstoreDatabase
-Parameter description
-
-.PARAMETER SchemaName
-Parameter description
-
-.PARAMETER DropSchema
-Parameter description
-
-.PARAMETER CreateSchema
-Parameter description
-
-.PARAMETER CreateDb
-Parameter description
-
-.PARAMETER GenerateScript
-Parameter description
-
-.EXAMPLE
-An example
-
-.NOTES
-General notes
+﻿
+<#
+    .SYNOPSIS
+        Short description
+        
+    .DESCRIPTION
+        Long description
+        
+    .PARAMETER DatabaseServer
+        Parameter description
+        
+    .PARAMETER ModelstoreDatabase
+        Parameter description
+        
+    .PARAMETER SchemaName
+        Parameter description
+        
+    .PARAMETER DropSchema
+        Parameter description
+        
+    .PARAMETER CreateSchema
+        Parameter description
+        
+    .PARAMETER CreateDb
+        Parameter description
+        
+    .PARAMETER GenerateScript
+        Parameter description
+        
+    .EXAMPLE
+        An example
+        
+    .NOTES
+        General notes
 #>
 function Initialize-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "CreateSchema")]
