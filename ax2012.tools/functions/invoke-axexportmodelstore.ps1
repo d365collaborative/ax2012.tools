@@ -52,7 +52,7 @@
 #>
 Function Invoke-AxExportModelstore {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName = "Generate")]
+    [OutputType('System.String')]
     Param(
         [string] $DatabaseServer = "localhost",
 
@@ -64,7 +64,6 @@ Function Invoke-AxExportModelstore {
         
         [string] $Path = "c:\temp\ax2012.tools",
 
-        [Parameter(ParameterSetName = "Generate")]
         [switch] $GenerateScript
     )
 
@@ -80,12 +79,17 @@ Function Invoke-AxExportModelstore {
         $InstanceName = "{0}" -f $ModelstoreDatabase.Replace("_model", "")
     }
 
-    $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix)"
+    if (-not ([system.string]::IsNullOrEmpty($Suffix))) {
+        $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix).axmodelstore"
+    }
+    else {
+        $ExportPath = Join-Path $Path "$InstanceName.axmodelstore"
+    }
 
     $params = @{
-        Server     = $DatabaseServer
+        Server   = $DatabaseServer
         Database = $ModelstoreDatabase
-        File               = $ExportPath
+        File     = $ExportPath
     }
 
     if ($GenerateScript) {

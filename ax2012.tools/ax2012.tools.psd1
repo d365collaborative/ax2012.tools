@@ -52,8 +52,11 @@
                             'Get-AxEnvironment',
                             'Get-AxWMDPDetails',
                             
+                            'Initialize-AXModelStoreV2',
+                            
                             'Invoke-AxBuild',
                             'Invoke-AxExportModelstore',
+                            'Invoke-AxImportModelstore',
                             'Import-AxModelV2',
 
                             'Set-AxActiveAosConfiguration',

@@ -23,15 +23,16 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
 }
 
 $maskOutput = @(
-"AccessToken"
+    "AccessToken"
 )
 
 foreach ($item in (Get-Variable -Scope Script)) {
     $val = $null
 
-    if($maskOutput -contains $($item.Name)) {
+    if ($maskOutput -contains $($item.Name)) {
         $val = "The variable was found - but the content masked while outputting."
-    } else {
+    }
+    else {
         $val = $($item.Value)
     }
     
