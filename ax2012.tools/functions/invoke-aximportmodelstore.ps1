@@ -90,7 +90,7 @@ function Invoke-AxImportModelstore {
 
     $params = @{
         Server   = $DatabaseServer
-        Database = $ModelstoreDatabase        
+        Database = $ModelstoreDatabase
     }
 
 

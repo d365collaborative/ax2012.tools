@@ -57,6 +57,7 @@
 #>
 function Initialize-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "CreateSchema")]
+    [OutputType('System.String')]
     param (
         [string] $DatabaseServer = "localhost",
 
@@ -86,7 +87,7 @@ function Initialize-AXModelStoreV2 {
 
     $params = @{
         Server   = $DatabaseServer
-        Database = $ModelstoreDatabase        
+        Database = $ModelstoreDatabase
     }
 
     if ($PSCmdlet.ParameterSetName -eq "CreateSchema") {
