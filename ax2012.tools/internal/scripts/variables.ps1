@@ -1,6 +1,6 @@
 ﻿$Script:TimeSignals = @{}
 
-Write-PSFMessage -Level Verbose -Message "Gathering all variables to assist the different cmdlets to function"
+Write-PSFMessage -Level Verbose -Message "Gathering all variables to assist the different cmdlets to function" -FunctionName "Variables.ps1"
 
 $Script:AxPowerShellModule = "C:\Program Files\Microsoft Dynamics AX\60\ManagementUtilities\Microsoft.Dynamics.ManagementUtilities.ps1"
 
@@ -22,21 +22,25 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
     New-Variable -Name $name -Value $item.Value -Scope Script
 }
 
+if ([System.String]::IsNullOrEmpty($Script:ActiveAosDatabaseserver)) {
+
+}
+
 $maskOutput = @(
     "AccessToken"
 )
 
-foreach ($item in (Get-Variable -Scope Script)) {
+(Get-Variable -Scope Script) | ForEach-Object {
     $val = $null
 
-    if ($maskOutput -contains $($item.Name)) {
+    if ($maskOutput -contains $($_.Name)) {
         $val = "The variable was found - but the content masked while outputting."
     }
     else {
-        $val = $($item.Value)
+        $val = $($_.Value)
     }
-    
-    Write-PSFMessage -Level Verbose -Message "$($item.Name) - $val" -Target $val
+   
+    Write-PSFMessage -Level Verbose -Message "$($_.Name) - $val" -Target $val -FunctionName "Variables.ps1"
 }
 
-Write-PSFMessage -Level Verbose -Message "Finished outputting all the variable content."
+Write-PSFMessage -Level Verbose -Message "Finished outputting all the variable content." -FunctionName "Variables.ps1"
