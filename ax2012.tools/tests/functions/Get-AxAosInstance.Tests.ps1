@@ -11,7 +11,7 @@
 			(Get-Command Get-AxAosInstance).ParameterSets.Name | Should -Be '__AllParameterSets'
 		}
 		
-		It 'Should habe the expected parameter Name' {
+		It 'Should have the expected parameter Name' {
 			$parameter = (Get-Command Get-AxAosInstance).Parameters['Name']
 			$parameter.Name | Should -Be 'Name'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter InstanceNo' {
+		It 'Should have the expected parameter InstanceNo' {
 			$parameter = (Get-Command Get-AxAosInstance).Parameters['InstanceNo']
 			$parameter.Name | Should -Be 'InstanceNo'
 			$parameter.ParameterType.ToString() | Should -Be System.String

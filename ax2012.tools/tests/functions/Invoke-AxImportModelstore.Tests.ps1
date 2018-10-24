@@ -11,7 +11,7 @@
 			(Get-Command Invoke-AxImportModelstore).ParameterSets.Name | Should -Be 'ImportModelstore', 'ApplyModelstore'
 		}
 		
-		It 'Should habe the expected parameter DatabaseServer' {
+		It 'Should have the expected parameter DatabaseServer' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['DatabaseServer']
 			$parameter.Name | Should -Be 'DatabaseServer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ModelstoreDatabase' {
+		It 'Should have the expected parameter ModelstoreDatabase' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['ModelstoreDatabase']
 			$parameter.Name | Should -Be 'ModelstoreDatabase'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -37,7 +37,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter SchemaName' {
+		It 'Should have the expected parameter SchemaName' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['SchemaName']
 			$parameter.Name | Should -Be 'SchemaName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -56,7 +56,7 @@
 			$parameter.ParameterSets['ImportModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ImportModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Path' {
+		It 'Should have the expected parameter Path' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['Path']
 			$parameter.Name | Should -Be 'Path'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -69,7 +69,7 @@
 			$parameter.ParameterSets['ImportModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ImportModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter IdConflictMode' {
+		It 'Should have the expected parameter IdConflictMode' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['IdConflictMode']
 			$parameter.Name | Should -Be 'IdConflictMode'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -82,7 +82,7 @@
 			$parameter.ParameterSets['ImportModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ImportModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Apply' {
+		It 'Should have the expected parameter Apply' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['Apply']
 			$parameter.Name | Should -Be 'Apply'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -95,7 +95,7 @@
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter GenerateScript' {
+		It 'Should have the expected parameter GenerateScript' {
 			$parameter = (Get-Command Invoke-AxImportModelstore).Parameters['GenerateScript']
 			$parameter.Name | Should -Be 'GenerateScript'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter

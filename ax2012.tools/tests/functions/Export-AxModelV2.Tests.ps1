@@ -11,7 +11,7 @@
 			(Get-Command Export-AxModelV2).ParameterSets.Name | Should -Be 'Generate'
 		}
 		
-		It 'Should habe the expected parameter DatabaseServer' {
+		It 'Should have the expected parameter DatabaseServer' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['DatabaseServer']
 			$parameter.Name | Should -Be 'DatabaseServer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ModelstoreDatabase' {
+		It 'Should have the expected parameter ModelstoreDatabase' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['ModelstoreDatabase']
 			$parameter.Name | Should -Be 'ModelstoreDatabase'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -37,7 +37,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Path' {
+		It 'Should have the expected parameter Path' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['Path']
 			$parameter.Name | Should -Be 'Path'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -50,7 +50,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Name' {
+		It 'Should have the expected parameter Name' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['Name']
 			$parameter.Name | Should -Be 'Name'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -63,7 +63,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Id' {
+		It 'Should have the expected parameter Id' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['Id']
 			$parameter.Name | Should -Be 'Id'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -76,7 +76,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Layer' {
+		It 'Should have the expected parameter Layer' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['Layer']
 			$parameter.Name | Should -Be 'Layer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -89,7 +89,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter GenerateScript' {
+		It 'Should have the expected parameter GenerateScript' {
 			$parameter = (Get-Command Export-AxModelV2).Parameters['GenerateScript']
 			$parameter.Name | Should -Be 'GenerateScript'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
