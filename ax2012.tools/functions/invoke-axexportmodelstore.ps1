@@ -62,7 +62,7 @@ Function Invoke-AxExportModelstore {
 
         [string] $Suffix = $((Get-Date).ToString("yyyyMMdd")),
         
-        [string] $Path = "c:\temp\ax2012.tools",
+        [string] $Path = $Script:DefaultTempPath,
 
         [switch] $GenerateScript
     )

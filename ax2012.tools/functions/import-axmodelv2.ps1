@@ -70,7 +70,7 @@ Function Import-AxModelV2 {
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
         [Parameter(Mandatory = $false, Position = 3)]
-        [string] $Path = "c:\temp\ax2012.tools",
+        [string] $Path = $Script:DefaultTempPath,
 
         [Parameter(Mandatory = $false, Position = 4)]
         [ValidateSet("Reject", "Push", "Overwrite")]
