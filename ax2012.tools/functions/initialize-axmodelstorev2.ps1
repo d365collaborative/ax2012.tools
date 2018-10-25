@@ -59,7 +59,7 @@ function Initialize-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "CreateSchema")]
     [OutputType('System.String')]
     param (
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
 

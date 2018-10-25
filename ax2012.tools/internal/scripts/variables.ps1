@@ -22,8 +22,9 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
     New-Variable -Name $name -Value $item.Value -Scope Script
 }
 
-if ([System.String]::IsNullOrEmpty($Script:ActiveAosDatabaseserver)) {
-
+if ([System.String]::IsNullOrEmpty($Script:ActiveAosDatabaseserver -replace "null", "" )) {
+    Write-PSFMessage -Level Verbose -Message "ActiveAosDatabaseserver was empty. Defaulting to localhost"
+    $Script:ActiveAosDatabaseserver = "localhost"
 }
 
 $maskOutput = @(

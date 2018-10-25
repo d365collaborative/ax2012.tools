@@ -59,7 +59,7 @@ function Invoke-AxImportModelstore {
     [CmdletBinding(DefaultParameterSetName = "ImportModelstore")]
     [OutputType([System.String], ParameterSetName = "Generate")]
     Param(
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
 

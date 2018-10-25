@@ -64,7 +64,7 @@ Function Import-AxModelV2 {
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 2)]
         [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
