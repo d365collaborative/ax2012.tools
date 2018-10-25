@@ -21,12 +21,12 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
     New-Variable -Name $name -Value $item.Value -Scope Script
 }
 
-if ([System.String]::IsNullOrEmpty($Script:ActiveAosDatabaseserver -replace "null", "" )) {
+if ([System.String]::IsNullOrEmpty(($Script:ActiveAosDatabaseserver -replace "null", "" )) {
     Write-PSFMessage -Level Verbose -Message "ActiveAosDatabaseserver was empty. Defaulting to `"localhost`""
     $Script:ActiveAosDatabaseserver = "localhost"
 }
 
-if ([System.String]::IsNullOrEmpty($Script:ActiveAosModelstoredatabase -replace "null", "" )) {
+if ([System.String]::IsNullOrEmpty(($Script:ActiveAosModelstoredatabase -replace "null", "" )) {
     Write-PSFMessage -Level Verbose -Message "ActiveAosModelstoredatabase was empty. Defaulting to `"MicrosoftDynamicsAx_model`""
     $Script:ActiveAosModelstoredatabase = "MicrosoftDynamicsAx_model"
 }
