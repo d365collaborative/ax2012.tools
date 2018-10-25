@@ -23,9 +23,26 @@ foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active*)) {
 }
 
 if ([System.String]::IsNullOrEmpty($Script:ActiveAosDatabaseserver -replace "null", "" )) {
-    Write-PSFMessage -Level Verbose -Message "ActiveAosDatabaseserver was empty. Defaulting to localhost"
+    Write-PSFMessage -Level Verbose -Message "ActiveAosDatabaseserver was empty. Defaulting to `"localhost`""
     $Script:ActiveAosDatabaseserver = "localhost"
 }
+
+if ([System.String]::IsNullOrEmpty($Script:ActiveAosModelstoredatabase -replace "null", "" )) {
+    Write-PSFMessage -Level Verbose -Message "ActiveAosModelstoredatabase was empty. Defaulting to `"MicrosoftDynamicsAx_model`""
+    $Script:ActiveAosModelstoredatabase = "MicrosoftDynamicsAx_model"
+}
+
+$Script:DefaultTempPath = "c:\temp\ax2012.tools"
+
+# ActiveAosAosPort -
+# ActiveAosBindirectory -
+# ActiveAosComputername -
+# ActiveAosDatabase -
+# ActiveAosInstancename -
+# ActiveAosInstanceNumber -
+# ActiveAosModelstoredatabase -
+# ActiveAosNettcpPort -
+# ActiveAosWsdlPort -
 
 $maskOutput = @(
     "AccessToken"

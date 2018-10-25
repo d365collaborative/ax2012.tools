@@ -61,7 +61,7 @@ function Invoke-AxImportModelstore {
     Param(
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
         [Parameter(ParameterSetName = "ImportModelstore")]
         [Parameter(ParameterSetName = "ApplyModelstore")]

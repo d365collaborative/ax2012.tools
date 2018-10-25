@@ -71,7 +71,7 @@ Function Export-AxModelV2 {
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 2)]
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
         [Parameter(Mandatory = $false, Position = 3)]
         [string] $Path = "c:\temp\ax2012.tools",

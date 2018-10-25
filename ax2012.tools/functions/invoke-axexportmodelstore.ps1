@@ -56,7 +56,7 @@ Function Invoke-AxExportModelstore {
     Param(
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
         [string] $InstanceName,
 

@@ -61,7 +61,7 @@ function Initialize-AXModelStoreV2 {
     param (
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
         [Parameter(ParameterSetName = "Drop")]
         [Parameter(ParameterSetName = "CreateSchema")]
