@@ -68,7 +68,7 @@ function Invoke-AxImportModelstore {
         [string] $SchemaName = "TempSchema",
 
         [Parameter(ParameterSetName = "ImportModelstore")]
-        [string] $Path = "c:\temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore",
+        [string] $Path = (Join-Path $Script:DefaultTempPath "MicrosoftDynamicsAx.axmodelstore"),
 
         [ValidateSet("Reject", "Push", "Overwrite")]
         [Parameter(ParameterSetName = "ImportModelstore")]

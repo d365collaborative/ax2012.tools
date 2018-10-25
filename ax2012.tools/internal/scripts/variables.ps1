@@ -8,7 +8,6 @@ $Script:RegistryAos = "HKLM:\SYSTEM\ControlSet001\Services\Dynamics Server\6.0"
 
 $Script:RegistryClient = "HKCU:\Software\Microsoft\Dynamics\6.0\Configuration"
 
-[System.Collections.ArrayList] $layerList = New-Object System.Collections.ArrayList
 $Script:LayerDictionary = @{"ISV" = "01."; "ISP" = "02."; "VAR" = "03."; "VAP" = "04."; "CUS" = "05."; "CUP" = "06."; "USR" = "07." ; "USP" = "08."}
 
 $Script:ClientBin = Get-ClientBinDir
