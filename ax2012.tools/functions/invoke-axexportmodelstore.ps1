@@ -58,7 +58,7 @@ Function Invoke-AxExportModelstore {
 
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
-        [string] $InstanceName,
+        [string] $InstanceName = $Script:ActiveAosInstancename,
 
         [string] $Suffix = $((Get-Date).ToString("yyyyMMdd")),
         
