@@ -68,13 +68,13 @@ Function Export-AxModelV2 {
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 1)]
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 2)]
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
         [Parameter(Mandatory = $false, Position = 3)]
-        [string] $Path = "c:\temp\ax2012.tools",
+        [string] $Path = $Script:DefaultTempPath,
 
         [Parameter(Mandatory = $false, Position = 4)]
         [string] $Name = "*",

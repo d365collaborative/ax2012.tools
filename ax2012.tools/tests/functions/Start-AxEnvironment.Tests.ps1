@@ -11,7 +11,7 @@
 			(Get-Command Start-AxEnvironment).ParameterSets.Name | Should -Be 'Default', 'Specific'
 		}
 		
-		It 'Should habe the expected parameter ComputerName' {
+		It 'Should have the expected parameter ComputerName' {
 			$parameter = (Get-Command Start-AxEnvironment).Parameters['ComputerName']
 			$parameter.Name | Should -Be 'ComputerName'
 			$parameter.ParameterType.ToString() | Should -Be System.String[]
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter All' {
+		It 'Should have the expected parameter All' {
 			$parameter = (Get-Command Start-AxEnvironment).Parameters['All']
 			$parameter.Name | Should -Be 'All'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -37,7 +37,7 @@
 			$parameter.ParameterSets['Default'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Default'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Aos' {
+		It 'Should have the expected parameter Aos' {
 			$parameter = (Get-Command Start-AxEnvironment).Parameters['Aos']
 			$parameter.Name | Should -Be 'Aos'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -50,7 +50,7 @@
 			$parameter.ParameterSets['Specific'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ManagementReporter' {
+		It 'Should have the expected parameter ManagementReporter' {
 			$parameter = (Get-Command Start-AxEnvironment).Parameters['ManagementReporter']
 			$parameter.Name | Should -Be 'ManagementReporter'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -63,7 +63,7 @@
 			$parameter.ParameterSets['Specific'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter DIXF' {
+		It 'Should have the expected parameter DIXF' {
 			$parameter = (Get-Command Start-AxEnvironment).Parameters['DIXF']
 			$parameter.Name | Should -Be 'DIXF'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter

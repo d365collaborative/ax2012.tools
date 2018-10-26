@@ -41,7 +41,7 @@
     .EXAMPLE
         PS C:\> Invoke-AxExportModelstore
         
-        This will execute the cmdlet will all the default values.
+        This will execute the cmdlet with all the default values.
         This will work against the SQL server that is on localhost.
         The database is expected to be "MicrosoftDynamicsAx_model".
         The path where the exported modelstore file will be saved is: "c:\temp\ax2012.tools".
@@ -52,19 +52,18 @@
 #>
 Function Invoke-AxExportModelstore {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName = "Generate")]
+    [OutputType('System.String')]
     Param(
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
-        [string] $InstanceName,
+        [string] $InstanceName = $Script:ActiveAosInstancename,
 
         [string] $Suffix = $((Get-Date).ToString("yyyyMMdd")),
         
-        [string] $Path = "c:\temp\ax2012.tools",
+        [string] $Path = $Script:DefaultTempPath,
 
-        [Parameter(ParameterSetName = "Generate")]
         [switch] $GenerateScript
     )
 
@@ -80,12 +79,17 @@ Function Invoke-AxExportModelstore {
         $InstanceName = "{0}" -f $ModelstoreDatabase.Replace("_model", "")
     }
 
-    $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix)"
+    if (-not ([system.string]::IsNullOrEmpty($Suffix))) {
+        $ExportPath = Join-Path $Path "$($InstanceName)_$($Suffix).axmodelstore"
+    }
+    else {
+        $ExportPath = Join-Path $Path "$InstanceName.axmodelstore"
+    }
 
     $params = @{
-        Server     = $DatabaseServer
+        Server   = $DatabaseServer
         Database = $ModelstoreDatabase
-        File               = $ExportPath
+        File     = $ExportPath
     }
 
     if ($GenerateScript) {

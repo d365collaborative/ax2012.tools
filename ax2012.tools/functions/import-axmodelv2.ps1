@@ -64,13 +64,13 @@ Function Import-AxModelV2 {
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
-        [string] $DatabaseServer = "localhost",
+        [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
         [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 2)]
-        [string] $ModelstoreDatabase = "MicrosoftDynamicsAx_model",
+        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
         [Parameter(Mandatory = $false, Position = 3)]
-        [string] $Path = "c:\temp\ax2012.tools",
+        [string] $Path = $Script:DefaultTempPath,
 
         [Parameter(Mandatory = $false, Position = 4)]
         [ValidateSet("Reject", "Push", "Overwrite")]

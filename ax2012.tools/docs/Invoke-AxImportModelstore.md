@@ -1,36 +1,44 @@
----
+﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
 online version:
 schema: 2.0.0
 ---
 
-# Invoke-AxExportModelstore
+# Invoke-AxImportModelstore
 
 ## SYNOPSIS
-Export an AX 2012 modelstore file
+Import an AX 2012 modelstore file
 
 ## SYNTAX
 
+### ImportModelstore (Default)
 ```
-Invoke-AxExportModelstore [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>]
- [[-InstanceName] <String>] [[-Suffix] <String>] [[-Path] <String>] [-GenerateScript] [<CommonParameters>]
+Invoke-AxImportModelstore [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
+ [-Path <String>] [-IdConflictMode <String>] [-GenerateScript] [<CommonParameters>]
+```
+
+### ApplyModelstore
+```
+Invoke-AxImportModelstore [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
+ [-Apply] [-GenerateScript] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Export an AX 2012 modelstore file from the modelstore database
+Import an AX 2012 modelstore file into the modelstore database
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Invoke-AxExportModelstore
+Invoke-AxImportModelstore -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
 ```
 
-This will execute the cmdlet with all the default values.
+This will execute the cmdlet with some of the default values.
 This will work against the SQL server that is on localhost.
 The database is expected to be "MicrosoftDynamicsAx_model".
-The path where the exported modelstore file will be saved is: "c:\temp\ax2012.tools".
+The import will import the modelstore into the "TempSchema".
+The path where the modelstore file you want to import must exists is: "c:\temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore".
 
 ## PARAMETERS
 
@@ -45,7 +53,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: Localhost
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -66,35 +74,16 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: MicrosoftDynamicsAx_model
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceName
-Name of the instance that you are working against
+### -SchemaName
+Name of the schema to import the modelstore into
 
-If not supplied the cmdlet will take the name of the database and use that
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Suffix
-A suffix text value that you want to add to the name of the file while it is exported
-
-The default value is: (Get-Date).ToString("yyyyMMdd")
-
-This will always name you file with the current date
+Default value is: "TempSchema"
 
 ```yaml
 Type: String
@@ -102,8 +91,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: $((Get-Date).ToString("yyyyMMdd"))
+Position: Named
+Default value: TempSchema
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -115,12 +104,47 @@ Default value is: "c:\temp\ax2012.tools"
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImportModelstore
 Aliases:
 
 Required: False
-Position: 5
-Default value: C:\temp\ax2012.tools
+Position: Named
+Default value: C:\temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdConflictMode
+Parameter to instruct how the import should handle ID conflicts if it hits any during the import
+
+Valid options:
+"Reject"
+"Push"
+"Overwrite"
+
+```yaml
+Type: String
+Parameter Sets: ImportModelstore
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Apply
+Switch to instruct the cmdlet to switch modelstore with the SchemaName in as the current code
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ApplyModelstore
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

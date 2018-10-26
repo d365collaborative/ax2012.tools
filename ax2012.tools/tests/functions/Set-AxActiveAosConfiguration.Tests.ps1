@@ -11,7 +11,7 @@
 			(Get-Command Set-AxActiveAosConfiguration).ParameterSets.Name | Should -Be '__AllParameterSets'
 		}
 		
-		It 'Should habe the expected parameter ComputerName' {
+		It 'Should have the expected parameter ComputerName' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['ComputerName']
 			$parameter.Name | Should -Be 'ComputerName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter BinDirectory' {
+		It 'Should have the expected parameter BinDirectory' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['BinDirectory']
 			$parameter.Name | Should -Be 'BinDirectory'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -37,7 +37,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter InstanceNumber' {
+		It 'Should have the expected parameter InstanceNumber' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['InstanceNumber']
 			$parameter.Name | Should -Be 'InstanceNumber'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -50,7 +50,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter InstanceName' {
+		It 'Should have the expected parameter InstanceName' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['InstanceName']
 			$parameter.Name | Should -Be 'InstanceName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -63,7 +63,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter DatabaseServer' {
+		It 'Should have the expected parameter DatabaseServer' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['DatabaseServer']
 			$parameter.Name | Should -Be 'DatabaseServer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -76,7 +76,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter DatabaseName' {
+		It 'Should have the expected parameter DatabaseName' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['DatabaseName']
 			$parameter.Name | Should -Be 'DatabaseName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -89,7 +89,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ModelstoreDatabase' {
+		It 'Should have the expected parameter ModelstoreDatabase' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['ModelstoreDatabase']
 			$parameter.Name | Should -Be 'ModelstoreDatabase'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -102,7 +102,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter AosPort' {
+		It 'Should have the expected parameter AosPort' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['AosPort']
 			$parameter.Name | Should -Be 'AosPort'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -115,7 +115,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter WsdlPort' {
+		It 'Should have the expected parameter WsdlPort' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['WsdlPort']
 			$parameter.Name | Should -Be 'WsdlPort'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -128,7 +128,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter NetTcpPort' {
+		It 'Should have the expected parameter NetTcpPort' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['NetTcpPort']
 			$parameter.Name | Should -Be 'NetTcpPort'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -141,7 +141,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Temporary' {
+		It 'Should have the expected parameter Temporary' {
 			$parameter = (Get-Command Set-AxActiveAosConfiguration).Parameters['Temporary']
 			$parameter.Name | Should -Be 'Temporary'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter

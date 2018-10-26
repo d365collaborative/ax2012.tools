@@ -11,7 +11,7 @@
 			(Get-Command Import-AxModelV2).ParameterSets.Name | Should -Be 'Generate'
 		}
 		
-		It 'Should habe the expected parameter DatabaseServer' {
+		It 'Should have the expected parameter DatabaseServer' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['DatabaseServer']
 			$parameter.Name | Should -Be 'DatabaseServer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -24,7 +24,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ModelstoreDatabase' {
+		It 'Should have the expected parameter ModelstoreDatabase' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['ModelstoreDatabase']
 			$parameter.Name | Should -Be 'ModelstoreDatabase'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -37,7 +37,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter Path' {
+		It 'Should have the expected parameter Path' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['Path']
 			$parameter.Name | Should -Be 'Path'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -50,7 +50,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter ConflictMode' {
+		It 'Should have the expected parameter ConflictMode' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['ConflictMode']
 			$parameter.Name | Should -Be 'ConflictMode'
 			$parameter.ParameterType.ToString() | Should -Be System.String
@@ -63,7 +63,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter CreateParents' {
+		It 'Should have the expected parameter CreateParents' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['CreateParents']
 			$parameter.Name | Should -Be 'CreateParents'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -76,7 +76,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter NoOptimize' {
+		It 'Should have the expected parameter NoOptimize' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['NoOptimize']
 			$parameter.Name | Should -Be 'NoOptimize'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -89,7 +89,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter NoPrompt' {
+		It 'Should have the expected parameter NoPrompt' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['NoPrompt']
 			$parameter.Name | Should -Be 'NoPrompt'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
@@ -102,7 +102,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should habe the expected parameter GenerateScript' {
+		It 'Should have the expected parameter GenerateScript' {
 			$parameter = (Get-Command Import-AxModelV2).Parameters['GenerateScript']
 			$parameter.Name | Should -Be 'GenerateScript'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
