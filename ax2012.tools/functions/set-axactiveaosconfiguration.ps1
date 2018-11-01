@@ -113,7 +113,7 @@ function Set-AxActiveAosConfiguration {
 
     $configScope = Test-ConfigStorageLocation -ConfigStorageLocation $ConfigStorageLocation
 
-    if (Test-PSFFunctionInterrupt) { return }
+    if (Test-PSFFunctionInterrupt) { return } 
     
     foreach ($key in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.Item($key).ToString()
