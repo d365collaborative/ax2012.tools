@@ -65,7 +65,7 @@ function Set-AxActiveAosConfiguration {
     param (
 
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 1)]
-        [string] $ComputerName = "$env:computername",
+        [string[]] $ComputerName = @($env:computername),
 
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 2)]
         [string] $BinDirectory,
