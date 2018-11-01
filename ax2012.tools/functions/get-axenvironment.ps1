@@ -37,7 +37,8 @@ function Get-AxEnvironment {
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
         [switch] $All = [switch]::Present,
-
+# ScanForAllAxServices
+# AllAosServices
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 2 )]
         [switch] $Aos,
 
