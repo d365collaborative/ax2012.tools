@@ -31,7 +31,7 @@ Function Get-ServiceList {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 1 )]
-        [switch] $All = [switch]::Present,
+        [switch] $AllAxServices,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 2 )]
         [switch] $Aos,
@@ -44,17 +44,17 @@ Function Get-ServiceList {
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Specific") {
-        $All = $false
+        $AllAxServices = $false
     }
 
-    Write-PSFMessage -Level Verbose -Message "The PSBoundParameters was" -Target $PSBoundParameters
+    Write-PSFMessage -Level Verbose -Message "The PSBoundParameters was" -Target ($PSBoundParameters.Keys -Join "," )
     
     $MRService = "MR2012ProcessService"
     $dixfname = "Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe"
 
     [System.Collections.ArrayList]$Services = New-Object -TypeName "System.Collections.ArrayList"
 
-    if ($All) {
+    if ($AllAxServices) {
         for ($i = 1; $i -lt 100; $i++) {
             $null = $Services.Add("AOS60`$$($i.ToString("00"))")
         }
