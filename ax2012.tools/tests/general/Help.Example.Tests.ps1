@@ -1,6 +1,7 @@
 ﻿$excludeCommands = @(
-    "Import-ModuleFile"    
+    "Import-ModuleFile"
     , "Get-DeepClone"
+    , "Test-TrustedConnection"
 )
 
 $commandsRaw = Get-Command -Module ax2012.tools
