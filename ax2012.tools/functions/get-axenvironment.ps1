@@ -33,7 +33,7 @@
 function Get-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
-        [string[]] $ComputerName = @($env:computername),
+        [string[]] $ComputerName = $Script:ActiveAosComputername,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
         [switch] $All = [switch]::Present,
