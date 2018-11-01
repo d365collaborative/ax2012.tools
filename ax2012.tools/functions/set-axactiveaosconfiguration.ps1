@@ -94,9 +94,16 @@ function Set-AxActiveAosConfiguration {
         [Parameter(ValueFromPipelineByPropertyName = $true, Position = 10)]
         [string] $NetTcpPort,
         
+        [ValidateSet('User', 'System')]
+        [string] $ConfigStorageLocation = "User",
+
         [switch] $Temporary
     )
 
+    $configScope = Test-ConfigStorageLocation -ConfigStorageLocation $ConfigStorageLocation
+
+    if (Test-PSFFunctionInterrupt) { return }
+    
     foreach ($key in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.Item($key).ToString()
 
@@ -105,55 +112,55 @@ function Set-AxActiveAosConfiguration {
         switch ($key) {
             "ComputerName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Scope $configScope }
             }
 
             "BinDirectory" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Scope $configScope }
             }
 
             "InstanceNumber" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Scope $configScope }
             }
 
             "InstanceName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Value $value
                 $Script:ActiveAosInstancename = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Scope $configScope }
             }
 
             "DatabaseServer" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Value $value
                 $Script:ActiveAosDatabaseserver = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Scope $configScope }
             }
 		
             "DatabaseName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Scope $configScope }
             }
 
             "ModelstoreDatabase" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Value $value
                 $Script:ActiveAosModelstoredatabase = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Scope $configScope }
             }
 
             "AosPort" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Scope $configScope }
             }
 
             "WsdlPort" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Scope $configScope }
             }
 
             "NetTcpPort" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' }
+                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Scope $configScope }
             }
 
             Default {}
