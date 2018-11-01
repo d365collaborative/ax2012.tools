@@ -60,7 +60,7 @@ function Start-AxEnvironment {
     }
 
     $Params = Get-DeepClone $PSBoundParameters
-    if ($Params.ContainsKey("ComputerName")) { $Params.Remove("ComputerName") }
+    if ($Params.ContainsKey("ComputerName")) { $null = $Params.Remove("ComputerName") }
 
     $Services = Get-ServiceList @Params
     
