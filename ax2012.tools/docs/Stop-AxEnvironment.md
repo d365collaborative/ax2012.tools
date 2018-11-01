@@ -46,7 +46,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: @($env:computername)
+Default value: $Script:ActiveAosComputername
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

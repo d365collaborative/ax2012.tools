@@ -52,7 +52,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: Localhost
+Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: MicrosoftDynamicsAx_model
+Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -90,7 +90,7 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: C:\temp\ax2012.tools
+Default value: $Script:DefaultTempPath
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
