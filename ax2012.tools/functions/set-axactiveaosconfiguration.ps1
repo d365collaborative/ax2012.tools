@@ -36,6 +36,17 @@
     .PARAMETER NetTcpPort
         The TCP port that the AX 2012 AOS server is communicating with all NetTcp consuming applications on
         
+    .PARAMETER ConfigStorageLocation
+        Parameter used to instruct where to store the configuration objects
+        
+        The default value is "User" and this will store all configuration for the active user
+        
+        Valid options are:
+        "User"
+        "System"
+        
+        "System" will store the configuration so all users can access the configuration objects
+
     .PARAMETER Temporary
         Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
         
