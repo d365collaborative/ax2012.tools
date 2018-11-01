@@ -25,12 +25,12 @@
         PS C:\> Get-SqlCommand -DatabaseServer localhost -DatabaseName MicrosoftDynamicsAx_model -SqlUser User123 -SqlPwd "Password123" -TrustedConnection $false
         
         This will initialize a new SqlCommand object (.NET type) with localhost as the server name, AxDB as the database and the User123 sql credentials.
-
+        
     .EXAMPLE
         PS C:\> Get-SqlCommand -DatabaseServer localhost -DatabaseName MicrosoftDynamicsAx_model -TrustedConnection $true
         
         This will initialize a new SqlCommand object (.NET type) with localhost as the server name, AxDB as the database and use the current windows credentials (trusted connection).
-
+        
     .NOTES
         Author: Rasmus Andersen (@ITRasmus)
         Author: Mötz Jensen (@Splaxi)
