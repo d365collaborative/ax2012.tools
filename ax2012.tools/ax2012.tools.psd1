@@ -46,10 +46,10 @@
 
                             'Get-AxActiveAosConfiguration',
                             'Get-AxAosInstance',
+                            'Get-AxAosServerFromDB',
 
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
-                            
                             'Get-AxEnvironment',
                             'Get-AxWMDPDetails',
                             
