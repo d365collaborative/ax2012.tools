@@ -33,6 +33,11 @@ if ([System.String]::IsNullOrEmpty(($Script:ActiveAosModelstoredatabase -replace
     $Script:ActiveAosModelstoredatabase = "MicrosoftDynamicsAx_model"
 }
 
+if ([System.String]::IsNullOrEmpty(($Script:ActiveAosDatabase -replace "null", "" ))) {
+    Write-PSFMessage -Level Verbose -Message "ActiveAosDatabase was empty. Defaulting to `"MicrosoftDynamicsAx`""
+    $Script:ActiveAosDatabase = "MicrosoftDynamicsAx"
+}
+
 $Script:DefaultTempPath = "c:\temp\ax2012.tools"
 
 # ActiveAosAosPort -
