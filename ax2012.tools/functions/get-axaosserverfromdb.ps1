@@ -42,30 +42,37 @@ function Get-AxAosServerFromDB {
         [string] $SqlUser,
 
         [Parameter(Mandatory = $false, Position = 4)]
-        [string] $SqlPwd,
-
-        [switch] $TrustedConnection = [switch]::Present
+        [string] $SqlPwd
     )
 
-    $UseTrustedConnection = Test-TrustedConnection $PSBoundParameters
+    $baseParams = Get-DeepClone $PSBoundParameters
+    $baseParams.Add("TrustedConnection", $true)
+
+    $UseTrustedConnection = Test-TrustedConnection $baseParams
 
     $SqlParams = @{ DatabaseServer = $DatabaseServer; DatabaseName = $DatabaseName;
         SqlUser = $SqlUser; SqlPwd = $SqlPwd
     }
 
-    $SqlCommand = Get-SqlCommand @SqlParams -TrustedConnection $UseTrustedConnection
+    $sqlCommand = Get-SqlCommand @SqlParams -TrustedConnection $UseTrustedConnection
 
     $sqlCommand.CommandText = (Get-Content "$script:ModuleRoot\internal\sql\get-aosserversfromdatabase.sql") -join [Environment]::NewLine
 
     try {
+        Write-PSFMessage -Level InternalComment -Message "Executing a script against the database." -Target (Get-SqlString $sqlCommand)
+
         $sqlCommand.Connection.Open()
 
         $reader = $sqlCommand.ExecuteReader()
 
         while ($reader.Read() -eq $true) {
+            $rawServer = "$($reader.GetString($($reader.GetOrdinal("SERVERID"))))"
+            
             [PSCustomObject]@{
-                ServerName     = "$($reader.GetString($($reader.GetOrdinal("SERVERID"))))"
-                IsBatchEnabled = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ENABLEBATCH"))))"
+                RawServerName     = $rawServer
+                InstanceNumber = $rawServer.ToString().Split("@")[0]
+                ServerName = $rawServer.ToString().Split("@")[1]
+                IsBatchEnabled = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("IsBatch"))))"
             }
         }
     }
