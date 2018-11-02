@@ -33,9 +33,6 @@
     .PARAMETER ScanAllAosServices
         Parameter description
         
-    .PARAMETER PipelineOutput
-        asdfsadfsdf
-        
     .EXAMPLE
         PS C:\> Get-AxEnvironment
         
@@ -49,7 +46,7 @@
         If AxActiveAosConfiguration has been configured, it will work against the ComputerName registered otherwise localhost is used.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos
         
         This will get all AOS instances from the server named "TEST-AOS-01".
         If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
@@ -60,13 +57,13 @@
         This will get all AOS instances that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
         
         This will scan the "TEST-AOS-01" server for all AOS instances and start them.
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Stop-AxEnvironment -ShowOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
         
         This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
         It will show the status for the service(s) on the server afterwards.
@@ -96,9 +93,7 @@ function Get-AxEnvironment {
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
         [switch] $DIXF,
 
-        [switch] $ScanAllAosServices,
-
-        [switch] $PipelineOutput
+        [switch] $ScanAllAosServices
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Specific") {
@@ -169,13 +164,6 @@ function Get-AxEnvironment {
             }
         }
     }
- 
-    if ($PipelineOutput) {
-        $res.ToArray() | Select-Object Server, Name
-    }
-    else {
-        $res.ToArray() | Select-Object Server, DisplayName, Status, Name
-    }
-
-    
+        
+    $res.ToArray() | Select-Object Server, DisplayName, Status, Name
 }

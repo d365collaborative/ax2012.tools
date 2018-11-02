@@ -55,7 +55,7 @@
         Author: Mötz Jensen (@Splaxi)
         
 #>
-function Invoke-AxImportModelstore {
+function Import-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "ImportModelstore")]
     [OutputType([System.String], ParameterSetName = "Generate")]
     Param(
@@ -86,13 +86,10 @@ function Invoke-AxImportModelstore {
 
     if (-not (Test-PathExists -Path $Script:AxPowerShellModule -Type Leaf)) { return }
 
-    $null = Import-Module $Script:AxPowerShellModule
-
     $params = @{
         Server   = $DatabaseServer
         Database = $ModelstoreDatabase
     }
-
 
     if ($PSCmdlet.ParameterSetName -eq "ImportModelstore") {
         $params.File = $Path
@@ -113,8 +110,12 @@ function Invoke-AxImportModelstore {
     }
     else {
         Write-PSFMessage -Level Verbose -Message "Starting the export of the model store"
+      
+        $null = Import-Module $Script:AxPowerShellModule
         
         Import-AXModelStore @params
+
+        Clear-Ax2012StandardPowershellModule
     }
 
     Invoke-TimeSignal -End

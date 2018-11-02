@@ -15,13 +15,13 @@ Get the status of an AX 2012 environment
 ### Default (Default)
 ```
 Get-AxEnvironment [-ComputerName <String[]>] [-AllAxServices] [-AosInstanceName <String>] [-ScanAllAosServices]
- [-PipelineOutput] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Specific
 ```
 Get-AxEnvironment [-ComputerName <String[]>] [-AosInstanceName <String>] [-Aos] [-ManagementReporter] [-DIXF]
- [-ScanAllAosServices] [-PipelineOutput] [<CommonParameters>]
+ [-ScanAllAosServices] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ If AxActiveAosConfiguration has been configured, it will work against the Comput
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos
 ```
 
 This will get all AOS instances from the server named "TEST-AOS-01".
@@ -62,7 +62,7 @@ This will get all AOS instances that match the search pattern "*DEV*" from the s
 
 ### EXAMPLE 5
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and start them.
@@ -70,7 +70,7 @@ It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 6
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Stop-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
@@ -178,21 +178,6 @@ Accept wildcard characters: False
 
 ### -ScanAllAosServices
 Parameter description
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineOutput
-asdfsadfsdf
 
 ```yaml
 Type: SwitchParameter
