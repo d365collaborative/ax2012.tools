@@ -14,98 +14,121 @@ Start an AX 2012 environment
 
 ### Default (Default)
 ```
-Start-AxEnvironment [-ComputerName <String[]>] [-All] [<CommonParameters>]
+Start-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOutput] [<CommonParameters>]
 ```
 
-### Specific
+### Pipeline
 ```
-Start-AxEnvironment [-ComputerName <String[]>] [-Aos] [-ManagementReporter] [-DIXF] [<CommonParameters>]
+Start-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOutput] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start an AX 2012 services in your environment
+Start AX 2012 services in your environment
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Start-AxEnvironment
+Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj*
 ```
 
-This will start all the known AX 2012 services on the machine that you are executing it on.
+This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+
+### EXAMPLE 2
+```
+Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOutput
+```
+
+This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+It will show the status for the service(s) on the server afterwards.
+
+### EXAMPLE 3
+```
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
+```
+
+This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+It will show the status for the service(s) on the server afterwards.
 
 ## PARAMETERS
 
-### -ComputerName
+### -Server
 Name of the computer(s) that you want to work against
+
+Default value is the name from the ComputerName from AxActiveAosConfiguration
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: Default
+Aliases: ComputerName
 
 Required: False
-Position: Named
+Position: 2
 Default value: $Script:ActiveAosComputername
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -All
-Switch to instruct the cmdlet to include all known AX 2012 services
+```yaml
+Type: String[]
+Parameter Sets: Pipeline
+Aliases: ComputerName
+
+Required: False
+Position: 2
+Default value: $Script:ActiveAosComputername
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+DisplayName of windows service that you want to work against
+
+Accepts wildcards for searching.
+E.g.
+-DisplayName "*ax*obj*"
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: Default
 Aliases:
 
-Required: False
+Required: True
 Position: 3
-Default value: [switch]::Present
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Aos
-Switch to instruct the cmdlet to include the AOS service
+### -Name
+Name of the Windows Service that you want to work against
+
+This parameter is used when piping in the details
+
+Designed to work together with the Get-AxEnvironment cmdlet
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Specific
+Type: String[]
+Parameter Sets: Pipeline
 Aliases:
 
 Required: False
-Position: 3
-Default value: False
-Accept pipeline input: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ManagementReporter
-Switch to instruct the cmdlet to include the ManagementReporter service
+### -ShowOutput
+Switch to instruct the cmdlet to output the status for the service
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Specific
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DIXF
-Switch to instruct the cmdlet to include the DIXF service
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Specific
-Aliases:
-
-Required: False
-Position: 5
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False

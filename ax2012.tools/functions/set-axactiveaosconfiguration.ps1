@@ -116,13 +116,14 @@ function Set-AxActiveAosConfiguration {
     if (Test-PSFFunctionInterrupt) { return }
     
     foreach ($key in $PSBoundParameters.Keys) {
-        $value = $PSBoundParameters.Item($key).ToString()
+        $value = $PSBoundParameters.Item($key)
 
         Write-PSFMessage -Level Verbose -Message "Working on $key with $value" -Target $value
 
         switch ($key) {
             "ComputerName" {
                 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Value $value
+                $Script:ActiveAosComputername = $value
                 if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Scope $configScope }
             }
 
