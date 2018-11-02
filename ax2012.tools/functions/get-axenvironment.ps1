@@ -41,24 +41,24 @@
         
         This will get the status for all the default services from your environment.
         If AxActiveAosConfiguration has been configured, it will work against the ComputerName and AosInstanceName registered.
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment -ScanAllAosServices
         
         This will scan for all available AOS Services.
         If AxActiveAosConfiguration has been configured, it will work against the ComputerName registered otherwise localhost is used.
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput
-
+        
         This will get all AOS instances from the server named "TEST-AOS-01".
         If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -AosInstanceName *DEV*
-
+        
         This will get all AOS instances that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
         
@@ -70,7 +70,7 @@
         
         This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
         It will show the status for the service(s) on the server afterwards.
-                
+        
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
