@@ -102,31 +102,18 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter PipelineOutput' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['PipelineOutput']
-			$parameter.Name | Should -Be 'PipelineOutput'
-			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
-			$parameter.IsDynamic | Should -Be $False
-			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
-			$parameter.ParameterSets.Keys | Should -Contain '__AllParameterSets'
-			$parameter.ParameterSets['__AllParameterSets'].IsMandatory | Should -Be $False
-			$parameter.ParameterSets['__AllParameterSets'].Position | Should -Be -2147483648
-			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipeline | Should -Be $False
-			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
-			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
-		}
 	}
 	
 	Describe "Testing parameterset Default" {
 		<#
 		Default -
-		Default -ComputerName -AllAxServices -AosInstanceName -ScanAllAosServices -PipelineOutput
+		Default -ComputerName -AllAxServices -AosInstanceName -ScanAllAosServices
 		#>
 	}
  	Describe "Testing parameterset Specific" {
 		<#
 		Specific -
-		Specific -ComputerName -AosInstanceName -Aos -ManagementReporter -DIXF -ScanAllAosServices -PipelineOutput
+		Specific -ComputerName -AosInstanceName -Aos -ManagementReporter -DIXF -ScanAllAosServices
 		#>
 	}
 
