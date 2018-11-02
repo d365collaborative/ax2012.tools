@@ -6,7 +6,7 @@
     .DESCRIPTION
         Extract the services from the list of entries in the HashTable
         
-    .PARAMETER All
+    .PARAMETER AllAxServices
         Switch to instruct the cmdlet to return all services
         
     .PARAMETER Aos

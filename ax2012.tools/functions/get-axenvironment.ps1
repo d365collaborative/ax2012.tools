@@ -9,9 +9,18 @@
     .PARAMETER ComputerName
         Name of the computer(s) that you want to work against
         
-    .PARAMETER All
+    .PARAMETER AllAxServices
         Switch to instruct the cmdlet to include all known AX 2012 services
         
+    .PARAMETER AosInstanceName
+        Name of the AOS instance that you are looking for
+
+        Accepts wildcards for searching. E.g. -AosInstanceName "*DEV*"
+        
+        If AxActiveAosConfiguration has been configured, the default value is the name of the instance registered
+
+        Default value is otherwise "*" which will search for all AOS instances
+
     .PARAMETER Aos
         Switch to instruct the cmdlet to include the AOS service
         
@@ -20,7 +29,10 @@
         
     .PARAMETER DIXF
         Switch to instruct the cmdlet to include the DIXF service
-        
+    
+    .PARAMETER ScanAllAosServices
+        Parameter description
+
     .EXAMPLE
         PS C:\> Get-AxEnvironment
         
