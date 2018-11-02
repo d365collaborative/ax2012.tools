@@ -33,10 +33,43 @@
     .PARAMETER ScanAllAosServices
         Parameter description
         
+    .PARAMETER PipelineOutput
+        asdfsadfsdf
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment
         
         This will get the status for all the default services from your environment.
+        If AxActiveAosConfiguration has been configured, it will work against the ComputerName and AosInstanceName registered.
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ScanAllAosServices
+        
+        This will scan for all available AOS Services.
+        If AxActiveAosConfiguration has been configured, it will work against the ComputerName registered otherwise localhost is used.
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput
+        
+        This will get all AOS instances from the server named "TEST-AOS-01".
+        If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -AosInstanceName *DEV*
+        
+        This will get all AOS instances that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
+        
+        This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+        It will show the status for the service(s) on the server afterwards.
+        
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Stop-AxEnvironment -ShowOutput
+        
+        This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
+        It will show the status for the service(s) on the server afterwards.
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
@@ -45,6 +78,7 @@
 function Get-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
+        [Alias('Server')]
         [string[]] $ComputerName = $Script:ActiveAosComputername,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
@@ -62,7 +96,9 @@ function Get-AxEnvironment {
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
         [switch] $DIXF,
 
-        [switch] $ScanAllAosServices
+        [switch] $ScanAllAosServices,
+
+        [switch] $PipelineOutput
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Specific") {
@@ -114,35 +150,32 @@ function Get-AxEnvironment {
 
             $colAosServices = Get-Service -ComputerName $server -Name $searchServicesAos -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
 
-            if ($ScanAllAosServices) {
-                $null = $res.AddRange($colAosServices)
-            }
-            else {
-                foreach ($service in $colAosServices) {
-                    if ($service.DisplayName -NotLike $AosInstanceName) { continue }
+            foreach ($service in $colAosServices) {
+                if ((-not $ScanAllAosServices) -and ($service.DisplayName -NotLike $AosInstanceName)) { continue }
 
-                    $null = $res.Add($service)
-                }
+                $null = $res.Add($service)
             }
         }
 
         if (-not ($null -eq $Services)) {
             $axServices = Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
     
-            if ($ScanAllAosServices) {
-                $null = $res.AddRange($axServices)
-            }
-            else {
-                foreach ($service in $axServices) {
-                    if ($service.DisplayName -like "*AX Object Server*" ) {
-                        if ($service.DisplayName -NotLike $AosInstanceName) { continue }
-                    }
-
-                    $null = $res.Add($service)
+            foreach ($service in $axServices) {
+                if ($service.DisplayName -like "*AX Object Server*" ) {
+                    if ((-not $ScanAllAosServices) -and ($service.DisplayName -NotLike $AosInstanceName)) { continue }
                 }
+
+                $null = $res.Add($service)
             }
         }
     }
+ 
+    if ($PipelineOutput) {
+        $res.ToArray() | Select-Object Server, Name
+    }
+    else {
+        $res.ToArray() | Select-Object Server, DisplayName, Status, Name
+    }
+
     
-    $res.ToArray() | Select-Object Server, DisplayName, Status, Name
 }
