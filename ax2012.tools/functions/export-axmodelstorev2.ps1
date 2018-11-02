@@ -107,6 +107,3 @@ Function Export-AxModelStoreV2 {
 
     Invoke-TimeSignal -End
 }
-
-
-@("AxUtilLib", "AxUtilLib.PowerShell", "Microsoft.Dynamics.Administration", "Microsoft.Dynamics.AX.Framework.Management", "Microsoft.Dynamics.ManagementUtilities")
