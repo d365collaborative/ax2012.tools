@@ -36,8 +36,8 @@ function Stop-AxEnvironmentV2 {
     param (
 
         [Parameter(ValueFromPipelineByPropertyName = $true)]
-        [Alias('Server')]
-        [string[]] $ComputerName = $Script:ActiveAosComputername,
+        [Alias('ComputerName')]
+        [string[]] $Server = $Script:ActiveAosComputername,
 
         [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $DisplayName,
@@ -60,18 +60,18 @@ function Stop-AxEnvironmentV2 {
     process {
 
         if ($includeStatuses -like $Status) {
-            Get-Service -ComputerName $ComputerName -Name $Name -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
+            Get-Service -ComputerName $Server -Name $Name -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
         }
 
         if ($ShowOutput) {
-            $service = Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+            $service = Get-Service -ComputerName $Server -Name $Name -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
             $null = $output.Add($service)
         }
     }
 
     end {
         if ($ShowOutput) {
-            $res.ToArray() | Select-Object Server, DisplayName, Status, Name
+            $output.ToArray() | Select-Object Server, DisplayName, Status, Name
         }
     }
 }
