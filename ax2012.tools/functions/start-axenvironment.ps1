@@ -4,76 +4,97 @@
         Start an AX 2012 environment
         
     .DESCRIPTION
-        Start an AX 2012 services in your environment
+        Start AX 2012 services in your environment
         
-    .PARAMETER ComputerName
+    .PARAMETER Server
         Name of the computer(s) that you want to work against
+
+        Default value is the name from the ComputerName from AxActiveAosConfiguration
+
+    .PARAMETER DisplayName
+        DisplayName of windows service that you want to work against
         
-    .PARAMETER All
-        Switch to instruct the cmdlet to include all known AX 2012 services
+        Accepts wildcards for searching. E.g. -DisplayName "*ax*obj*"
         
-    .PARAMETER Aos
-        Switch to instruct the cmdlet to include the AOS service
+    .PARAMETER Name
+        Name of the Windows Service that you want to work against
+
+        This parameter is used when piping in the details
         
-    .PARAMETER ManagementReporter
-        Switch to instruct the cmdlet to include the ManagementReporter service
-        
-    .PARAMETER DIXF
-        Switch to instruct the cmdlet to include the DIXF service
+        Designed to work together with the Get-AxEnvironment cmdlet
+
+    .PARAMETER ShowOutput
+        Switch to instruct the cmdlet to output the status for the service
         
     .EXAMPLE
-        PS C:\> Start-AxEnvironment
+        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj*
         
-        This will start all the known AX 2012 services on the machine that you are executing it on.
+        This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         
+    .EXAMPLE
+        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOutput
+        
+        This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+        It will show the status for the service(s) on the server afterwards.
+
+    .EXAMPLE
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
+
+        This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+        It will show the status for the service(s) on the server afterwards.
+
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
 #>
 function Start-AxEnvironment {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
-    [CmdletBinding(DefaultParameterSetName = 'Default')]
+    [CmdletBinding(DefaultParameterSetName = "Default")]
     param (
-        [string[]] $ComputerName = $Script:ActiveAosComputername,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
-        [switch] $All = [switch]::Present,
+        [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = "Pipeline")]
+        [Parameter(ParameterSetName = "Default", Position = 1)]
+        [Alias('ComputerName')]
+        [string[]] $Server = $Script:ActiveAosComputername,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 2 )]
-        [switch] $Aos,
+        [Parameter(Mandatory = $true, ParameterSetName = "Default", Position = 2)]
+        [string] $DisplayName,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 3 )]
-        [switch] $ManagementReporter,
+        [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = "Pipeline")]
+        [string[]] $Name,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
-        [switch] $DIXF
+        [switch] $ShowOutput
     )
 
-    if ($PSCmdlet.ParameterSetName -eq "Specific") {
-        $All = ![switch]::Present
+    begin {
+        $output = New-Object System.Collections.ArrayList
     }
 
-    if (!$All -and !$Aos -and !$ManagementReporter -and !$DIXF) {
-        Write-PSFMessage -Level Host -Message "You have to use at least one switch when running this cmdlet. Please run the cmdlet again."
-        Stop-PSFFunction -Message "Stopping because of missing parameters"
-        return
+    process {
+        $baseParams = @{ComputerName = $Server; ErrorAction = "SilentlyContinue"}
+
+        if ($PSCmdlet.ParameterSetName -eq "Pipeline") {
+            $baseParams.Name = $Name
+        }
+        else {
+            if ($DisplayName -notmatch "\*" ) {
+                $DisplayName = "*$DisplayName*"
+            }
+
+            $baseParams.DisplayName = $DisplayName
+        }
+
+        Get-Service @baseParams | Start-Service -ErrorAction SilentlyContinue
+
+        if ($ShowOutput) {
+            $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+            $null = $output.Add($service)
+        }
     }
 
-    $Params = Get-DeepClone $PSBoundParameters
-    if ($Params.ContainsKey("ComputerName")) { $null = $Params.Remove("ComputerName") }
-
-    $Services = Get-ServiceList @Params
-    
-    $Results = foreach ($server in $ComputerName) {
-        Write-PSFMessage -Level Verbose -Message "Working against: $server - starting services" -Target $server
-        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Start-Service -ErrorAction SilentlyContinue
+    end {
+        if ($ShowOutput) {
+            $output.ToArray() | Select-Object Server, DisplayName, Status, Name
+        }
     }
-
-    $Results = foreach ($server in $ComputerName) {
-        Write-PSFMessage -Level Verbose -Message "Working against: $server - listing services" -Target $server
-        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
-    }
-    
-
-    $Results | Select-Object Server, DisplayName, Status, Name
 }

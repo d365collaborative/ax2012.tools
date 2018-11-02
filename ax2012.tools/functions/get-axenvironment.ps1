@@ -33,6 +33,9 @@
     .PARAMETER ScanAllAosServices
         Parameter description
         
+    .PARAMETER PipelineOutput
+        asdfsadfsdf
+
     .EXAMPLE
         PS C:\> Get-AxEnvironment
         
@@ -45,6 +48,7 @@
 function Get-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
+        [Alias('Server')]
         [string[]] $ComputerName = $Script:ActiveAosComputername,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
@@ -62,7 +66,9 @@ function Get-AxEnvironment {
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
         [switch] $DIXF,
 
-        [switch] $ScanAllAosServices
+        [switch] $ScanAllAosServices,
+
+        [switch] $PipelineOutput
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Specific") {
@@ -114,35 +120,32 @@ function Get-AxEnvironment {
 
             $colAosServices = Get-Service -ComputerName $server -Name $searchServicesAos -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
 
-            if ($ScanAllAosServices) {
-                $null = $res.AddRange($colAosServices)
-            }
-            else {
-                foreach ($service in $colAosServices) {
-                    if ($service.DisplayName -NotLike $AosInstanceName) { continue }
+            foreach ($service in $colAosServices) {
+                if ((-not $ScanAllAosServices) -and ($service.DisplayName -NotLike $AosInstanceName)) { continue }
 
-                    $null = $res.Add($service)
-                }
+                $null = $res.Add($service)
             }
         }
 
         if (-not ($null -eq $Services)) {
             $axServices = Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
     
-            if ($ScanAllAosServices) {
-                $null = $res.AddRange($axServices)
-            }
-            else {
-                foreach ($service in $axServices) {
-                    if ($service.DisplayName -like "*AX Object Server*" ) {
-                        if ($service.DisplayName -NotLike $AosInstanceName) { continue }
-                    }
-
-                    $null = $res.Add($service)
+            foreach ($service in $axServices) {
+                if ($service.DisplayName -like "*AX Object Server*" ) {
+                    if ((-not $ScanAllAosServices) -and ($service.DisplayName -NotLike $AosInstanceName)) { continue }
                 }
+
+                $null = $res.Add($service)
             }
         }
     }
+ 
+    if ($PipelineOutput) {
+        $res.ToArray() | Select-Object Server, Name
+    }
+    else {
+        $res.ToArray() | Select-Object Server, DisplayName, Status, Name
+    }
+
     
-    $res.ToArray() | Select-Object Server, DisplayName, Status, Name
 }
