@@ -14,12 +14,14 @@ Get the status of an AX 2012 environment
 
 ### Default (Default)
 ```
-Get-AxEnvironment [-ComputerName <String[]>] [-All] [<CommonParameters>]
+Get-AxEnvironment [-ComputerName <String[]>] [-AllAxServices] [-AosInstanceName <String>] [-ScanAllAosServices]
+ [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AxEnvironment [-ComputerName <String[]>] [-Aos] [-ManagementReporter] [-DIXF] [<CommonParameters>]
+Get-AxEnvironment [-ComputerName <String[]>] [-AosInstanceName <String>] [-Aos] [-ManagementReporter] [-DIXF]
+ [-ScanAllAosServices] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,12 +48,12 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: @($env:computername)
+Default value: $Script:ActiveAosComputername
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -All
+### -AllAxServices
 Switch to instruct the cmdlet to include all known AX 2012 services
 
 ```yaml
@@ -62,6 +64,29 @@ Aliases:
 Required: False
 Position: 3
 Default value: [switch]::Present
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AosInstanceName
+Name of the AOS instance that you are looking for
+
+Accepts wildcards for searching.
+E.g.
+-AosInstanceName "*DEV*"
+
+If AxActiveAosConfiguration has been configured, the default value is the name of the instance registered
+
+Default value is otherwise "*" which will search for all AOS instances
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: InstanceName
+
+Required: False
+Position: Named
+Default value: $(if (-not ([System.String]::IsNullOrEmpty($Script:ActiveAosInstancename))) { "*$Script:ActiveAosInstancename" } else { "*" })
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -106,6 +131,21 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScanAllAosServices
+Parameter description
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False

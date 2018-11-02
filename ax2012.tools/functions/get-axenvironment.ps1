@@ -9,8 +9,17 @@
     .PARAMETER ComputerName
         Name of the computer(s) that you want to work against
         
-    .PARAMETER All
+    .PARAMETER AllAxServices
         Switch to instruct the cmdlet to include all known AX 2012 services
+        
+    .PARAMETER AosInstanceName
+        Name of the AOS instance that you are looking for
+        
+        Accepts wildcards for searching. E.g. -AosInstanceName "*DEV*"
+        
+        If AxActiveAosConfiguration has been configured, the default value is the name of the instance registered
+        
+        Default value is otherwise "*" which will search for all AOS instances
         
     .PARAMETER Aos
         Switch to instruct the cmdlet to include the AOS service
@@ -20,6 +29,9 @@
         
     .PARAMETER DIXF
         Switch to instruct the cmdlet to include the DIXF service
+        
+    .PARAMETER ScanAllAosServices
+        Parameter description
         
     .EXAMPLE
         PS C:\> Get-AxEnvironment
@@ -33,10 +45,13 @@
 function Get-AxEnvironment {
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
-        [string[]] $ComputerName = @($env:computername),
+        [string[]] $ComputerName = $Script:ActiveAosComputername,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
-        [switch] $All = [switch]::Present,
+        [switch] $AllAxServices = [switch]::Present,
+        
+        [Alias('InstanceName')]
+        [string] $AosInstanceName = $(if (-not ([System.String]::IsNullOrEmpty($Script:ActiveAosInstancename))) { "*$Script:ActiveAosInstancename" } else { "*" }),
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 2 )]
         [switch] $Aos,
@@ -45,28 +60,89 @@ function Get-AxEnvironment {
         [switch] $ManagementReporter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
-        [switch] $DIXF
+        [switch] $DIXF,
+
+        [switch] $ScanAllAosServices
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Specific") {
-        $All = ![switch]::Present
+        $AllAxServices = ![switch]::Present
     }
 
-    if (!$All -and !$Aos -and !$ManagementReporter -and !$DIXF) {
+    if (!$AllAxServices -and !$Aos -and !$ManagementReporter -and !$DIXF) {
         Write-PSFMessage -Level Host -Message "You have to use at least one switch when running this cmdlet. Please run the cmdlet again."
         Stop-PSFFunction -Message "Stopping because of missing parameters"
         return
     }
 
-    $Params = Get-DeepClone $PSBoundParameters
-    if ($Params.ContainsKey("ComputerName")) { $Params.Remove("ComputerName") }
+    $baseParams = Get-DeepClone $PSBoundParameters
 
-    $Services = Get-ServiceList @Params
-    
-    $Results = foreach ($server in $ComputerName) {
-        Write-PSFMessage -Level Verbose -Message "Working against: $server - listing services" -Target $server
-        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+    $params = @{}
+    $includeParamNames = @("ManagementReporter", "DIXF")
+
+    foreach ($key in $baseParams.Keys) {
+        Write-PSFMessage -Level Verbose -Message "Working on key: $key" -Target $key
+        if ($includeParamNames -notlike $key ) {continue}
+        
+        $null = $params.Add($key, $baseParams.Item($key).ToString())
     }
     
-    $Results | Select-Object Server, DisplayName, Status, Name
+    if ($params.Count -eq 0) {
+        if ($AllAxServices) {
+            $params.AllAxServices = $true
+
+            $Services = Get-ServiceList @params
+        }
+    }
+    else {
+        $Services = Get-ServiceList @params
+    }
+
+    if ($PSBoundParameters.ContainsKey("Aos")) {
+        Write-PSFMessage -Level Verbose -Message "Aos seems to be bound" -Target $key
+        
+        $searchServicesAos = Get-ServiceList -Aos
+    }
+
+    $res = New-Object System.Collections.ArrayList
+    
+    foreach ($server in $ComputerName) {
+        Write-PSFMessage -Level Verbose -Message "Working against: $server - listing services" -Target ($Services -Join ",")
+        Write-PSFMessage -Level Verbose -Message "Working against: $server - listing Aos services" -Target ($searchServicesAos -Join ",")
+        
+        if (-not ($null -eq $searchServicesAos)) {
+
+            $colAosServices = Get-Service -ComputerName $server -Name $searchServicesAos -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+
+            if ($ScanAllAosServices) {
+                $null = $res.AddRange($colAosServices)
+            }
+            else {
+                foreach ($service in $colAosServices) {
+                    if ($service.DisplayName -NotLike $AosInstanceName) { continue }
+
+                    $null = $res.Add($service)
+                }
+            }
+        }
+
+        if (-not ($null -eq $Services)) {
+            $axServices = Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+    
+            if ($ScanAllAosServices) {
+                $null = $res.AddRange($axServices)
+            }
+            else {
+                foreach ($service in $axServices) {
+                    if ($service.DisplayName -like "*AX Object Server*" ) {
+                        if ($service.DisplayName -NotLike $AosInstanceName) { continue }
+                    }
+
+                    $null = $res.Add($service)
+                }
+            }
+        }
+    }
+    
+    $res.ToArray() | Select-Object Server, DisplayName, Status, Name
 }

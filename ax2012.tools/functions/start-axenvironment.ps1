@@ -34,7 +34,7 @@ function Start-AxEnvironment {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding(DefaultParameterSetName = 'Default')]
     param (
-        [string[]] $ComputerName = @($env:computername),
+        [string[]] $ComputerName = $Script:ActiveAosComputername,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
         [switch] $All = [switch]::Present,
@@ -60,7 +60,7 @@ function Start-AxEnvironment {
     }
 
     $Params = Get-DeepClone $PSBoundParameters
-    if ($Params.ContainsKey("ComputerName")) { $Params.Remove("ComputerName") }
+    if ($Params.ContainsKey("ComputerName")) { $null = $Params.Remove("ComputerName") }
 
     $Services = Get-ServiceList @Params
     

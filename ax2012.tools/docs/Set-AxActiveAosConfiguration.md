@@ -13,10 +13,10 @@ Set the active AX 2012 AOS configuration
 ## SYNTAX
 
 ```
-Set-AxActiveAosConfiguration [[-ComputerName] <String>] [[-BinDirectory] <String>] [[-InstanceNumber] <String>]
- [[-InstanceName] <String>] [[-DatabaseServer] <String>] [[-DatabaseName] <String>]
- [[-ModelstoreDatabase] <String>] [[-AosPort] <String>] [[-WsdlPort] <String>] [[-NetTcpPort] <String>]
- [-Temporary] [<CommonParameters>]
+Set-AxActiveAosConfiguration [[-ComputerName] <String[]>] [[-BinDirectory] <String>]
+ [[-InstanceNumber] <String>] [[-InstanceName] <String>] [[-DatabaseServer] <String>]
+ [[-DatabaseName] <String>] [[-ModelstoreDatabase] <String>] [[-AosPort] <String>] [[-WsdlPort] <String>]
+ [[-NetTcpPort] <String>] [-ConfigStorageLocation <String>] [-Temporary] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,13 +50,13 @@ The AOS port will be registered to: 2712
 The name of the computer / server that AOS resides on
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 2
-Default value: "$env:computername"
+Default value: @($env:computername)
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -193,6 +193,29 @@ Required: False
 Position: 11
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ConfigStorageLocation
+Parameter used to instruct where to store the configuration objects
+
+The default value is "User" and this will store all configuration for the active user
+
+Valid options are:
+"User"
+"System"
+
+"System" will store the configuration so all users can access the configuration objects
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: User
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

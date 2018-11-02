@@ -54,7 +54,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Localhost
+Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -75,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: MicrosoftDynamicsAx_model
+Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -109,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: C:\temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
+Default value: (Join-Path $Script:DefaultTempPath "MicrosoftDynamicsAx.axmodelstore")
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

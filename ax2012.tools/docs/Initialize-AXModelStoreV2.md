@@ -69,7 +69,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Localhost
+Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -90,7 +90,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: MicrosoftDynamicsAx_model
+Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
