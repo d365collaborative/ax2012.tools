@@ -57,6 +57,7 @@ Password of the SQL Server credential that you want to use when working against 
         Reference: http://calafell.me/the-ultimate-ax-2012-table-and-field-id-fix-for-synchronization-errors/
 #>
 Function Resolve-AxTableFieldIDs {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
     [CmdletBinding()]
     [OutputType('System.String')]
     Param(

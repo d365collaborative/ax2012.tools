@@ -59,6 +59,8 @@
                             'Import-AxModelV2',
                             'Import-AXModelStoreV2',
 
+                            'Resolve-AxTableFieldIDs',
+                            
                             'Set-AxActiveAosConfiguration',
                             'Start-AxEnvironment',
                             'Stop-AxEnvironment'
