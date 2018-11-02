@@ -30,50 +30,48 @@
         Author: Mötz Jensen (@Splaxi)
         
 #>
-function Stop-AxEnvironment {
+function Stop-AxEnvironmentV2 {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
-    [CmdletBinding(DefaultParameterSetName = 'Default')]
+    [CmdletBinding()]
     param (
+
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [Alias('Server')]
         [string[]] $ComputerName = $Script:ActiveAosComputername,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Default', Position = 2 )]
-        [switch] $All = [switch]::Present,
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [string] $DisplayName,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 2 )]
-        [switch] $Aos,
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [string] $Status = "*",
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 3 )]
-        [switch] $ManagementReporter,
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [string] $Name,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'Specific', Position = 4 )]
-        [switch] $DIXF
+        [switch] $ShowOutput
     )
 
-    if ($PSCmdlet.ParameterSetName -eq "Specific") {
-        $All = ![switch]::Present
+    begin {
+        $includeStatuses = @("Running", "StartPending")
+
+        $output = New-Object System.Collections.ArrayList
     }
 
-    if (!$All -and !$Aos -and !$ManagementReporter -and !$DIXF) {
-        Write-PSFMessage -Level Host -Message "You have to use at least one switch when running this cmdlet. Please run the cmdlet again."
-        Stop-PSFFunction -Message "Stopping because of missing parameters"
-        return
+    process {
+
+        if ($includeStatuses -like $Status) {
+            Get-Service -ComputerName $ComputerName -Name $Name -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
+        }
+
+        if ($ShowOutput) {
+            $service = Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
+            $null = $output.Add($service)
+        }
     }
 
-    $Params = Get-DeepClone $PSBoundParameters
-    if ($Params.ContainsKey("ComputerName")) { $null = $Params.Remove("ComputerName") }
-
-    $Services = Get-ServiceList @Params
-    
-    $Results = foreach ($server in $ComputerName) {
-        Write-PSFMessage -Level Verbose -Message "Working against: $server - stopping services" -Target $server
-        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
+    end {
+        if ($ShowOutput) {
+            $res.ToArray() | Select-Object Server, DisplayName, Status, Name
+        }
     }
-
-    $Results = foreach ($server in $ComputerName) {
-        Write-PSFMessage -Level Verbose -Message "Working against: $server - listing services" -Target $server
-        Get-Service -ComputerName $server -Name $Services -ErrorAction SilentlyContinue | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
-    }
-    
-
-    $Results | Select-Object Server, DisplayName, Status, Name
 }
