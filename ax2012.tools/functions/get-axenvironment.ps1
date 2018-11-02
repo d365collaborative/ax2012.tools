@@ -35,7 +35,7 @@
         
     .PARAMETER PipelineOutput
         asdfsadfsdf
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment
         

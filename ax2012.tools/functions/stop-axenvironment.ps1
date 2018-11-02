@@ -8,9 +8,9 @@
         
     .PARAMETER Server
         Name of the computer(s) that you want to work against
-
+        
         Default value is the name from the ComputerName from AxActiveAosConfiguration
-
+        
     .PARAMETER DisplayName
         DisplayName of windows service that you want to work against
         
@@ -18,14 +18,14 @@
         
     .PARAMETER Name
         Name of the Windows Service that you want to work against
-
+        
         This parameter is used when piping in the details
         
         Designed to work together with the Get-AxEnvironment cmdlet
-
+        
     .PARAMETER ShowOutput
         Switch to instruct the cmdlet to output the status for the service
-
+        
     .PARAMETER Force
         Switch to instruct the cmdlet to force the stopping of the service
         
@@ -39,13 +39,13 @@
         
         This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         It will show the status for the service(s) on the server afterwards.
-
+        
     .EXAMPLE
         PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
-
+        
         This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
         It will show the status for the service(s) on the server afterwards.
-
+        
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
