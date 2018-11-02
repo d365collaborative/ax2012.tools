@@ -44,7 +44,7 @@ It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Stop-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
