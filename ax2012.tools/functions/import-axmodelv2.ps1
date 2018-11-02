@@ -126,5 +126,8 @@ Function Import-AxModelV2 {
         Invoke-TimeSignal -End
     }
 
-    END { }
+    END {
+
+        Clear-Ax2012StandardPowershellModule
+    }
 }
