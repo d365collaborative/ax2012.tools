@@ -50,7 +50,7 @@
         Author: Mötz Jensen (@Splaxi)
         
 #>
-Function Invoke-AxExportModelstore {
+Function Export-AxModelStoreV2 {
     [CmdletBinding()]
     [OutputType('System.String')]
     Param(
@@ -72,8 +72,6 @@ Function Invoke-AxExportModelstore {
     if (-not (Test-PathExists -Path $Path -Type Container -Create)) { return }
 
     if (-not (Test-PathExists -Path $Script:AxPowerShellModule -Type Leaf)) { return }
-
-    $null = Import-Module $Script:AxPowerShellModule
         
     if ([System.String]::IsNullOrEmpty($InstanceName)) {
         $InstanceName = "{0}" -f $ModelstoreDatabase.Replace("_model", "")
@@ -100,8 +98,15 @@ Function Invoke-AxExportModelstore {
     else {
         Write-PSFMessage -Level Verbose -Message "Starting the export of the model store"
         
+        $null = Import-Module $Script:AxPowerShellModule
+
         Export-AxModelStore @params
+
+        Clear-Ax2012StandardPowershellModule
     }
 
     Invoke-TimeSignal -End
 }
+
+
+@("AxUtilLib", "AxUtilLib.PowerShell", "Microsoft.Dynamics.Administration", "Microsoft.Dynamics.AX.Framework.Management", "Microsoft.Dynamics.ManagementUtilities")

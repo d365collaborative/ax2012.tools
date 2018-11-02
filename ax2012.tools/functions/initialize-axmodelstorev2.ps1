@@ -83,8 +83,6 @@ function Initialize-AXModelStoreV2 {
     
     if (-not (Test-PathExists -Path $Script:AxPowerShellModule -Type Leaf)) { return }
 
-    $null = Import-Module $Script:AxPowerShellModule
-
     $params = @{
         Server   = $DatabaseServer
         Database = $ModelstoreDatabase
@@ -108,7 +106,12 @@ function Initialize-AXModelStoreV2 {
     else {
         Write-PSFMessage -Level Verbose -Message "Starting the initialization of the model store"
         
+        $null = Import-Module $Script:AxPowerShellModule
+
         Initialize-AXModelStore @params
+
+        Clear-Ax2012StandardPowershellModule
+
     }
 
     Invoke-TimeSignal -End

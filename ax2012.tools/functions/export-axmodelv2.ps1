@@ -98,7 +98,6 @@ Function Export-AxModelV2 {
             $backupFilePath = New-FolderWithDateTime -Path $Path -NoCreate
         }
 
-
         $null = Import-Module $Script:AxPowerShellModule
     }
 
@@ -172,5 +171,7 @@ Function Export-AxModelV2 {
                 Path = $backupFilePath
             }
         }
+
+        Clear-Ax2012StandardPowershellModule
     }
 }

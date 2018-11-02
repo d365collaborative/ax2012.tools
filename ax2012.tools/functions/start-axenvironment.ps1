@@ -38,7 +38,7 @@
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -PipelineOutput | Start-AxEnvironment -ShowOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
         
         This will scan the "TEST-AOS-01" server for all AOS instances and start them.
         It will show the status for the service(s) on the server afterwards.

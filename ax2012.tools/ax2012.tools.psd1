@@ -3,7 +3,7 @@
     RootModule        = 'ax2012.tools.psm1'
 	
     # Version number of this module.
-    ModuleVersion     = '0.1.10'
+    ModuleVersion     = '0.1.11'
 	
     # ID used to uniquely identify this module
     GUID              = 'c0052746-6bea-41a0-9aeb-68badbe62024'
@@ -42,6 +42,7 @@
     # Functions to export from this module
     FunctionsToExport = @(
                             'Export-AxModelV2',
+                            'Export-AxModelStoreV2',
 
                             'Get-AxActiveAosConfiguration',
                             'Get-AxAosInstance',
@@ -55,9 +56,8 @@
                             'Initialize-AXModelStoreV2',
                             
                             'Invoke-AxBuild',
-                            'Invoke-AxExportModelstore',
-                            'Invoke-AxImportModelstore',
                             'Import-AxModelV2',
+                            'Import-AXModelStoreV2',
 
                             'Set-AxActiveAosConfiguration',
                             'Start-AxEnvironment',
