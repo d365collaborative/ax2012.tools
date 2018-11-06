@@ -24,3 +24,7 @@ Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Valu
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Value "" -Initialize -Description "The registered port the AOS is listing for clients on."
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Value "" -Initialize -Description "The registered WSDL port the AOS is exposing WSDL services on."
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Value "" -Initialize -Description "The registered NetTcp port the AOS is exposing Custom services on."
+
+Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.email' -Value "" -Initialize -Description "The registered email address the Invoke-AxLogicApp should notify when firing a notification request."
+Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.url' -Value "" -Initialize -Description "The registered URL/URI the Invoke-AxLogicApp should contact when firing a notification request."
+Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.subject' -Value "" -Initialize -Description "The registered subject the Invoke-AxLogicApp should use as context when firing a notification request."

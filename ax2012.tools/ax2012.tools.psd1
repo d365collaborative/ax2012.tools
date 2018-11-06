@@ -51,17 +51,24 @@
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
                             'Get-AxEnvironment',
+
+                            'Get-AxLogicAppConfig',
+
                             'Get-AxWMDPDetails',
                             
                             'Initialize-AXModelStoreV2',
                             
                             'Invoke-AxBuild',
+                            'Invoke-AxLogicApp',
+
                             'Import-AxModelV2',
                             'Import-AXModelStoreV2',
 
                             'Resolve-AxTableFieldIDs',
                             
                             'Set-AxActiveAosConfiguration',
+                            'Set-AxLogicAppConfig',
+                            
                             'Start-AxEnvironment',
                             'Stop-AxEnvironment'
     )
