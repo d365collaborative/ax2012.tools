@@ -80,18 +80,18 @@ function Get-AxSsrsConfig {
 
             while ($reader.Read() -eq $true) {
                 [PSCustomObject][ordered]@{
-                    SsrsServerName             = "$($reader.GetString($($reader.GetOrdinal("SERVERID"))))"
-                    IsDefaultReportmodelServer = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ISDEFAULTREPORTMODELSERVER"))))"
-                    ServerUrl                  = "$($reader.GetString($($reader.GetOrdinal("SERVERURL"))))"
-                    IsDefaultReportServer      = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ISDEFAULTREPORTLIBRARYSERVER"))))"
-                    AxaptaReportFolder         = "$($reader.GetString($($reader.GetOrdinal("AXAPTAREPORTFOLDER"))))"
-                    Description                = "$($reader.GetString($($reader.GetOrdinal("DESCRIPTION"))))"
-                    DataSourceName             = "$($reader.GetString($($reader.GetOrdinal("DATASOURCENAME"))))"
-                    ReportManagerUrl           = "$($reader.GetString($($reader.GetOrdinal("REPORTMANAGERURL"))))"
-                    ServerInstance             = "$($reader.GetString($($reader.GetOrdinal("SERVERINSTANCE"))))"
-                    AosId                      = "$($reader.GetString($($reader.GetOrdinal("AOSID"))))"
                     ConfigurationId            = "$($reader.GetString($($reader.GetOrdinal("CONFIGURATIONID"))))"
+                    Description                = "$($reader.GetString($($reader.GetOrdinal("DESCRIPTION"))))"
+                    IsDefaultReportServer      = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ISDEFAULTREPORTLIBRARYSERVER"))))"
+                    SsrsServerName             = "$($reader.GetString($($reader.GetOrdinal("SERVERID"))))"
+                    SsrsServerInstance         = "$($reader.GetString($($reader.GetOrdinal("SERVERINSTANCE"))))"
+                    ReportManagerUrl           = "$($reader.GetString($($reader.GetOrdinal("REPORTMANAGERURL"))))"
+                    ServerUrl                  = "$($reader.GetString($($reader.GetOrdinal("SERVERURL"))))"
                     IsSharepointIntegrated     = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ISSHAREPOINTINTEGRATED"))))"
+                    ReportFolder         = "$($reader.GetString($($reader.GetOrdinal("AXAPTAREPORTFOLDER"))))"
+                    IsDefaultReportmodelServer = [bool][int]"$($reader.GetInt32($($reader.GetOrdinal("ISDEFAULTREPORTMODELSERVER"))))"
+                    DataSourceName             = "$($reader.GetString($($reader.GetOrdinal("DATASOURCENAME"))))"
+                    AosId                      = "$($reader.GetString($($reader.GetOrdinal("AOSID"))))"
                 }
             }
         }
