@@ -20,16 +20,23 @@
         
     .PARAMETER AsJob
         Switch to instruct the cmdlet to run the invocation as a job (async)
-        
+    
+    .EXAMPLE
+        PS C:\> Invoke-AxLogicApp -Email administrator@contoso.com -Subject "Work is done" -Url https://prod-35.westeurope.logic.azure.com:443/
+
+        This will simply invoke an Azure Logic App with the email, subject and URL parameters that are needed to invoke an Azure Logic App.
+        A notification will be sent to "administrator@contoso.com".
+
     .EXAMPLE
         PS C:\> Start-AxEnvironment -Aos | Invoke-AxLogicApp
         
-        This will execute the sync process and when it is done it will invoke a Azure Logic App with the default parameters that have been configured for the system.
+        This will execute the sync process and when it is done it will invoke an Azure Logic App with the default parameters that have been configured for the system.
         
     .EXAMPLE
         PS C:\> Start-AxEnvironment -Aos | Invoke-AxLogicApp -Email administrator@contoso.com -Subject "Work is done" -Url https://prod-35.westeurope.logic.azure.com:443/
         
-        This will execute the sync process and when it is done it will invoke a Azure Logic App with the email, subject and URL parameters that are needed to invoke an Azure Logic App.
+        This will execute the sync process and when it is done it will invoke an Azure Logic App with the email, subject and URL parameters that are needed to invoke an Azure Logic App.
+        A notification will be sent to "administrator@contoso.com".
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
