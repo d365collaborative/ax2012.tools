@@ -53,7 +53,8 @@
                             'Get-AxEnvironment',
 
                             'Get-AxLogicAppConfig',
-
+                            'Get-AxSsrsConfig',
+                            
                             'Get-AxWMDPDetails',
                             
                             'Initialize-AXModelStoreV2',

@@ -50,6 +50,9 @@
     .PARAMETER Temporary
         Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
         
+    .PARAMETER Clear
+        Switch to instruct the cmdlet to clear out all the stored configuration values
+
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
         
@@ -66,6 +69,12 @@
         The model store database will be registered to: AX2012R3_PROD_model
         The AOS port will be registered to: 2712
         
+    .EXAMPLE
+        PS C:\> Set-AxActiveAosConfiguration -Clear
+
+        This will clear out all the stored configuration values.
+        It updates all the internal configuration variables, so all aos default values across the module will be empty.
+
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
@@ -108,75 +117,86 @@ function Set-AxActiveAosConfiguration {
         [ValidateSet('User', 'System')]
         [string] $ConfigStorageLocation = "User",
 
-        [switch] $Temporary
+        [switch] $Temporary,
+
+        [switch] $Clear
     )
 
     $configScope = Test-ConfigStorageLocation -ConfigStorageLocation $ConfigStorageLocation
 
     if (Test-PSFFunctionInterrupt) { return }
     
-    foreach ($key in $PSBoundParameters.Keys) {
-        $value = $PSBoundParameters.Item($key)
+    if ($Clear) {
 
-        Write-PSFMessage -Level Verbose -Message "Working on $key with $value" -Target $value
+        Write-PSFMessage -Level Verbose -Message "Clearing all the ax2012.tools.active.aos configurations."
 
-        switch ($key) {
-            "ComputerName" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Value $value
-                $Script:ActiveAosComputername = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Scope $configScope }
-            }
-
-            "BinDirectory" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Scope $configScope }
-            }
-
-            "InstanceNumber" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Scope $configScope }
-            }
-
-            "InstanceName" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Value $value
-                $Script:ActiveAosInstancename = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Scope $configScope }
-            }
-
-            "DatabaseServer" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Value $value
-                $Script:ActiveAosDatabaseserver = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Scope $configScope }
-            }
-		
-            "DatabaseName" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Scope $configScope }
-            }
-
-            "ModelstoreDatabase" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Value $value
-                $Script:ActiveAosModelstoredatabase = $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Scope $configScope }
-            }
-
-            "AosPort" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Scope $configScope }
-            }
-
-            "WsdlPort" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Scope $configScope }
-            }
-
-            "NetTcpPort" {
-                Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Value $value
-                if(-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Scope $configScope }
-            }
-
-            Default {}
+        foreach ($item in (Get-PSFConfig -FullName ax2012.tools.active.aos*)) {
+            Set-PSFConfig -Fullname $item.FullName -Value ""
+            if (-not $Temporary) { Register-PSFConfig -FullName $item.FullName -Scope $configScope }
         }
-       
     }
+    else {
+        foreach ($key in $PSBoundParameters.Keys) {
+            $value = $PSBoundParameters.Item($key)
+
+            Write-PSFMessage -Level Verbose -Message "Working on $key with $value" -Target $value
+
+            switch ($key) {
+                "ComputerName" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.computername' -Scope $configScope }
+                }
+
+                "BinDirectory" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.bindirectory' -Scope $configScope }
+                }
+
+                "InstanceNumber" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instance.number' -Scope $configScope }
+                }
+
+                "InstanceName" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.instancename' -Scope $configScope }
+                }
+
+                "DatabaseServer" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.databaseserver' -Scope $configScope }
+                }
+		
+                "DatabaseName" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.database' -Scope $configScope }
+                }
+
+                "ModelstoreDatabase" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.modelstoredatabase' -Scope $configScope }
+                }
+
+                "AosPort" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.aos.port' -Scope $configScope }
+                }
+
+                "WsdlPort" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.wsdl.port' -Scope $configScope }
+                }
+
+                "NetTcpPort" {
+                    Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Value $value
+                    if (-not $Temporary) { Register-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Scope $configScope }
+                }
+
+                Default {}
+            }
+       
+        }
+    }
+
+    Update-ActiveVariables
 }

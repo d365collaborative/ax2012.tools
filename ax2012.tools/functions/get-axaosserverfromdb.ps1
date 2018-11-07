@@ -6,14 +6,14 @@ Get AOS server details from the SQL Server database
 Traverse the SysServerConfig table from the AX 2012 database and get all registered AOS Servers
 
 .PARAMETER DatabaseServer
- Server name of the database server
+Server name of the database server
         
-        Default value is: "localhost"
+Default value is: "localhost"
 
 .PARAMETER DatabaseName
- Name of the database
+Name of the database
         
-        Default value is: "MicrosoftDynamicsAx"
+Default value is: "MicrosoftDynamicsAx"
 
 .PARAMETER SqlUser
 User name of the SQL Server credential that you want to use when working against the database
@@ -47,6 +47,8 @@ function Get-AxAosServerFromDB {
         [Parameter(Mandatory = $false, Position = 4)]
         [string] $SqlPwd
     )
+
+    Invoke-TimeSignal -Start
 
     $baseParams = Get-DeepClone $PSBoundParameters
     $baseParams.Add("TrustedConnection", $true)
@@ -91,4 +93,6 @@ function Get-AxAosServerFromDB {
     
         $sqlCommand.Dispose()
     }
+
+    Invoke-TimeSignal -End
 }
