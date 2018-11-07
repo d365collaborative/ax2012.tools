@@ -1,35 +1,36 @@
-﻿<#
-.SYNOPSIS
-Get AOS server details from the SQL Server database
-
-.DESCRIPTION
-Traverse the SysServerConfig table from the AX 2012 database and get all registered AOS Servers
-
-.PARAMETER DatabaseServer
-Server name of the database server
+﻿
+<#
+    .SYNOPSIS
+        Get AOS server details from the SQL Server database
         
-Default value is: "localhost"
-
-.PARAMETER DatabaseName
-Name of the database
+    .DESCRIPTION
+        Traverse the SysServerConfig table from the AX 2012 database and get all registered AOS Servers
         
-Default value is: "MicrosoftDynamicsAx"
-
-.PARAMETER SqlUser
-User name of the SQL Server credential that you want to use when working against the database
-
-.PARAMETER SqlPwd
-Password of the SQL Server credential that you want to use when working against the database
-
-.EXAMPLE
-PS C:\> Get-AxAosServerFromDB
-
-This will query the "MicrosoftDynamicsAx" hosted on the localhost server.
-It will extract all AOS Servers from the SysServerConfig table.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
-
+    .PARAMETER DatabaseServer
+        Server name of the database server
+        
+        Default value is: "localhost"
+        
+    .PARAMETER DatabaseName
+        Name of the database
+        
+        Default value is: "MicrosoftDynamicsAx"
+        
+    .PARAMETER SqlUser
+        User name of the SQL Server credential that you want to use when working against the database
+        
+    .PARAMETER SqlPwd
+        Password of the SQL Server credential that you want to use when working against the database
+        
+    .EXAMPLE
+        PS C:\> Get-AxAosServerFromDB
+        
+        This will query the "MicrosoftDynamicsAx" hosted on the localhost server.
+        It will extract all AOS Servers from the SysServerConfig table.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
+        
 #>
 function Get-AxAosServerFromDB {
     [CmdletBinding()]

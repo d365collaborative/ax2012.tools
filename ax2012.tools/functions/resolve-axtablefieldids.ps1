@@ -1,20 +1,21 @@
-﻿<#
+﻿
+<#
     .SYNOPSIS
         Fix table and field ID conflicts
         
     .DESCRIPTION
         Fixes both table and field IDs in the AX SqlDictionary (data db) to match the AX code (Model db)
-
+        
         Useful for after a database has been restored and the table or field IDs do not match
         Run this command instead of letting the database synchronization process drop and recreate the table
-
+        
         Before running:
-            Stop the AOS
-            Always take the appropriate SQL backups before running this script
-
+        Stop the AOS
+        Always take the appropriate SQL backups before running this script
+        
         After running:
-            Start the AOS
-            Sync the database within AX
+        Start the AOS
+        Sync the database within AX
         
         Note:
         Objects that are new in AOT will get created in SQL dictionary when synchronization happens
@@ -23,26 +24,26 @@
         Server name of the database server
         
         Default value is: "localhost"
-
+        
     .PARAMETER DatabaseName
         Name of the database
         
         Default value is: "MicrosoftDynamicsAx"
-            
+        
     .PARAMETER ModelstoreDatabase
         Name of the modelstore database
         
         Default value is: "MicrosoftDynamicsAx_model"
-
-.PARAMETER SqlUser
-User name of the SQL Server credential that you want to use when working against the database
-
-.PARAMETER SqlPwd
-Password of the SQL Server credential that you want to use when working against the database
-
+        
+    .PARAMETER SqlUser
+        User name of the SQL Server credential that you want to use when working against the database
+        
+    .PARAMETER SqlPwd
+        Password of the SQL Server credential that you want to use when working against the database
+        
     .PARAMETER GenerateScript
         When provided the SQL is returned and not executed
-
+        
         Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
         
     .EXAMPLE

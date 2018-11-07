@@ -1,17 +1,18 @@
-﻿<#
-.SYNOPSIS
-Update all the active variables
-
-.DESCRIPTION
-All PSF configuration entries that are names *.active* will be extracted to their corresponding $script:VARIABLENAMe
-
-.EXAMPLE
-PS C:\> Update-ActiveVariables
-
-This will update all the variables that maps directly to a PSF configuration value in the *.active* part of the configuration store.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+﻿
+<#
+    .SYNOPSIS
+        Update all the active variables
+        
+    .DESCRIPTION
+        All PSF configuration entries that are names *.active* will be extracted to their corresponding $script:VARIABLENAMe
+        
+    .EXAMPLE
+        PS C:\> Update-ActiveVariables
+        
+        This will update all the variables that maps directly to a PSF configuration value in the *.active* part of the configuration store.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 #>
 function Update-ActiveVariables {
     [CmdletBinding()]

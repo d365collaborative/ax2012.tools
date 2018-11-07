@@ -52,7 +52,7 @@
         
     .PARAMETER Clear
         Switch to instruct the cmdlet to clear out all the stored configuration values
-
+        
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
         
@@ -71,10 +71,10 @@
         
     .EXAMPLE
         PS C:\> Set-AxActiveAosConfiguration -Clear
-
+        
         This will clear out all the stored configuration values.
         It updates all the internal configuration variables, so all aos default values across the module will be empty.
-
+        
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         

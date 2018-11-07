@@ -1,39 +1,40 @@
-﻿<#
-.SYNOPSIS
-Get the SSRS configuration
-
-.DESCRIPTION
-Get all the SSRS configuration from the AX 2012 database
-
-.PARAMETER DatabaseServer
-Server name of the database server
+﻿
+<#
+    .SYNOPSIS
+        Get the SSRS configuration
         
-Default value is: "localhost"
-
-.PARAMETER DatabaseName
-Name of the database
+    .DESCRIPTION
+        Get all the SSRS configuration from the AX 2012 database
         
-Default value is: "MicrosoftDynamicsAx"
-
-.PARAMETER SqlUser
-User name of the SQL Server credential that you want to use when working against the database
-
-.PARAMETER SqlPwd
-Password of the SQL Server credential that you want to use when working against the database
-
-.EXAMPLE
-PS C:\> Get-AxSsrsConfig
-
-This will get all the stored SSRS configuration entries from the default DatabaseServer and the default Database.
-
-.EXAMPLE
-PS C:\> Get-AxAosInstance | Get-AxSsrsConfig
-
-This will get all AOS Instance from the local machine and pipe them to the Get-AxSsrsConfig cmdlet.
-The Get-AxSsrsConfig will the traverse every AOS Instance and their corresponding database for all SSRS configuration.
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+    .PARAMETER DatabaseServer
+        Server name of the database server
+        
+        Default value is: "localhost"
+        
+    .PARAMETER DatabaseName
+        Name of the database
+        
+        Default value is: "MicrosoftDynamicsAx"
+        
+    .PARAMETER SqlUser
+        User name of the SQL Server credential that you want to use when working against the database
+        
+    .PARAMETER SqlPwd
+        Password of the SQL Server credential that you want to use when working against the database
+        
+    .EXAMPLE
+        PS C:\> Get-AxSsrsConfig
+        
+        This will get all the stored SSRS configuration entries from the default DatabaseServer and the default Database.
+        
+    .EXAMPLE
+        PS C:\> Get-AxAosInstance | Get-AxSsrsConfig
+        
+        This will get all AOS Instance from the local machine and pipe them to the Get-AxSsrsConfig cmdlet.
+        The Get-AxSsrsConfig will the traverse every AOS Instance and their corresponding database for all SSRS configuration.
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 #>
 function Get-AxSsrsConfig {
     [CmdletBinding()]
