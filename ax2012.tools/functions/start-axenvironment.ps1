@@ -73,15 +73,32 @@ function Start-AxEnvironment {
     process {
         $baseParams = @{ComputerName = $Server; ErrorAction = "SilentlyContinue"}
 
-        if ($PSCmdlet.ParameterSetName -eq "Pipeline") {
+        if ($PSBoundParameters.ContainsKey("Name")) {
+            foreach ($item in $Name) {
+                if (($item.Trim().Length -eq 0) -or ($Name -eq "*")) {
+                    Write-PSFMessage -Level Host -Message "It seems that you didn't provide any Name. That would result in starting all services." -Exception $PSItem.Exception
+                    Stop-PSFFunction -Message "Stopping because of missing filters."
+                    return
+                }
+            }
+
+            if (Test-PSFFunctionInterrupt) { return }
+
             $baseParams.Name = $Name
         }
         else {
-            if ($DisplayName -notmatch "\*" ) {
-                $DisplayName = "*$DisplayName*"
-            }
+            if (($DisplayName.Length -gt 0) -and (-not($DisplayName -eq "*"))) {
+                if ($DisplayName -notmatch "\*" ) {
+                    $DisplayName = "*$DisplayName*"
+                }
 
-            $baseParams.DisplayName = $DisplayName
+                $baseParams.DisplayName = $DisplayName
+            }
+            else {
+                Write-PSFMessage -Level Host -Message "It seems that you didn't provide any Display Name. That would result in starting all services." -Exception $PSItem.Exception
+                Stop-PSFFunction -Message "Stopping because of missing filters."
+                return
+            }
         }
 
         Get-Service @baseParams | Start-Service -ErrorAction SilentlyContinue
