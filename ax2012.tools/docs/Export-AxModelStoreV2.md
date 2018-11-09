@@ -24,7 +24,7 @@ Export an AX 2012 modelstore file from the modelstore database
 
 ### EXAMPLE 1
 ```
-Invoke-AxModelStoreV2
+Export-AxModelStoreV2
 ```
 
 This will execute the cmdlet with all the default values.

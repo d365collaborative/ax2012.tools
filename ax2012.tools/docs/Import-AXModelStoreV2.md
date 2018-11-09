@@ -31,7 +31,7 @@ Import an AX 2012 modelstore file into the modelstore database
 
 ### EXAMPLE 1
 ```
-Invoke-AXModelStoreV2 -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
+Import-AXModelStoreV2 -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
 ```
 
 This will execute the cmdlet with some of the default values.
