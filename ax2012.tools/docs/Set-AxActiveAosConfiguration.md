@@ -16,7 +16,7 @@ Set the active AX 2012 AOS configuration
 Set-AxActiveAosConfiguration [[-ComputerName] <String[]>] [[-BinDirectory] <String>]
  [[-InstanceNumber] <String>] [[-InstanceName] <String>] [[-DatabaseServer] <String>]
  [[-DatabaseName] <String>] [[-ModelstoreDatabase] <String>] [[-AosPort] <String>] [[-WsdlPort] <String>]
- [[-NetTcpPort] <String>] [-ConfigStorageLocation <String>] [-Temporary] [<CommonParameters>]
+ [[-NetTcpPort] <String>] [-ConfigStorageLocation <String>] [-Temporary] [-Clear] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,14 @@ The database server will be registered to: SQLSERVER
 The database name will be registered to: AX2012R3_PROD
 The model store database will be registered to: AX2012R3_PROD_model
 The AOS port will be registered to: 2712
+
+### EXAMPLE 3
+```
+Set-AxActiveAosConfiguration -Clear
+```
+
+This will clear out all the stored configuration values.
+It updates all the internal configuration variables, so all aos default values across the module will be empty.
 
 ## PARAMETERS
 
@@ -221,6 +229,21 @@ Accept wildcard characters: False
 
 ### -Temporary
 Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Clear
+Switch to instruct the cmdlet to clear out all the stored configuration values
 
 ```yaml
 Type: SwitchParameter

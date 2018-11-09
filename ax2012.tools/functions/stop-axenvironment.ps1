@@ -79,18 +79,37 @@ function Stop-AxEnvironment {
     process {
         $baseParams = @{ComputerName = $Server; ErrorAction = "SilentlyContinue"}
 
-        if ($PSCmdlet.ParameterSetName -eq "Pipeline") {
+        if ($PSBoundParameters.ContainsKey("Name")) {
+            foreach ($item in $Name) {
+                if (($item.Trim().Length -eq 0) -or ($Name -eq "*")) {
+                    Write-PSFMessage -Level Host -Message "It seems that you didn't provide any Name. That would result in shutting down all services." -Exception $PSItem.Exception
+                    Stop-PSFFunction -Message "Stopping because of missing filters."
+                    return
+                }
+            }
+
+            if (Test-PSFFunctionInterrupt) { return }
+
             $baseParams.Name = $Name
         }
         else {
-            if ($DisplayName -notmatch "\*" ) {
-                $DisplayName = "*$DisplayName*"
-            }
+            if (($DisplayName.Length -gt 0) -and (-not($DisplayName -eq "*"))) {
+                if ($DisplayName -notmatch "\*" ) {
+                    $DisplayName = "*$DisplayName*"
+                }
 
-            $baseParams.DisplayName = $DisplayName
+                $baseParams.DisplayName = $DisplayName
+            }
+            else {
+                Write-PSFMessage -Level Host -Message "It seems that you didn't provide any Display Name. That would result in shutting down all services." -Exception $PSItem.Exception
+                Stop-PSFFunction -Message "Stopping because of missing filters."
+                return
+            }
         }
 
+        Write-PSFMessage -Level Verbose -Message "Stopping the specified services." -Target ((Convert-HashToArgString $baseParams) -join ",")
         Get-Service @baseParams | Stop-Service -Force:$Force -ErrorAction SilentlyContinue
+        #Write-PSFMessage -Level Host -Message "I would be stopping things now" -Target $Var ($Name -join ", ")
 
         if ($ShowOutput) {
             $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
