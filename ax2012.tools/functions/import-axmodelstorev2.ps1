@@ -43,7 +43,7 @@
         Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
-        PS C:\> Invoke-AXModelStoreV2 -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
+        PS C:\> Import-AXModelStoreV2 -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore
         
         This will execute the cmdlet with some of the default values.
         This will work against the SQL server that is on localhost.

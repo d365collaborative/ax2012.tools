@@ -39,7 +39,7 @@
         Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
-        PS C:\> Invoke-AxModelStoreV2
+        PS C:\> Export-AxModelStoreV2
         
         This will execute the cmdlet with all the default values.
         This will work against the SQL server that is on localhost.
