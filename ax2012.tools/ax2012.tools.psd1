@@ -3,7 +3,7 @@
     RootModule        = 'ax2012.tools.psm1'
 	
     # Version number of this module.
-    ModuleVersion     = '0.1.14'
+    ModuleVersion     = '0.1.15'
 	
     # ID used to uniquely identify this module
     GUID              = 'c0052746-6bea-41a0-9aeb-68badbe62024'
