@@ -24,15 +24,15 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter AllAxServices' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['AllAxServices']
-			$parameter.Name | Should -Be 'AllAxServices'
+		It 'Should have the expected parameter All' {
+			$parameter = (Get-Command Get-AxEnvironment).Parameters['All']
+			$parameter.Name | Should -Be 'All'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be 'Default'
 			$parameter.ParameterSets.Keys | Should -Contain 'Default'
 			$parameter.ParameterSets['Default'].IsMandatory | Should -Be $False
-			$parameter.ParameterSets['Default'].Position | Should -Be 2
+			$parameter.ParameterSets['Default'].Position | Should -Be -2147483648
 			$parameter.ParameterSets['Default'].ValueFromPipeline | Should -Be $False
 			$parameter.ParameterSets['Default'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Default'].ValueFromRemainingArguments | Should -Be $False
@@ -58,7 +58,7 @@
 			$parameter.ParameterSets.Keys | Should -Be 'Specific'
 			$parameter.ParameterSets.Keys | Should -Contain 'Specific'
 			$parameter.ParameterSets['Specific'].IsMandatory | Should -Be $False
-			$parameter.ParameterSets['Specific'].Position | Should -Be 2
+			$parameter.ParameterSets['Specific'].Position | Should -Be -2147483648
 			$parameter.ParameterSets['Specific'].ValueFromPipeline | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
@@ -71,7 +71,7 @@
 			$parameter.ParameterSets.Keys | Should -Be 'Specific'
 			$parameter.ParameterSets.Keys | Should -Contain 'Specific'
 			$parameter.ParameterSets['Specific'].IsMandatory | Should -Be $False
-			$parameter.ParameterSets['Specific'].Position | Should -Be 3
+			$parameter.ParameterSets['Specific'].Position | Should -Be -2147483648
 			$parameter.ParameterSets['Specific'].ValueFromPipeline | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
@@ -84,7 +84,7 @@
 			$parameter.ParameterSets.Keys | Should -Be 'Specific'
 			$parameter.ParameterSets.Keys | Should -Contain 'Specific'
 			$parameter.ParameterSets['Specific'].IsMandatory | Should -Be $False
-			$parameter.ParameterSets['Specific'].Position | Should -Be 4
+			$parameter.ParameterSets['Specific'].Position | Should -Be -2147483648
 			$parameter.ParameterSets['Specific'].ValueFromPipeline | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
@@ -107,7 +107,7 @@
 	Describe "Testing parameterset Default" {
 		<#
 		Default -
-		Default -ComputerName -AllAxServices -AosInstanceName -ScanAllAosServices
+		Default -ComputerName -All -AosInstanceName -ScanAllAosServices
 		#>
 	}
  	Describe "Testing parameterset Specific" {
