@@ -48,10 +48,10 @@
         "System" will store the configuration so all users can access the configuration objects
         
     .PARAMETER Temporary
-        Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
+        Instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
         
     .PARAMETER Clear
-        Switch to instruct the cmdlet to clear out all the stored configuration values
+        Instruct the cmdlet to clear out all the stored configuration values
         
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
