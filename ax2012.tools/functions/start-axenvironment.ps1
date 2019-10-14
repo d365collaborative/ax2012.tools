@@ -23,7 +23,7 @@
         
         Designed to work together with the Get-AxEnvironment cmdlet
         
-    .PARAMETER ShowOriginalOutput
+    .PARAMETER ShowOriginalProgress
         Instruct the cmdlet to output the status for the service
         
     .EXAMPLE
@@ -32,13 +32,13 @@
         This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         
     .EXAMPLE
-        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalOutput
+        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
         
         This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalProgress
         
         This will scan the "TEST-AOS-01" server for all AOS instances and start them.
         It will show the status for the service(s) on the server afterwards.
@@ -63,15 +63,18 @@ function Start-AxEnvironment {
         [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = "Pipeline")]
         [string[]] $Name,
 
-        [switch] $ShowOriginalOutput
+        [switch] $ShowOriginalProgress
     )
 
     begin {
         $output = New-Object System.Collections.ArrayList
+
+        $warningActionValue = "SilentlyContinue"
+        if ($ShowOriginalProgress) { $warningActionValue = "Continue" }
     }
 
     process {
-        $baseParams = @{ComputerName = $Server; ErrorAction = "SilentlyContinue"}
+        $baseParams = @{ComputerName = $Server; ErrorAction = "SilentlyContinue" }
 
         if ($PSBoundParameters.ContainsKey("Name")) {
             foreach ($item in $Name) {
@@ -101,17 +104,13 @@ function Start-AxEnvironment {
             }
         }
 
-        Get-Service @baseParams | Start-Service -ErrorAction SilentlyContinue
+        Get-Service @baseParams | Start-Service -ErrorAction SilentlyContinue -WarningAction $warningActionValue
 
-        if ($ShowOriginalOutput) {
-            $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
-            $null = $output.Add($service)
-        }
+        $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = { $Server } }, Name, Status, DisplayName
+        $null = $output.Add($service)
     }
 
     end {
-        if ($ShowOriginalOutput) {
-            $output.ToArray() | Select-Object Server, DisplayName, Status, Name
-        }
+        $output.ToArray() | Select-Object Server, DisplayName, Status, Name
     }
 }

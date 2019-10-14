@@ -56,9 +56,9 @@
 			$parameter.ParameterSets['Pipeline'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['Pipeline'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter ShowOriginalOutput' {
-			$parameter = (Get-Command Start-AxEnvironment).Parameters['ShowOriginalOutput']
-			$parameter.Name | Should -Be 'ShowOriginalOutput'
+		It 'Should have the expected parameter ShowOriginalProgress' {
+			$parameter = (Get-Command Start-AxEnvironment).Parameters['ShowOriginalProgress']
+			$parameter.Name | Should -Be 'ShowOriginalProgress'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -74,13 +74,13 @@
 	Describe "Testing parameterset Default" {
 		<#
 		Default -DisplayName
-		Default -Server -DisplayName -ShowOriginalOutput
+		Default -Server -DisplayName -ShowOriginalProgress
 		#>
 	}
  	Describe "Testing parameterset Pipeline" {
 		<#
 		Pipeline -
-		Pipeline -Server -Name -ShowOriginalOutput
+		Pipeline -Server -Name -ShowOriginalProgress
 		#>
 	}
 

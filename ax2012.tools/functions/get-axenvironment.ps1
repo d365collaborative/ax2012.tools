@@ -57,13 +57,13 @@
         This will get all AOS instances that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalProgress
         
         This will scan the "TEST-AOS-01" server for all AOS instances and start them.
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalProgress
         
         This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
         It will show the status for the service(s) on the server afterwards.
