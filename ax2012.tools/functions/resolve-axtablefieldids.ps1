@@ -62,20 +62,17 @@ Function Resolve-AxTableFieldIDs {
     [CmdletBinding()]
     [OutputType('System.String')]
     Param(
-        [Parameter(Mandatory = $false, Position = 1)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(Mandatory = $false, Position = 2)]
         [string] $DatabaseName = $Script:ActiveAosDatabase,
 
-        [Parameter(Mandatory = $false, Position = 3)]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
-        [Parameter(Mandatory = $false, Position = 4)]
         [string] $SqlUser,
 
-        [Parameter(Mandatory = $false, Position = 5)]
         [string] $SqlPwd,
+
+        [Switch] $Force,
 
         [Switch] $GenerateScript
     )
@@ -91,17 +88,21 @@ Function Resolve-AxTableFieldIDs {
         SqlUser = $SqlUser; SqlPwd = $SqlPwd
     }
 
+    $forceParameterValue = "0"
+
+    if ($Force) { $forceParameterValue = "1" }
+
     $sqlCommand = Get-SqlCommand @SqlParams -TrustedConnection $UseTrustedConnection
 
     $commandText = (Get-Content "$script:ModuleRoot\internal\sql\resolve-sqldictionaryids.sql") -join [Environment]::NewLine
     
-    $sqlCommand.CommandText = $commandText.Replace('@DatabaseName', $DatabaseName).Replace('@ModelDatabaseName', $ModelstoreDatabase)
+    $sqlCommand.CommandText = $commandText.Replace('@DatabaseName', $DatabaseName).Replace('@ModelDatabaseName', $ModelstoreDatabase).Replace("@ForceValue", $forceParameterValue)
 
     if ($GenerateScript) {
         (Get-SqlString $sqlCommand)
     }
     else {
-        $handler = [System.Data.SqlClient.SqlInfoMessageEventHandler] {param($sender, $event) Write-PSFMessage -Level Host -Message $($event.Message) -Target $($event.Message) }
+        $handler = [System.Data.SqlClient.SqlInfoMessageEventHandler] { param($sender, $event) Write-PSFMessage -Level Host -Message $($event.Message) -Target $($event.Message) }
         $sqlCommand.Connection.add_InfoMessage($handler)
         $sqlCommand.Connection.FireInfoMessageEventOnUserErrors = $true;
 
