@@ -41,6 +41,9 @@
     .PARAMETER SqlPwd
         Password of the SQL Server credential that you want to use when working against the database
         
+    .PARAMETER Force
+        Instruct the cmdlet to overwrite any existing bak (backup) tables from previous executions
+        
     .PARAMETER GenerateScript
         When provided the SQL is returned and not executed
         
