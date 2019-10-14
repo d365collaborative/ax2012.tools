@@ -14,12 +14,12 @@ Stop an AX 2012 environment
 
 ### Default (Default)
 ```
-Stop-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOutput] [-Force] [<CommonParameters>]
+Stop-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalOutput] [-Force] [<CommonParameters>]
 ```
 
 ### Pipeline
 ```
-Stop-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOutput] [-Force] [<CommonParameters>]
+Stop-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalOutput] [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ This will stop the service(s) that match the search pattern "*ax*obj*" on the se
 
 ### EXAMPLE 2
 ```
-Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOutput
+Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalOutput
 ```
 
 This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
@@ -44,7 +44,7 @@ It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
@@ -119,7 +119,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShowOutput
+### -ShowOriginalOutput
 Switch to instruct the cmdlet to output the status for the service
 
 ```yaml

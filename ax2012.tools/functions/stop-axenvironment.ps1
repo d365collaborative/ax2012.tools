@@ -23,7 +23,7 @@
         
         Designed to work together with the Get-AxEnvironment cmdlet
         
-    .PARAMETER ShowOutput
+    .PARAMETER ShowOriginalOutput
         Switch to instruct the cmdlet to output the status for the service
         
     .PARAMETER Force
@@ -35,13 +35,13 @@
         This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         
     .EXAMPLE
-        PS C:\> Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOutput
+        PS C:\> Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalOutput
         
         This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
+        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalOutput
         
         This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
         It will show the status for the service(s) on the server afterwards.
@@ -66,7 +66,7 @@ function Stop-AxEnvironment {
         [Parameter(ValueFromPipelineByPropertyName = $true, ParameterSetName = "Pipeline")]
         [string[]] $Name,
 
-        [switch] $ShowOutput,
+        [switch] $ShowOriginalOutput,
 
         [switch] $Force
 
@@ -111,14 +111,14 @@ function Stop-AxEnvironment {
         Get-Service @baseParams | Stop-Service -Force:$Force -ErrorAction SilentlyContinue
         #Write-PSFMessage -Level Host -Message "I would be stopping things now" -Target $Var ($Name -join ", ")
 
-        if ($ShowOutput) {
+        if ($ShowOriginalOutput) {
             $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = {$Server}}, Name, Status, DisplayName
             $null = $output.Add($service)
         }
     }
 
     end {
-        if ($ShowOutput) {
+        if ($ShowOriginalOutput) {
             $output.ToArray() | Select-Object Server, DisplayName, Status, Name
         }
     }

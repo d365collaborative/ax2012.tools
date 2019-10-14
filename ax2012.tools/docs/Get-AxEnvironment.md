@@ -62,7 +62,7 @@ This will get all AOS instances that match the search pattern "*DEV*" from the s
 
 ### EXAMPLE 5
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and start them.
@@ -70,7 +70,7 @@ It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 6
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and stop them.

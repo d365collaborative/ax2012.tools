@@ -14,12 +14,12 @@ Start an AX 2012 environment
 
 ### Default (Default)
 ```
-Start-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOutput] [<CommonParameters>]
+Start-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalOutput] [<CommonParameters>]
 ```
 
 ### Pipeline
 ```
-Start-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOutput] [<CommonParameters>]
+Start-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalOutput] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ This will start the service(s) that match the search pattern "*ax*obj*" on the s
 
 ### EXAMPLE 2
 ```
-Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOutput
+Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalOutput
 ```
 
 This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
@@ -44,7 +44,7 @@ It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOutput
+Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalOutput
 ```
 
 This will scan the "TEST-AOS-01" server for all AOS instances and start them.
@@ -119,7 +119,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShowOutput
+### -ShowOriginalOutput
 Switch to instruct the cmdlet to output the status for the service
 
 ```yaml

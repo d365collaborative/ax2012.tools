@@ -49,8 +49,10 @@ Function Get-ServiceList {
 
     Write-PSFMessage -Level Verbose -Message "The PSBoundParameters was" -Target ($PSBoundParameters.Keys -Join "," )
     
-    $MRService = "MR2012ProcessService"
-    $dixfname = "Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe"
+    $mrProcessName = "MR2012ProcessService"
+    $mrApplicationName = "MR2012ApplicationService"
+
+    $dixfName = "Microsoft.Dynamics.AX.Framework.Tools.DMF.SSISHelperService.exe"
 
     [System.Collections.ArrayList]$Services = New-Object -TypeName "System.Collections.ArrayList"
 
@@ -59,7 +61,7 @@ Function Get-ServiceList {
             $null = $Services.Add("AOS60`$$($i.ToString("00"))")
         }
 
-        $null = $Services.AddRange(@($MRService, $dixfname))
+        $null = $Services.AddRange(@($mrProcessName, $mrApplicationName, $dixfName))
     }
     else {
         if ($Aos) {
@@ -69,11 +71,12 @@ Function Get-ServiceList {
         }
 
         if ($ManagementReporter) {
-            $null = $Services.Add($ManagementReporter)
+            $null = $Services.Add($mrProcessName)
+            $null = $Services.Add($mrApplicationName)
         }
 
         if ($DIXF) {
-            $null = $Services.Add($dixfname)
+            $null = $Services.Add($dixfName)
         }
     }
 
