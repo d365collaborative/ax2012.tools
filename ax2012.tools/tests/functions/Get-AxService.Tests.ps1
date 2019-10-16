@@ -1,4 +1,4 @@
-﻿Describe "Get-AxEnvironment Unit Tests" -Tag "Unit" {
+﻿Describe "Get-AxService Unit Tests" -Tag "Unit" {
 	BeforeAll {
 		# Place here all things needed to prepare for the tests
 	}
@@ -8,11 +8,11 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Get-AxEnvironment).ParameterSets.Name | Should -Be 'Default', 'Specific'
+			(Get-Command Get-AxService).ParameterSets.Name | Should -Be 'Default', 'Specific'
 		}
 		
 		It 'Should have the expected parameter ComputerName' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['ComputerName']
+			$parameter = (Get-Command Get-AxService).Parameters['ComputerName']
 			$parameter.Name | Should -Be 'ComputerName'
 			$parameter.ParameterType.ToString() | Should -Be System.String[]
 			$parameter.IsDynamic | Should -Be $False
@@ -21,11 +21,11 @@
 			$parameter.ParameterSets['__AllParameterSets'].IsMandatory | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].Position | Should -Be -2147483648
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipeline | Should -Be $False
-			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
+			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $True
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter All' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['All']
+			$parameter = (Get-Command Get-AxService).Parameters['All']
 			$parameter.Name | Should -Be 'All'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
@@ -38,7 +38,7 @@
 			$parameter.ParameterSets['Default'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter AosInstanceName' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['AosInstanceName']
+			$parameter = (Get-Command Get-AxService).Parameters['AosInstanceName']
 			$parameter.Name | Should -Be 'AosInstanceName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -51,7 +51,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter Aos' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['Aos']
+			$parameter = (Get-Command Get-AxService).Parameters['Aos']
 			$parameter.Name | Should -Be 'Aos'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
@@ -64,7 +64,7 @@
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter ManagementReporter' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['ManagementReporter']
+			$parameter = (Get-Command Get-AxService).Parameters['ManagementReporter']
 			$parameter.Name | Should -Be 'ManagementReporter'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
@@ -77,7 +77,7 @@
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter DIXF' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['DIXF']
+			$parameter = (Get-Command Get-AxService).Parameters['DIXF']
 			$parameter.Name | Should -Be 'DIXF'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
@@ -90,7 +90,7 @@
 			$parameter.ParameterSets['Specific'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter ScanAllAosServices' {
-			$parameter = (Get-Command Get-AxEnvironment).Parameters['ScanAllAosServices']
+			$parameter = (Get-Command Get-AxService).Parameters['ScanAllAosServices']
 			$parameter.Name | Should -Be 'ScanAllAosServices'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
