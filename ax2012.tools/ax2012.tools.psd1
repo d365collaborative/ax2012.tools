@@ -37,10 +37,13 @@
     # TypesToProcess = @('xml\ax2012.tools.Types.ps1xml')
 	
     # Format files (.ps1xml) to be loaded when importing this module
-    # FormatsToProcess = @('xml\ax2012.tools.Format.ps1xml')
+    FormatsToProcess = @('xml\ax2012.tools.Format.ps1xml')
 	
     # Functions to export from this module
     FunctionsToExport = @(
+
+                            'Add-AxEnvironmentConfig',
+
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
 
@@ -50,7 +53,8 @@
 
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
-                            'Get-AxEnvironment',
+                            'Get-AxService',
+                            'Get-AxEnvironmentConfig',
 
                             'Get-AxLogicAppConfig',
                             'Get-AxSsrsConfig',
@@ -70,8 +74,8 @@
                             'Set-AxActiveAosConfiguration',
                             'Set-AxLogicAppConfig',
                             
-                            'Start-AxEnvironment',
-                            'Stop-AxEnvironment'
+                            'Start-AxService',
+                            'Stop-AxService'
     )
 	
     # Cmdlets to export from this module
