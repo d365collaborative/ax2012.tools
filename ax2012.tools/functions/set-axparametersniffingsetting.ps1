@@ -22,11 +22,11 @@
     .PARAMETER SqlPwd
         Password of the SQL Server credential that you want to use when working against the database
         
-            .PARAMETER GenerateScript
+    .PARAMETER GenerateScript
         When provided the SQL is returned and not executed
         
         Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
-
+        
     .EXAMPLE
         PS C:\> Set-AxParameterSniffingSetting
         
