@@ -1,10 +1,10 @@
 ﻿
 <#
     .SYNOPSIS
-        Get the parameter sniffing configuration
+        Set the parameter sniffing configuration
         
     .DESCRIPTION
-        Get the parameter sniffing value from the database that has been released by Microsoft for AX 2012
+        Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
         
     .PARAMETER DatabaseServer
         Server name of the database server
@@ -34,7 +34,9 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-        
+  
+        .LINK
+        https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 #>
 function Set-AxParameterSniffingSetting {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]

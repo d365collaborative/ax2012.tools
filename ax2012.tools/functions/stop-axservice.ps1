@@ -1,10 +1,10 @@
 ﻿
 <#
     .SYNOPSIS
-        Stop an AX 2012 environment
+        Stop AX 2012 service(s)
         
     .DESCRIPTION
-        Stop an AX 2012 services in your environment
+        Stop AX 2012 service(s) on the computer
         
     .PARAMETER Server
         Name of the computer(s) that you want to work against

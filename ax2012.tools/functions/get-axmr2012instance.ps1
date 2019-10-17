@@ -1,29 +1,15 @@
 ﻿
 <#
     .SYNOPSIS
-        Get AX 2012 AOS Instance
+        Get Management Reporter 2012 Instance
         
     .DESCRIPTION
-        Get AX 2012 AOS Instance details from the local machine
-        
-    .PARAMETER Name
-        The search string to filter the AOS instance that you're looking for
-        
-        The parameter supports wildcards. E.g. -Name "*DEV*"
-        
-        Default value is "*" and will give you all the instances
-        
-    .PARAMETER InstanceNo
-        The search string to filter the AOS instance that you're looking for
-        
-        The parameter supports wildcards. E.g. -InstanceNo "*1*"
-        
-        Default value is "*" and will give you all the instances
+        Get Management Reporter 2012 Instance details from the local machine
         
     .EXAMPLE
-        PS C:\> Get-AxAosInstance
+        PS C:\> Get-AxMr2012Instance
         
-        This will get you all the installed AX 2012 AOS instances on the machine
+        This will output all the core Management Reporter details on the machine.
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)

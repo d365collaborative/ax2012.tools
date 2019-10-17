@@ -1,10 +1,10 @@
 ﻿
 <#
     .SYNOPSIS
-        Get the status of an AX 2012 environment
+        Get the status of the AX 2012 service(s)
         
     .DESCRIPTION
-        Get the status of AX 2012 services in your environment
+        Get the status of AX 2012 service(s) on the computer
         
     .PARAMETER ComputerName
         Name of the computer(s) that you want to work against
@@ -22,16 +22,16 @@
         Default value is otherwise "*" which will search for all AOS instances
         
     .PARAMETER Aos
-        Switch to instruct the cmdlet to include the AOS service
+        Instruct the cmdlet to include the AOS service
         
     .PARAMETER ManagementReporter
-        Switch to instruct the cmdlet to include the ManagementReporter service
+        Instruct the cmdlet to include the ManagementReporter service
         
     .PARAMETER DIXF
-        Switch to instruct the cmdlet to include the DIXF service
+        Instruct the cmdlet to include the DIXF service
         
     .PARAMETER ScanAllAosServices
-        Parameter description
+        Instruct the cmdlet to look for all available AOS Instances on the computer
         
     .EXAMPLE
         PS C:\> Get-AxService
