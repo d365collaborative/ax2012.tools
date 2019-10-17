@@ -65,5 +65,34 @@
 				</ListEntries>
 			</ListControl>
 		</View>
+		<View>
+			<Name>AX2012.TOOLS.Mr2012.Config</Name>
+			<ViewSelectedBy>
+				<TypeName>AX2012.TOOLS.Mr2012.Config</TypeName>
+			</ViewSelectedBy>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>HttpAddress</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>BinDirectory</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DatabaseServer</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Database</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>DeploymentLogsPath</PropertyName>
+							</ListItem>
+						</ListItems>
+					</ListEntry>
+				</ListEntries>
+			</ListControl>
+		</View>
 	</ViewDefinitions>
 </Configuration>

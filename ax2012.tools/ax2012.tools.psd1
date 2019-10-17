@@ -53,12 +53,14 @@
 
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
-                            'Get-AxService',
                             'Get-AxEnvironmentConfig',
 
                             'Get-AxLogicAppConfig',
 
+                            'Get-AxMr2012Instance',
+
                             'Get-AxParameterSniffingSetting',
+                            'Get-AxService',
                             'Get-AxSsrsConfig',
                             
                             'Get-AxWMDPDetails',
@@ -77,7 +79,7 @@
                             'Set-AxLogicAppConfig',
                             
                             'Set-AxParameterSniffingSetting',
-                            
+
                             'Start-AxService',
                             'Stop-AxService'
     )
