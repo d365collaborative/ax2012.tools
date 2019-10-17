@@ -34,8 +34,8 @@
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
-  
-        .LINK
+        
+    .LINK
         https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 #>
 function Set-AxParameterSniffingSetting {
