@@ -1,4 +1,31 @@
-﻿function Get-AxEnvironmentConfig {
+﻿<#
+.SYNOPSIS
+Get AX 2012 environment details from the configuration store
+
+.DESCRIPTION
+Get the environment details for the AX 2012 environment(s) that are stored in the configuration store
+
+.PARAMETER Name
+Name of the configuration that you want to work against
+
+    .PARAMETER OutputAsHashtable
+        Instruct the cmdlet to return a hastable object
+
+    .PARAMETER EnableException
+        This parameters disables user-friendly warnings and enables the throwing of exceptions
+        This is less user friendly, but allows catching exceptions in calling scripts
+
+.EXAMPLE
+PS C:\> Get-AxEnvironmentConfig
+
+This will get all saved environment configurations.
+
+.NOTES
+Author: Mötz Jensen (@Splaxi)
+
+#>
+
+function Get-AxEnvironmentConfig {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseOutputTypeCorrectly', '')]
     [CmdletBinding()]
     [OutputType('PSCustomObject')]
