@@ -37,6 +37,7 @@
         
 #>
 function Set-AxParameterSniffingSetting {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
     [CmdletBinding()]
     #[OutputType()]
     param (
