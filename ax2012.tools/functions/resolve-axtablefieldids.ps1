@@ -115,7 +115,7 @@ Function Resolve-AxTableFieldIDs {
             $sqlCommand.Connection.Open()
             $sqlCommand.ExecuteNonQuery()
 
-            Write-PSFMessage -Level Host -Message "Complete"
+            Write-PSFMessage -Level Verbose -Message "SQL query executed."
         }
         catch {
             Write-PSFMessage -Level Host -Message "Something went wrong while working against the database" -Exception $PSItem.Exception

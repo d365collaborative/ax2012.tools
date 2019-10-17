@@ -57,6 +57,8 @@
                             'Get-AxEnvironmentConfig',
 
                             'Get-AxLogicAppConfig',
+
+                            'Get-AxParameterSniffingSetting',
                             'Get-AxSsrsConfig',
                             
                             'Get-AxWMDPDetails',
@@ -73,6 +75,8 @@
                             
                             'Set-AxActiveAosConfiguration',
                             'Set-AxLogicAppConfig',
+                            
+                            'Set-AxParameterSniffingSetting',
                             
                             'Start-AxService',
                             'Stop-AxService'
