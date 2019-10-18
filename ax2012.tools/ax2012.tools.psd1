@@ -48,6 +48,7 @@
                             'Export-AxModelStoreV2',
 
                             'Get-AxActiveAosConfiguration',
+                            'Get-AxActiveEnvironmentConfig',
                             'Get-AxAosInstance',
                             'Get-AxAosServerFromDB',
 
@@ -76,6 +77,7 @@
                             'Resolve-AxTableFieldIDs',
                             
                             'Set-AxActiveAosConfiguration',
+                            'Set-AxActiveEnvironmentConfig',
                             'Set-AxLogicAppConfig',
                             
                             'Set-AxParameterSniffingSetting',
