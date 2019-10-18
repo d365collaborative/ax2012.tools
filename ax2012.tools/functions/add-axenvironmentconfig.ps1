@@ -77,7 +77,8 @@
     .LINK
         Get-AxEnvironmentConfig
         
-    .LINK Remove-AxEnvironmentConfig
+    .LINK
+        Remove-AxEnvironmentConfig
         
     .LINK
         Set-AxActiveEnvironmentConfig
