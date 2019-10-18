@@ -64,5 +64,5 @@ function Set-AxActiveEnvironmentConfig {
     Set-PSFConfig -FullName "ax2012.tools.active.environment.config.name" -Value $Name
     if (-not $Temporary) { Register-PSFConfig -FullName "ax2012.tools.active.environment.config.name"  -Scope UserDefault }
 
-    Update-EnvironmentVariables
+    Update-ActiveEnvironmentVariables
 }

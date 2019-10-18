@@ -7,7 +7,7 @@
         Update the active environment config variables that the module will use as default values
         
     .EXAMPLE
-        PS C:\> Update-EnvironmentVariables
+        PS C:\> Update-ActiveEnvironmentVariables
         
         This will update the environment variables.
         
@@ -15,7 +15,7 @@
         Author: Mötz Jensen (@Splaxi)
 #>
 
-function Update-EnvironmentVariables {
+function Update-ActiveEnvironmentVariables {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [CmdletBinding()]

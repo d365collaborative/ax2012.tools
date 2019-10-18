@@ -22,9 +22,11 @@ $Script:ClientBin = Get-ClientBinDir
 
 #Microsoft.Dynamics.BusinessConnectorNet.dll
 
-Update-ActiveVariables
-
 $Script:DefaultTempPath = "c:\temp\ax2012.tools"
+
+Update-ActiveEnvironmentVariables
+
+Update-ActiveVariables
 
 # ActiveAosAosPort -
 # ActiveAosBindirectory -
