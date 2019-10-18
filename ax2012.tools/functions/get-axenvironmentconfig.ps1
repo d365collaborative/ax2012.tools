@@ -22,7 +22,18 @@
         This will get all saved environment configurations.
         
     .NOTES
+        Tags: Servicing, Environment, Config, Configuration, Servers
+
         Author: Mötz Jensen (@Splaxi)
+
+        .LINK
+        Add-AxEnvironmentConfig
+
+        .LINK
+        Get-AxActiveEnvironmentConfig
+
+        .LINK
+Set-AxActiveEnvironmentConfig
         
 #>
 

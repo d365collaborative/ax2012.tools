@@ -64,7 +64,18 @@
         The database AXTEST_model is registered as the SQL Server database for the modelstore.
         
     .NOTES
+        Tags: Environment, Config, Configuration, Servers
         
+    Author: Mötz Jensen (@Splaxi)
+
+.LINK
+    Get-AxActiveEnvironmentConfig
+
+.LINK
+    Get-AxEnvironmentConfig
+
+.LINK
+    Set-AxActiveEnvironmentConfig
 #>
 
 function Add-AxEnvironmentConfig {
