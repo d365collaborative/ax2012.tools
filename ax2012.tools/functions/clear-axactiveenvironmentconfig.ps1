@@ -18,20 +18,20 @@
         Tags: Environment, Config, Configuration, Servers
         
         Author: Mötz Jensen (@Splaxi)
-.LINK
+    .LINK
         Add-AxEnvironmentConfig
-
-.LINK
-Get-AxActiveEnvironmentConfig
-
-.LINK
-Get-AxEnvironmentConfig
-
-.LINK
-Remove-AxEnvironmentConfig
-
-.LINK
-Set-AxActiveEnvironmentConfig
+        
+    .LINK
+        Get-AxActiveEnvironmentConfig
+        
+    .LINK
+        Get-AxEnvironmentConfig
+        
+    .LINK
+        Remove-AxEnvironmentConfig
+        
+    .LINK
+        Set-AxActiveEnvironmentConfig
 #>
 
 function Clear-AxActiveEnvironmentConfig {

@@ -68,9 +68,9 @@
         
         Author: Mötz Jensen (@Splaxi)
         
-        .LINK
+    .LINK
         Clear-AxActiveEnvironmentConfig
-
+        
     .LINK
         Get-AxActiveEnvironmentConfig
         
@@ -78,7 +78,7 @@
         Get-AxEnvironmentConfig
         
     .LINK Remove-AxEnvironmentConfig
-    
+        
     .LINK
         Set-AxActiveEnvironmentConfig
 #>
