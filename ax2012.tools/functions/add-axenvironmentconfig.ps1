@@ -66,16 +66,16 @@
     .NOTES
         Tags: Environment, Config, Configuration, Servers
         
-    Author: Mötz Jensen (@Splaxi)
-
-.LINK
-    Get-AxActiveEnvironmentConfig
-
-.LINK
-    Get-AxEnvironmentConfig
-
-.LINK
-    Set-AxActiveEnvironmentConfig
+        Author: Mötz Jensen (@Splaxi)
+        
+    .LINK
+        Get-AxActiveEnvironmentConfig
+        
+    .LINK
+        Get-AxEnvironmentConfig
+        
+    .LINK
+        Set-AxActiveEnvironmentConfig
 #>
 
 function Add-AxEnvironmentConfig {

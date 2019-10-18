@@ -23,17 +23,17 @@
         
     .NOTES
         Tags: Servicing, Environment, Config, Configuration, Servers
-
+        
         Author: Mötz Jensen (@Splaxi)
-
-        .LINK
+        
+    .LINK
         Add-AxEnvironmentConfig
-
-        .LINK
+        
+    .LINK
         Get-AxActiveEnvironmentConfig
-
-        .LINK
-Set-AxActiveEnvironmentConfig
+        
+    .LINK
+        Set-AxActiveEnvironmentConfig
         
 #>
 

@@ -22,15 +22,15 @@
         Tags: Environment, Config, Configuration, Servers
         
         Author: Mötz Jensen (@Splaxi)
-
-        .LINK
+        
+    .LINK
         Add-AxEnvironmentConfig
-
-        .LINK
-Get-AxEnvironmentConfig
-
-        .LINK
-Set-AxActiveEnvironmentConfig
+        
+    .LINK
+        Get-AxEnvironmentConfig
+        
+    .LINK
+        Set-AxActiveEnvironmentConfig
 #>
 
 function Get-AxActiveEnvironmentConfig {

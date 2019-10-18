@@ -8,7 +8,7 @@
         Updates the current active environment configuration with a new one
         
         Use this to update the default parameters across the module, to make it easier to call your different commands
-
+        
     .PARAMETER Name
         Name of the environment configuration you want to load into the active environment configuration
         
@@ -27,10 +27,10 @@
         
     .LINK
         Add-AxEnvironmentConfig
-
+        
     .LINK
         Get-AxActiveEnvironmentConfig
-
+        
     .LINK
         Get-AxEnvironmentConfig
         
