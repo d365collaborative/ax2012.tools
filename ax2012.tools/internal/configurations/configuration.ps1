@@ -28,3 +28,5 @@ Set-PSFConfig -Module 'ax2012.tools' -Name 'active.aos.nettcp.port' -Value "" -I
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.email' -Value "" -Initialize -Description "The registered email address the Invoke-AxLogicApp should notify when firing a notification request."
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.url' -Value "" -Initialize -Description "The registered URL/URI the Invoke-AxLogicApp should contact when firing a notification request."
 Set-PSFConfig -Module 'ax2012.tools' -Name 'active.logicapp.subject' -Value "" -Initialize -Description "The registered subject the Invoke-AxLogicApp should use as context when firing a notification request."
+
+Set-PSFConfig -FullName "ax2012.tools.active.environment.config.name" -Value "" -Initialize -Description "Name of the environment configuration that should be the default / active configuration for the module."

@@ -68,12 +68,17 @@
         
         Author: Mötz Jensen (@Splaxi)
         
+        .LINK
+        Clear-AxActiveEnvironmentConfig
+
     .LINK
         Get-AxActiveEnvironmentConfig
         
     .LINK
         Get-AxEnvironmentConfig
         
+    .LINK Remove-AxEnvironmentConfig
+    
     .LINK
         Set-AxActiveEnvironmentConfig
 #>
@@ -86,10 +91,14 @@ function Add-AxEnvironmentConfig {
 
         [string[]] $AosServers,
 
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $InstanceName,
 
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
+        [Alias('DatabaseServer')]
         [string[]] $DatabaseServers,
 
+        [Alias('DatabaseName')]
         [string] $Database,
 
         [string] $ModelstoreDatabase,
@@ -136,7 +145,7 @@ function Add-AxEnvironmentConfig {
                 $fullConfigName = "ax2012.tools.environment.$configName.name"
             }
 
-            { "Temporary", "Force", "Append" -contains $_ } {
+            { "Temporary", "Force", "Append", "Verbose" -contains $_ } {
                 continue keys
             }
             

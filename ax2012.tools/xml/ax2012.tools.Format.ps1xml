@@ -43,7 +43,16 @@
 								<PropertyName>AosServers</PropertyName>
 							</ListItem>
 							<ListItem>
+								<PropertyName>InstanceName</PropertyName>
+							</ListItem>
+							<ListItem>
 								<PropertyName>DatabaseServers</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>Database</PropertyName>
+							</ListItem>
+							<ListItem>
+								<PropertyName>ModelstoreDatabase</PropertyName>
 							</ListItem>
 							<ListItem>
 								<PropertyName>SsrsServers</PropertyName>

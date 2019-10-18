@@ -44,6 +44,8 @@
 
                             'Add-AxEnvironmentConfig',
 
+                            'Clear-AxActiveEnvironmentConfig',
+                            
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
 
@@ -74,6 +76,8 @@
                             'Import-AxModelV2',
                             'Import-AXModelStoreV2',
 
+                            'Remove-AxEnvironmentConfig',
+                            
                             'Resolve-AxTableFieldIDs',
                             
                             'Set-AxActiveAosConfiguration',
