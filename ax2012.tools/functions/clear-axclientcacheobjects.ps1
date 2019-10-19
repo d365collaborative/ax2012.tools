@@ -52,7 +52,7 @@ It will work againt the UserLocation "AllUsers".
 It WILL delete the files without further warning or notification!
 
 .EXAMPLE
-PS C:\> Clear-AxClientCacheObjects -ObjectType "Auc","Kti", "VSAssemblies" -UserLocation "CurrentUser"
+PS C:\> Clear-AxClientCacheObjects -ObjectType "Auc","Kti","VSAssemblies" -UserLocation "CurrentUser"
 
 This will delete all the Auc,Kti and VSAssemblies files under the current user location.
 It will work against the ObjectType "Auc","Kti","VSAssemblies".
@@ -61,7 +61,7 @@ It will work againt the UserLocation "CurrentUser".
 It WILL delete the files without further warning or notification!
 
 .NOTES
-Tags: Client Cache, Cache, KTI, AUC
+Tags: Client Cache, Cache, KTI, AUC, VSAssemblies
 
 Author: Mötz Jensen (@Splaxi)
 

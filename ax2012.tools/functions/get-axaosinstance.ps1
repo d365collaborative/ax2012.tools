@@ -32,10 +32,10 @@
 function Get-AxAosInstance {
     [CmdletBinding()]
     Param(
-        [Parameter()]
+
+        [Alias('InstanceName')]
         [string] $Name = "*",
         
-        [Parameter()]
         [string] $InstanceNo = "*"
     )
     $Instances = Get-ChildItem -Path $Script:RegistryAos
