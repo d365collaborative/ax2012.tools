@@ -1,4 +1,4 @@
----
+﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
 online version:
@@ -52,7 +52,7 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: Localhost
+Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: MicrosoftDynamicsAx_model
+Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -90,7 +90,7 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: C:\temp\ax2012.tools
+Default value: $Script:DefaultTempPath
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,8 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
 online version:

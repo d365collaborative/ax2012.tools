@@ -1,4 +1,4 @@
----
+﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
 online version:
@@ -8,30 +8,135 @@ schema: 2.0.0
 # Invoke-AxBuild
 
 ## SYNOPSIS
-Aaaaa aaa a aaa a a aa
+Start the AxBuild.exe
 
 ## SYNTAX
 
 ```
-Invoke-AxBuild [[-Path] <String>] [<CommonParameters>]
+Invoke-AxBuild [[-BinDirectory] <String>] [-AlternativeBinPath <String>] [[-InstanceNumber] <String>]
+ [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [-Workers <Int32>] [-Log <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Bbbb b b b b bbbbb  bbbb
+Invoke the AxBuild.exe with the necessary parameters to make it compile your application
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
+Get-AxAosInstance | Invoke-AxBuild
+```
+
+This will find all AOS instances using the Get-AxAosInstance on the machine and pipe them to Invoke-AxBuild.
+For each AOS instance found it will start the AxBuild.exe against their individual details.
+It will store the log file under the default ax2012.tools folder.
+
+### EXAMPLE 2
+```
 Invoke-AxBuild
 ```
 
-This will work
+This will start the AxBuild.exe against the ActiveAos configuration.
+It will store the log file under the default ax2012.tools folder.
 
 ## PARAMETERS
 
-### -Path
-Cccc ccccc ccc cc cc
+### -BinDirectory
+The full path to the bin directory where the AOS instance is physical installed
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Path
+
+Required: False
+Position: 2
+Default value: $Script:ActiveAosBindirectory
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AlternativeBinPath
+The full path to the client bin directory where AX 2012 Client is physical installed
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: AltBin
+
+Required: False
+Position: Named
+Default value: $Script:ClientBin
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceNumber
+The 2 digit (\[0-9\]\[0-9\]) number that the AOS instance has on the server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Aos
+
+Required: False
+Position: 4
+Default value: $Script:ActiveAosInstanceNumber
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DatabaseServer
+The name of the server running SQL Server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: DBServer
+
+Required: False
+Position: 5
+Default value: $Script:ActiveAosDatabaseserver
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ModelstoreDatabase
+The name of the AX 2012 modelstore database
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Modelstore
+
+Required: False
+Position: 6
+Default value: $Script:ActiveAosModelstoredatabase
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Workers
+Number of workers that you want to utilize while compiling
+
+The built-in logic from AxBuild.exe will choose a number equal to your visible cores
+Leaving it blank or with 0 (Zero) will use the built-in logic from AxBuild.exe
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Log
+Path to the log file you want AxBuild.exe to output to
 
 ```yaml
 Type: String
@@ -39,15 +144,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: $Script:ActiveAosBindirectory
+Position: Named
+Default value: $(Join-Path $Script:DefaultTempPath "AxBuildLog.txt")
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
