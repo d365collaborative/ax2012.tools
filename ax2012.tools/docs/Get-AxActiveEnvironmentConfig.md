@@ -5,69 +5,58 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AxAosInstance
+# Get-AxActiveEnvironmentConfig
 
 ## SYNOPSIS
-Get AX 2012 AOS Instance
+Get the active environment configuration
 
 ## SYNTAX
 
 ```
-Get-AxAosInstance [[-Name] <String>] [[-InstanceNo] <String>] [<CommonParameters>]
+Get-AxActiveEnvironmentConfig [-OutputAsHashtable] [-EnableException] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get AX 2012 AOS Instance details from the local machine
+Get the active environment configuration from the configuration store
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AxAosInstance
+Get-AxActiveEnvironmentConfig
 ```
 
-This will get you all the installed AX 2012 AOS instances on the machine
+This will get the active environment configuration.
 
 ## PARAMETERS
 
-### -Name
-The search string to filter the AOS instance that you're looking for
-
-The parameter supports wildcards.
-E.g.
--Name "*DEV*"
-
-Default value is "*" and will give you all the instances
+### -OutputAsHashtable
+Instruct the cmdlet to return a hashtable object
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: *
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceNo
-The search string to filter the AOS instance that you're looking for
-
-The parameter supports wildcards.
-E.g.
--InstanceNo "*1*"
-
-Default value is "*" and will give you all the instances
+### -EnableException
+This parameters disables user-friendly warnings and enables the throwing of exceptions
+This is less user friendly, but allows catching exceptions in calling scripts
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: *
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -80,6 +69,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+Tags: Environment, Config, Configuration, Servers
+
 Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
+
+[Add-AxEnvironmentConfig]()
+
+[Get-AxEnvironmentConfig]()
+
+[Set-AxActiveEnvironmentConfig]()
+

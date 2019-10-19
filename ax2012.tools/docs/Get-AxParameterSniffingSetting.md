@@ -5,37 +5,30 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AxSsrsConfig
+# Get-AxParameterSniffingSetting
 
 ## SYNOPSIS
-Get the SSRS configuration
+Get the parameter sniffing configuration
 
 ## SYNTAX
 
 ```
-Get-AxSsrsConfig [[-DatabaseServer] <String>] [[-DatabaseName] <String>] [[-SqlUser] <String>]
+Get-AxParameterSniffingSetting [[-DatabaseServer] <String>] [[-DatabaseName] <String>] [[-SqlUser] <String>]
  [[-SqlPwd] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get all the SSRS configuration from the AX 2012 database
+Get the parameter sniffing value from the database that has been released by Microsoft for AX 2012
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AxSsrsConfig
+Get-AxParameterSniffingSetting
 ```
 
-This will get all the stored SSRS configuration entries from the default DatabaseServer and the default Database.
-
-### EXAMPLE 2
-```
-Get-AxAosInstance | Get-AxSsrsConfig
-```
-
-This will get all AOS Instance from the local machine and pipe them to the Get-AxSsrsConfig cmdlet.
-The Get-AxSsrsConfig will the traverse every AOS Instance and their corresponding database for all SSRS configuration.
+This will query the database for the parameter sniffing settings.
+The result will be displayed along with a ShouldBe value to easily tell you if something is off.
 
 ## PARAMETERS
 

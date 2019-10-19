@@ -5,44 +5,42 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AxClientBuild
+# Clear-AxActiveEnvironmentConfig
 
 ## SYNOPSIS
-Get the build numbers
+Clear the active environment config
 
 ## SYNTAX
 
 ```
-Get-AxClientBuild [[-Path] <String>] [<CommonParameters>]
+Clear-AxActiveEnvironmentConfig [-Temporary] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the build numbers for the AX 2012 client
+Clear the active environment config from the configuration store
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AxClientBuild
+Clear-AxActiveEnvironmentConfig
 ```
 
-This will get the executable path and the build numbers for the client.
+This will clear the active environment configuration from the configuration store.
 
 ## PARAMETERS
 
-### -Path
-The path to the Ax32.exe file you want to work against
-
-The default path is read from the registry
+### -Temporary
+Instruct the cmdlet to only temporarily clear the active environment configuration in the configuration store
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: $(Join-Path $Script:ClientBin "Ax32.exe")
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -55,6 +53,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+Tags: Environment, Config, Configuration, Servers
+
 Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
+
+[Add-AxEnvironmentConfig]()
+
+[Get-AxActiveEnvironmentConfig]()
+
+[Get-AxEnvironmentConfig]()
+
+[Remove-AxEnvironmentConfig]()
+
+[Set-AxActiveEnvironmentConfig]()
+

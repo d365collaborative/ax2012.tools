@@ -5,69 +5,57 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AxAosInstance
+# Remove-AxEnvironmentConfig
 
 ## SYNOPSIS
-Get AX 2012 AOS Instance
+Remove environment configuration
 
 ## SYNTAX
 
 ```
-Get-AxAosInstance [[-Name] <String>] [[-InstanceNo] <String>] [<CommonParameters>]
+Remove-AxEnvironmentConfig [-Name] <String> [-Temporary] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get AX 2012 AOS Instance details from the local machine
+Remove a environment configuration from the configuration store
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AxAosInstance
+Remove-AxEnvironmentConfig -Name "UAT"
 ```
 
-This will get you all the installed AX 2012 AOS instances on the machine
+This will remove the environment configuration name "UAT" from the machine.
 
 ## PARAMETERS
 
 ### -Name
-The search string to filter the AOS instance that you're looking for
-
-The parameter supports wildcards.
-E.g.
--Name "*DEV*"
-
-Default value is "*" and will give you all the instances
+Name of the environment configuration you want to remove from the configuration store
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 1
-Default value: *
+Required: True
+Position: 2
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InstanceNo
-The search string to filter the AOS instance that you're looking for
-
-The parameter supports wildcards.
-E.g.
--InstanceNo "*1*"
-
-Default value is "*" and will give you all the instances
+### -Temporary
+Instruct the cmdlet to only temporarily remove the environment configuration from the configuration store
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: *
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -80,6 +68,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+Tags: Servicing, Environment, Config, Configuration, Servers
+
 Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
+
+[Add-AxEnvironmentConfig]()
+
+[Clear-AxActiveEnvironmentConfig]()
+
+[Get-AxActiveEnvironmentConfig]()
+
+[Get-AxEnvironmentConfig]()
+
+[Set-AxActiveEnvironmentConfig]()
+
