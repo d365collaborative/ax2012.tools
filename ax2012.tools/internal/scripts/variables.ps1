@@ -12,15 +12,23 @@ $Script:RegistryAos = "HKLM:\SYSTEM\ControlSet001\Services\Dynamics Server\6.0"
 $Script:RegistryClientConfig = "HKCU:\Software\Microsoft\Dynamics\6.0\Configuration"
 $Script:RegistryClient = "HKLM:\SOFTWARE\Microsoft\Dynamics\6.0\Setup"
 
+$Script:RegistryMr2012 = "HKLM:\SOFTWARE\Microsoft\Dynamics\ManagementReporter\21\Server"
+
+$Script:Mr2012DeploymentLogsPath = "C:\ProgramData\Microsoft Dynamics ERP\Management Reporter\Logs"
+$Script:Mr2012ConfigPath = "Services\MRServiceHost.connections.config"
+$Script:Mr2012ServiceConfigPath = "Services\MRServiceHost.settings.config"
+
 $Script:LayerDictionary = @{"ISV" = "01."; "ISP" = "02."; "VAR" = "03."; "VAP" = "04."; "CUS" = "05."; "CUP" = "06."; "USR" = "07." ; "USP" = "08."}
 
 $Script:ClientBin = Get-ClientBinDir
 
 #Microsoft.Dynamics.BusinessConnectorNet.dll
 
-Update-ActiveVariables
-
 $Script:DefaultTempPath = "c:\temp\ax2012.tools"
+
+Update-ActiveEnvironmentVariables
+
+Update-ActiveVariables
 
 # ActiveAosAosPort -
 # ActiveAosBindirectory -

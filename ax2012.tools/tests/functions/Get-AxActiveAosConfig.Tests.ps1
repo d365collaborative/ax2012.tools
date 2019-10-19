@@ -1,4 +1,4 @@
-﻿Describe "Get-AxActiveAosConfiguration Unit Tests" -Tag "Unit" {
+﻿Describe "Get-AxActiveAosConfig Unit Tests" -Tag "Unit" {
 	BeforeAll {
 		# Place here all things needed to prepare for the tests
 	}
@@ -8,7 +8,7 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Get-AxActiveAosConfiguration).ParameterSets.Name | Should -Be '__AllParameterSets'
+			(Get-Command Get-AxActiveAosConfig).ParameterSets.Name | Should -Be '__AllParameterSets'
 		}
 		
 

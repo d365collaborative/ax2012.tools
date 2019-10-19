@@ -1,4 +1,4 @@
-﻿Describe "Stop-AxEnvironment Unit Tests" -Tag "Unit" {
+﻿Describe "Stop-AxService Unit Tests" -Tag "Unit" {
 	BeforeAll {
 		# Place here all things needed to prepare for the tests
 	}
@@ -8,11 +8,11 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Stop-AxEnvironment).ParameterSets.Name | Should -Be 'Default', 'Pipeline'
+			(Get-Command Stop-AxService).ParameterSets.Name | Should -Be 'Default', 'Pipeline'
 		}
 		
 		It 'Should have the expected parameter Server' {
-			$parameter = (Get-Command Stop-AxEnvironment).Parameters['Server']
+			$parameter = (Get-Command Stop-AxService).Parameters['Server']
 			$parameter.Name | Should -Be 'Server'
 			$parameter.ParameterType.ToString() | Should -Be System.String[]
 			$parameter.IsDynamic | Should -Be $False
@@ -31,7 +31,7 @@
 			$parameter.ParameterSets['Pipeline'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter DisplayName' {
-			$parameter = (Get-Command Stop-AxEnvironment).Parameters['DisplayName']
+			$parameter = (Get-Command Stop-AxService).Parameters['DisplayName']
 			$parameter.Name | Should -Be 'DisplayName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -44,7 +44,7 @@
 			$parameter.ParameterSets['Default'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter Name' {
-			$parameter = (Get-Command Stop-AxEnvironment).Parameters['Name']
+			$parameter = (Get-Command Stop-AxService).Parameters['Name']
 			$parameter.Name | Should -Be 'Name'
 			$parameter.ParameterType.ToString() | Should -Be System.String[]
 			$parameter.IsDynamic | Should -Be $False
@@ -57,7 +57,7 @@
 			$parameter.ParameterSets['Pipeline'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter ShowOriginalProgress' {
-			$parameter = (Get-Command Stop-AxEnvironment).Parameters['ShowOriginalProgress']
+			$parameter = (Get-Command Stop-AxService).Parameters['ShowOriginalProgress']
 			$parameter.Name | Should -Be 'ShowOriginalProgress'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
@@ -70,7 +70,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter Force' {
-			$parameter = (Get-Command Stop-AxEnvironment).Parameters['Force']
+			$parameter = (Get-Command Stop-AxService).Parameters['Force']
 			$parameter.Name | Should -Be 'Force'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False

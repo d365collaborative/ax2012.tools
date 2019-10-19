@@ -1,45 +1,47 @@
 ﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
-online version:
+online version: https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 schema: 2.0.0
 ---
 
-# Stop-AxEnvironment
+# Stop-AxService
 
 ## SYNOPSIS
-Stop an AX 2012 environment
+Stop AX 2012 service(s)
 
 ## SYNTAX
 
 ### Default (Default)
 ```
-Stop-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalProgress] [-Force] [<CommonParameters>]
+Stop-AxService [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalProgress] [-Force]
+ [<CommonParameters>]
 ```
 
 ### Pipeline
 ```
-Stop-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalProgress] [-Force] [<CommonParameters>]
+Stop-AxService [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalProgress] [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Stop an AX 2012 services in your environment
+Stop AX 2012 service(s) on the computer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj*
+Stop-AxService -Server TEST-AOS-01 -DisplayName *ax*obj*
 ```
 
 This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
 
 ### EXAMPLE 2
 ```
-Stop-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
+Stop-AxService -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
 ```
 
 This will stop the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+It will show the progress of stopping the service(s) in the console.
 It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 3
@@ -47,7 +49,8 @@ It will show the status for the service(s) on the server afterwards.
 Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalProgress
 ```
 
-This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
+This will scan the "TEST-AOS-01" server for all AOS instances (services) and stop them.
+It will show the progress of stopping the service(s) in the console.
 It will show the status for the service(s) on the server afterwards.
 
 ## PARAMETERS
@@ -150,8 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -7,7 +7,7 @@
         Get the active AX 2012 AOS configuration from the configuration storage
         
     .EXAMPLE
-        PS C:\> Get-AxActiveAosConfiguration
+        PS C:\> Get-AxActiveAosConfig
         
         This will export all the stored details saved into the configuration storage.
         
@@ -15,7 +15,7 @@
         Author: Mötz Jensen (@Splaxi)
         
 #>
-function Get-AxActiveAosConfiguration {
+function Get-AxActiveAosConfig {
     [CmdletBinding()]
     param (
         

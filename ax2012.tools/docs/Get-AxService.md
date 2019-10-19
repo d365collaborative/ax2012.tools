@@ -5,41 +5,41 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AxEnvironment
+# Get-AxService
 
 ## SYNOPSIS
-Get the status of an AX 2012 environment
+Get the status of the AX 2012 service(s)
 
 ## SYNTAX
 
 ### Default (Default)
 ```
-Get-AxEnvironment [-ComputerName <String[]>] [-AllAxServices] [-AosInstanceName <String>] [-ScanAllAosServices]
+Get-AxService [-ComputerName <String[]>] [-All] [-AosInstanceName <String>] [-ScanAllAosServices]
  [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AxEnvironment [-ComputerName <String[]>] [-AosInstanceName <String>] [-Aos] [-ManagementReporter] [-DIXF]
+Get-AxService [-ComputerName <String[]>] [-AosInstanceName <String>] [-Aos] [-ManagementReporter] [-DIXF]
  [-ScanAllAosServices] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the status of AX 2012 services in your environment
+Get the status of AX 2012 service(s) on the computer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AxEnvironment
+Get-AxService
 ```
 
-This will get the status for all the default services from your environment.
+This will get the status for all the default services from the local computer.
 If AxActiveAosConfiguration has been configured, it will work against the ComputerName and AosInstanceName registered.
 
 ### EXAMPLE 2
 ```
-Get-AxEnvironment -ScanAllAosServices
+Get-AxService -ScanAllAosServices
 ```
 
 This will scan for all available AOS Services.
@@ -47,34 +47,38 @@ If AxActiveAosConfiguration has been configured, it will work against the Comput
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos
+Get-AxService -ComputerName TEST-AOS-01 -Aos
 ```
 
-This will get all AOS instances from the server named "TEST-AOS-01".
+This will get all AOS instances (services) from the server named "TEST-AOS-01".
 If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
 
 ### EXAMPLE 4
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos -AosInstanceName *DEV*
+Get-AxService -ComputerName TEST-AOS-01 -Aos -AosInstanceName *DEV*
 ```
 
-This will get all AOS instances that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
+This will get all AOS instances (services) that match the search pattern "*DEV*" from the server named "TEST-AOS-01".
 
 ### EXAMPLE 5
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalProgress
+Get-AxService -ComputerName TEST-AOS-01 -Aos | Start-AxService -ShowOriginalProgress
 ```
 
-This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+This will scan the "TEST-AOS-01" server for all AOS instances (services) and start them.
 It will show the status for the service(s) on the server afterwards.
+
+If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
 
 ### EXAMPLE 6
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Stop-AxEnvironment -ShowOriginalProgress
+Get-AxService -ComputerName TEST-AOS-01 -Aos | Stop-AxService -ShowOriginalProgress
 ```
 
-This will scan the "TEST-AOS-01" server for all AOS instances and stop them.
+This will scan the "TEST-AOS-01" server for all AOS instances (services) and stop them.
 It will show the status for the service(s) on the server afterwards.
+
+If AxActiveAosConfiguration has been configured, it will work against the AosInstanceName registered otherwise it will find all.
 
 ## PARAMETERS
 
@@ -84,17 +88,17 @@ Name of the computer(s) that you want to work against
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Server
+Aliases: ServerName
 
 Required: False
 Position: Named
 Default value: $Script:ActiveAosComputername
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AllAxServices
-Switch to instruct the cmdlet to include all known AX 2012 services
+### -All
+Instruct the cmdlet to include all known AX 2012 services
 
 ```yaml
 Type: SwitchParameter
@@ -102,8 +106,8 @@ Parameter Sets: Default
 Aliases:
 
 Required: False
-Position: 3
-Default value: [switch]::Present
+Position: Named
+Default value: True
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Aos
-Switch to instruct the cmdlet to include the AOS service
+Instruct the cmdlet to include the AOS service
 
 ```yaml
 Type: SwitchParameter
@@ -140,14 +144,14 @@ Parameter Sets: Specific
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ManagementReporter
-Switch to instruct the cmdlet to include the ManagementReporter service
+Instruct the cmdlet to include the ManagementReporter service
 
 ```yaml
 Type: SwitchParameter
@@ -155,14 +159,14 @@ Parameter Sets: Specific
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DIXF
-Switch to instruct the cmdlet to include the DIXF service
+Instruct the cmdlet to include the DIXF service
 
 ```yaml
 Type: SwitchParameter
@@ -170,14 +174,14 @@ Parameter Sets: Specific
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ScanAllAosServices
-Parameter description
+Instruct the cmdlet to look for all available AOS Instances on the computer
 
 ```yaml
 Type: SwitchParameter
@@ -192,8 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

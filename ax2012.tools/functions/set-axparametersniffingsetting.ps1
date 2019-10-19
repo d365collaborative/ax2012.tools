@@ -1,24 +1,10 @@
 ﻿
 <#
     .SYNOPSIS
-        Fix table and field ID conflicts
+        Set the parameter sniffing configuration
         
     .DESCRIPTION
-        Fixes both table and field IDs in the AX SqlDictionary (data db) to match the AX code (Model db)
-        
-        Useful for after a database has been restored and the table or field IDs do not match
-        Run this command instead of letting the database synchronization process drop and recreate the table
-        
-        Before running:
-        Stop the AOS
-        Always take the appropriate SQL backups before running this script
-        
-        After running:
-        Start the AOS
-        Sync the database within AX
-        
-        Note:
-        Objects that are new in AOT will get created in SQL dictionary when synchronization happens
+        Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
         
     .PARAMETER DatabaseServer
         Server name of the database server
@@ -30,19 +16,11 @@
         
         Default value is: "MicrosoftDynamicsAx"
         
-    .PARAMETER ModelstoreDatabase
-        Name of the modelstore database
-        
-        Default value is: "MicrosoftDynamicsAx_model"
-        
     .PARAMETER SqlUser
         User name of the SQL Server credential that you want to use when working against the database
         
     .PARAMETER SqlPwd
         Password of the SQL Server credential that you want to use when working against the database
-        
-    .PARAMETER Force
-        Instruct the cmdlet to overwrite any existing bak (backup) tables from previous executions
         
     .PARAMETER GenerateScript
         When provided the SQL is returned and not executed
@@ -50,32 +28,32 @@
         Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
         
     .EXAMPLE
-        PS C:\> Resolve-AxTableFieldIDs
+        PS C:\> Set-AxParameterSniffingSetting
         
-        This will execute the cmdlet with all the default values.
-        This will work against the SQL server that is on localhost.
-        The database is expected to be "MicrosoftDynamicsAx_model".
+        This will configure the correct parameter sniffing settings.
         
     .NOTES
-        Author: Dag Calafell, III (@dodiggitydag)
-        Reference: http://calafell.me/the-ultimate-ax-2012-table-and-field-id-fix-for-synchronization-errors/
+        Author: Mötz Jensen (@Splaxi)
+        
+    .LINK
+        https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 #>
-Function Resolve-AxTableFieldIDs {
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
+function Set-AxParameterSniffingSetting {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
     [CmdletBinding()]
-    [OutputType('System.String')]
-    Param(
+    #[OutputType()]
+    param (
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 1)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 2)]
         [string] $DatabaseName = $Script:ActiveAosDatabase,
 
-        [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
-
+        [Parameter(Mandatory = $false, Position = 3)]
         [string] $SqlUser,
 
+        [Parameter(Mandatory = $false, Position = 4)]
         [string] $SqlPwd,
-
-        [Switch] $Force,
 
         [Switch] $GenerateScript
     )
@@ -91,27 +69,17 @@ Function Resolve-AxTableFieldIDs {
         SqlUser = $SqlUser; SqlPwd = $SqlPwd
     }
 
-    $forceParameterValue = "0"
-
-    if ($Force) { $forceParameterValue = "1" }
-
     $sqlCommand = Get-SqlCommand @SqlParams -TrustedConnection $UseTrustedConnection
 
-    $commandText = (Get-Content "$script:ModuleRoot\internal\sql\resolve-sqldictionaryids.sql") -join [Environment]::NewLine
-    
-    $sqlCommand.CommandText = $commandText.Replace('@DatabaseName', $DatabaseName).Replace('@ModelDatabaseName', $ModelstoreDatabase).Replace("@ForceValue", $forceParameterValue)
+    $sqlCommand.CommandText = (Get-Content "$script:ModuleRoot\internal\sql\set-axparametersniffingsetting.sql") -join [Environment]::NewLine
 
     if ($GenerateScript) {
         (Get-SqlString $sqlCommand)
     }
     else {
-        $handler = [System.Data.SqlClient.SqlInfoMessageEventHandler] { param($sender, $event) Write-PSFMessage -Level Host -Message $($event.Message) -Target $($event.Message) }
-        $sqlCommand.Connection.add_InfoMessage($handler)
-        $sqlCommand.Connection.FireInfoMessageEventOnUserErrors = $true;
-
         try {
             Write-PSFMessage -Level InternalComment -Message "Executing a script against the database." -Target (Get-SqlString $sqlCommand)
-            
+
             $sqlCommand.Connection.Open()
             $sqlCommand.ExecuteNonQuery()
 

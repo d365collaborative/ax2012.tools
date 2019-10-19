@@ -1,7 +1,7 @@
-﻿$commandName = "Set-AxActiveAosConfiguration"
+﻿$commandName = "Set-AxActiveAosConfig"
 ################################### New Example test ###################################
 
-$exampleRaw = "Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration"
+$exampleRaw = "Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfig"
 #Remember to escape any variables names in the line above.
 #Remember to you need to output $true to the pester test, otherwise is fails.
 #; `$var -eq `$true

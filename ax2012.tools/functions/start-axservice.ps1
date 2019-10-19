@@ -1,10 +1,10 @@
 ﻿
 <#
     .SYNOPSIS
-        Start an AX 2012 environment
+        Start AX 2012 service(s)
         
     .DESCRIPTION
-        Start AX 2012 services in your environment
+        Start AX 2012 service(s) on the computer
         
     .PARAMETER Server
         Name of the computer(s) that you want to work against
@@ -27,27 +27,29 @@
         Instruct the cmdlet to output the status for the service
         
     .EXAMPLE
-        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj*
+        PS C:\> Start-AxService -Server TEST-AOS-01 -DisplayName *ax*obj*
         
         This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
         
     .EXAMPLE
-        PS C:\> Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
+        PS C:\> Start-AxService -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
         
         This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+        It will show the progress of starting the service(s) in the console.
         It will show the status for the service(s) on the server afterwards.
         
     .EXAMPLE
-        PS C:\> Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalProgress
+        PS C:\> Get-AxService -ComputerName TEST-AOS-01 -Aos | Start-AxService -ShowOriginalProgress
         
-        This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+        This will scan the "TEST-AOS-01" server for all AOS instances (services) and start them.
+        It will show the progress of starting the service(s) in the console.
         It will show the status for the service(s) on the server afterwards.
         
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         
 #>
-function Start-AxEnvironment {
+function Start-AxService {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding(DefaultParameterSetName = "Default")]
     param (

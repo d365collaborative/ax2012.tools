@@ -1,53 +1,55 @@
 ﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
-online version:
+online version: https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 schema: 2.0.0
 ---
 
-# Start-AxEnvironment
+# Start-AxService
 
 ## SYNOPSIS
-Start an AX 2012 environment
+Start AX 2012 service(s)
 
 ## SYNTAX
 
 ### Default (Default)
 ```
-Start-AxEnvironment [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalProgress] [<CommonParameters>]
+Start-AxService [[-Server] <String[]>] [-DisplayName] <String> [-ShowOriginalProgress] [<CommonParameters>]
 ```
 
 ### Pipeline
 ```
-Start-AxEnvironment [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalProgress] [<CommonParameters>]
+Start-AxService [[-Server] <String[]>] [-Name <String[]>] [-ShowOriginalProgress] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start AX 2012 services in your environment
+Start AX 2012 service(s) on the computer
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj*
+Start-AxService -Server TEST-AOS-01 -DisplayName *ax*obj*
 ```
 
 This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
 
 ### EXAMPLE 2
 ```
-Start-AxEnvironment -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
+Start-AxService -Server TEST-AOS-01 -DisplayName *ax*obj* -ShowOriginalProgress
 ```
 
 This will start the service(s) that match the search pattern "*ax*obj*" on the server named "TEST-AOS-01".
+It will show the progress of starting the service(s) in the console.
 It will show the status for the service(s) on the server afterwards.
 
 ### EXAMPLE 3
 ```
-Get-AxEnvironment -ComputerName TEST-AOS-01 -Aos | Start-AxEnvironment -ShowOriginalProgress
+Get-AxService -ComputerName TEST-AOS-01 -Aos | Start-AxService -ShowOriginalProgress
 ```
 
-This will scan the "TEST-AOS-01" server for all AOS instances and start them.
+This will scan the "TEST-AOS-01" server for all AOS instances (services) and start them.
+It will show the progress of starting the service(s) in the console.
 It will show the status for the service(s) on the server afterwards.
 
 ## PARAMETERS
@@ -120,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShowOriginalProgress
-Switch to instruct the cmdlet to output the status for the service
+Instruct the cmdlet to output the status for the service
 
 ```yaml
 Type: SwitchParameter
@@ -135,8 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

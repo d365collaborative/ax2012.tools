@@ -1,50 +1,33 @@
 ﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
-online version:
+online version: https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
 schema: 2.0.0
 ---
 
-# Resolve-AxTableFieldIDs
+# Set-AxParameterSniffingSetting
 
 ## SYNOPSIS
-Fix table and field ID conflicts
+Set the parameter sniffing configuration
 
 ## SYNTAX
 
 ```
-Resolve-AxTableFieldIDs [[-DatabaseServer] <String>] [[-DatabaseName] <String>]
- [[-ModelstoreDatabase] <String>] [[-SqlUser] <String>] [[-SqlPwd] <String>] [-Force] [-GenerateScript]
- [<CommonParameters>]
+Set-AxParameterSniffingSetting [[-DatabaseServer] <String>] [[-DatabaseName] <String>] [[-SqlUser] <String>]
+ [[-SqlPwd] <String>] [-GenerateScript] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Fixes both table and field IDs in the AX SqlDictionary (data db) to match the AX code (Model db)
-
-Useful for after a database has been restored and the table or field IDs do not match
-Run this command instead of letting the database synchronization process drop and recreate the table
-
-Before running:
-Stop the AOS
-Always take the appropriate SQL backups before running this script
-
-After running:
-Start the AOS
-Sync the database within AX
-
-Note:
-Objects that are new in AOT will get created in SQL dictionary when synchronization happens
+Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Resolve-AxTableFieldIDs
+Set-AxParameterSniffingSetting
 ```
 
-This will execute the cmdlet with all the default values.
-This will work against the SQL server that is on localhost.
-The database is expected to be "MicrosoftDynamicsAx_model".
+This will configure the correct parameter sniffing settings.
 
 ## PARAMETERS
 
@@ -59,9 +42,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: $Script:ActiveAosDatabaseserver
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -76,26 +59,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: $Script:ActiveAosDatabase
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ModelstoreDatabase
-Name of the modelstore database
-
-Default value is: "MicrosoftDynamicsAx_model"
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 3
-Default value: $Script:ActiveAosModelstoredatabase
-Accept pipeline input: False
+Default value: $Script:ActiveAosDatabase
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -129,21 +95,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Instruct the cmdlet to overwrite any existing bak (backup) tables from previous executions
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -GenerateScript
 When provided the SQL is returned and not executed
 
@@ -168,9 +119,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
 ## NOTES
-Author: Dag Calafell, III (@dodiggitydag)
-Reference: http://calafell.me/the-ultimate-ax-2012-table-and-field-id-fix-for-synchronization-errors/
+Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
+
+[https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step](https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step)
+

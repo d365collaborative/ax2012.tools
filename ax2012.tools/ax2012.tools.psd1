@@ -37,25 +37,35 @@
     # TypesToProcess = @('xml\ax2012.tools.Types.ps1xml')
 	
     # Format files (.ps1xml) to be loaded when importing this module
-    # FormatsToProcess = @('xml\ax2012.tools.Format.ps1xml')
+    FormatsToProcess = @('xml\ax2012.tools.Format.ps1xml')
 	
     # Functions to export from this module
     FunctionsToExport = @(
                             'Clear-AxClientCacheObjects',
                             'Clear-AxServerCacheObjects',
+
+                            'Add-AxEnvironmentConfig',
+
+                            'Clear-AxActiveEnvironmentConfig',
                             
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
 
-                            'Get-AxActiveAosConfiguration',
+                            'Get-AxActiveAosConfig',
+                            'Get-AxActiveEnvironmentConfig',
                             'Get-AxAosInstance',
                             'Get-AxAosServerFromDB',
 
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
-                            'Get-AxEnvironment',
+                            'Get-AxEnvironmentConfig',
 
                             'Get-AxLogicAppConfig',
+
+                            'Get-AxMr2012Instance',
+
+                            'Get-AxParameterSniffingSetting',
+                            'Get-AxService',
                             'Get-AxSsrsConfig',
                             
                             'Get-AxWMDPDetails',
@@ -68,13 +78,18 @@
                             'Import-AxModelV2',
                             'Import-AXModelStoreV2',
 
+                            'Remove-AxEnvironmentConfig',
+                            
                             'Resolve-AxTableFieldIDs',
                             
-                            'Set-AxActiveAosConfiguration',
+                            'Set-AxActiveAosConfig',
+                            'Set-AxActiveEnvironmentConfig',
                             'Set-AxLogicAppConfig',
                             
-                            'Start-AxEnvironment',
-                            'Stop-AxEnvironment'
+                            'Set-AxParameterSniffingSetting',
+
+                            'Start-AxService',
+                            'Stop-AxService'
     )
 	
     # Cmdlets to export from this module

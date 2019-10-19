@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AxActiveAosConfiguration
+# Set-AxActiveAosConfig
 
 ## SYNOPSIS
 Set the active AX 2012 AOS configuration
@@ -13,10 +13,10 @@ Set the active AX 2012 AOS configuration
 ## SYNTAX
 
 ```
-Set-AxActiveAosConfiguration [[-ComputerName] <String[]>] [[-BinDirectory] <String>]
- [[-InstanceNumber] <String>] [[-InstanceName] <String>] [[-DatabaseServer] <String>]
- [[-DatabaseName] <String>] [[-ModelstoreDatabase] <String>] [[-AosPort] <String>] [[-WsdlPort] <String>]
- [[-NetTcpPort] <String>] [-ConfigStorageLocation <String>] [-Temporary] [-Clear] [<CommonParameters>]
+Set-AxActiveAosConfig [[-ComputerName] <String[]>] [[-BinDirectory] <String>] [[-InstanceNumber] <String>]
+ [[-InstanceName] <String>] [[-DatabaseServer] <String>] [[-DatabaseName] <String>]
+ [[-ModelstoreDatabase] <String>] [[-AosPort] <String>] [[-WsdlPort] <String>] [[-NetTcpPort] <String>]
+ [-ConfigStorageLocation <String>] [-Temporary] [-Clear] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Set the active AX 2012 AOS details and store it into the configuration storage
 
 ### EXAMPLE 1
 ```
-Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
+Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfig
 ```
 
 This will get all the AX 2012 AOS instances from the local machine and only select the first output.
@@ -34,7 +34,7 @@ The output from the first AOS instance is saved into the configuration store.
 
 ### EXAMPLE 2
 ```
-Set-AxActiveAosConfiguration -ComputerName AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
+Set-AxActiveAosConfig -ComputerName AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
 ```
 
 This will update the active AOS configuration store settings.
@@ -46,7 +46,7 @@ The AOS port will be registered to: 2712
 
 ### EXAMPLE 3
 ```
-Set-AxActiveAosConfiguration -Clear
+Set-AxActiveAosConfig -Clear
 ```
 
 This will clear out all the stored configuration values.
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -Temporary
-Switch to instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
+Instruct the cmdlet to only temporarily override the persisted settings in the configuration storage
 
 ```yaml
 Type: SwitchParameter
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -Clear
-Switch to instruct the cmdlet to clear out all the stored configuration values
+Instruct the cmdlet to clear out all the stored configuration values
 
 ```yaml
 Type: SwitchParameter
@@ -258,8 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
