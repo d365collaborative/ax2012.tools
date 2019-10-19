@@ -1,59 +1,60 @@
-﻿<#
-.SYNOPSIS
-Clear AX 2012 AOS Server Cache Objects
-
-.DESCRIPTION
-Remove AX 2012 AOS Server Cache Object files from the file system
-
-.PARAMETER ObjectType
-The type of cache object that you want to remove
-
-Valid options are:
-XppIL
-Label
-VSAssemblies
-
-.PARAMETER InstanceName
+﻿
+<#
+    .SYNOPSIS
+        Clear AX 2012 AOS Server Cache Objects
+        
+    .DESCRIPTION
+        Remove AX 2012 AOS Server Cache Object files from the file system
+        
+    .PARAMETER ObjectType
+        The type of cache object that you want to remove
+        
+        Valid options are:
+        XppIL
+        Label
+        VSAssemblies
+        
+    .PARAMETER InstanceName
         Name of the instance that you are working against
-    
+        
         Default value can be configured with the Set-AxActiveAosConfig cmdlet
-
-.PARAMETER ListOnly
-Instruct the cmdlet to only list the files that matches your selection from the other parameters
-
-.EXAMPLE
-PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL" -InstanceName "AXTEST" -ListOnly
-
-This will list all the XppIL files under the AXTEST AOS Instance location.
-It will work against the ObjectType "XppIL".
-It will work againt the InstanceName "AXTEST".
-It will only list the files and folders, it will NOT delete anything.
-
-.EXAMPLE
-PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL" -InstanceName "AXTEST"
-
-This will delete all the XppIL files under the AXTEST AOS Instance location.
-It will work against the ObjectType "XppIL".
-It will work againt the InstanceName "AXTEST".
-
-It WILL delete the files without further warning or notification!
-
-.EXAMPLE
-PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL","Label","VSAssemblies" -InstanceName "AXTEST"
-
-This will delete all the XppIL,Label and VSAssemblies files under the AXTEST AOS Instance location.
-It will work against the ObjectType "XppIL","Label","VSAssemblies".
-It will work againt the InstanceName "AXTEST".
-
-It WILL delete the files without further warning or notification!
-
-.NOTES
-Tags: Client Cache, Cache, Label, XppIL, VSAssemblies
-
-Author: Mötz Jensen (@Splaxi)
-
-All credits goes to Kenneth Madsen (@KennethGrupp) for providing detailed examples on how to achieve this the best way using powershell
-
+        
+    .PARAMETER ListOnly
+        Instruct the cmdlet to only list the files that matches your selection from the other parameters
+        
+    .EXAMPLE
+        PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL" -InstanceName "AXTEST" -ListOnly
+        
+        This will list all the XppIL files under the AXTEST AOS Instance location.
+        It will work against the ObjectType "XppIL".
+        It will work againt the InstanceName "AXTEST".
+        It will only list the files and folders, it will NOT delete anything.
+        
+    .EXAMPLE
+        PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL" -InstanceName "AXTEST"
+        
+        This will delete all the XppIL files under the AXTEST AOS Instance location.
+        It will work against the ObjectType "XppIL".
+        It will work againt the InstanceName "AXTEST".
+        
+        It WILL delete the files without further warning or notification!
+        
+    .EXAMPLE
+        PS C:\> Clear-AxServerCacheObjects -ObjectType "XppIL","Label","VSAssemblies" -InstanceName "AXTEST"
+        
+        This will delete all the XppIL,Label and VSAssemblies files under the AXTEST AOS Instance location.
+        It will work against the ObjectType "XppIL","Label","VSAssemblies".
+        It will work againt the InstanceName "AXTEST".
+        
+        It WILL delete the files without further warning or notification!
+        
+    .NOTES
+        Tags: Client Cache, Cache, Label, XppIL, VSAssemblies
+        
+        Author: Mötz Jensen (@Splaxi)
+        
+        All credits goes to Kenneth Madsen (@KennethGrupp) for providing detailed examples on how to achieve this the best way using powershell
+        
 #>
 
 function Clear-AxServerCacheObjects {
