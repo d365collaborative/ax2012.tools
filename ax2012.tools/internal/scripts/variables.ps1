@@ -8,7 +8,9 @@ $Script:AxPowerShellModule = "C:\Program Files\Microsoft Dynamics AX\60\Manageme
 
 $Script:RegistryAos = "HKLM:\SYSTEM\ControlSet001\Services\Dynamics Server\6.0"
 
-$Script:RegistryClient = "HKCU:\Software\Microsoft\Dynamics\6.0\Configuration"
+# This will give us the current AX 2012 Client Config for current signed in user
+$Script:RegistryClientConfig = "HKCU:\Software\Microsoft\Dynamics\6.0\Configuration"
+$Script:RegistryClient = "HKLM:\SOFTWARE\Microsoft\Dynamics\6.0\Setup"
 
 $Script:LayerDictionary = @{"ISV" = "01."; "ISP" = "02."; "VAR" = "03."; "VAP" = "04."; "CUS" = "05."; "CUP" = "06."; "USR" = "07." ; "USP" = "08."}
 

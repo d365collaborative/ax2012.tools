@@ -28,7 +28,7 @@ function Get-AxClientConfig {
         [string] $Name = "*"
     )
     
-    $configs = Get-ChildItem -Path $Script:RegistryClient
+    $configs = Get-ChildItem -Path $Script:RegistryClientConfig
 
     foreach ($item in $configs) {
         $RegistryPath = Get-Item -Path $($item.Name.Replace("HKEY_CURRENT_USER", "HKCU:"))

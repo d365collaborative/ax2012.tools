@@ -41,6 +41,8 @@
 	
     # Functions to export from this module
     FunctionsToExport = @(
+                            'Clear-AxClientCacheObjects',
+                            
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
 
