@@ -54,13 +54,13 @@
         Instruct the cmdlet to clear out all the stored configuration values
         
     .EXAMPLE
-        PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfiguration
+        PS C:\> Get-AxAosInstance | Select-Object -First 1 | Set-AxActiveAosConfig
         
         This will get all the AX 2012 AOS instances from the local machine and only select the first output.
         The output from the first AOS instance is saved into the configuration store.
         
     .EXAMPLE
-        PS C:\> Set-AxActiveAosConfiguration -ComputerName AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
+        PS C:\> Set-AxActiveAosConfig -ComputerName AX2012PROD -DatabaseServer SQLSERVER -DatabaseName AX2012R3_PROD -ModelstoreDatabase AX2012R3_PROD_model -AosPort 2712
         
         This will update the active AOS configuration store settings.
         The computer name will be registered to: AX2012PROD
@@ -70,7 +70,7 @@
         The AOS port will be registered to: 2712
         
     .EXAMPLE
-        PS C:\> Set-AxActiveAosConfiguration -Clear
+        PS C:\> Set-AxActiveAosConfig -Clear
         
         This will clear out all the stored configuration values.
         It updates all the internal configuration variables, so all aos default values across the module will be empty.
@@ -79,7 +79,7 @@
         Author: Mötz Jensen (@Splaxi)
         
 #>
-function Set-AxActiveAosConfiguration {
+function Set-AxActiveAosConfig {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
     [CmdletBinding()]
     param (

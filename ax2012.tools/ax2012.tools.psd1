@@ -49,7 +49,7 @@
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
 
-                            'Get-AxActiveAosConfiguration',
+                            'Get-AxActiveAosConfig',
                             'Get-AxActiveEnvironmentConfig',
                             'Get-AxAosInstance',
                             'Get-AxAosServerFromDB',
@@ -80,7 +80,7 @@
                             
                             'Resolve-AxTableFieldIDs',
                             
-                            'Set-AxActiveAosConfiguration',
+                            'Set-AxActiveAosConfig',
                             'Set-AxActiveEnvironmentConfig',
                             'Set-AxLogicAppConfig',
                             
