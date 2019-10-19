@@ -65,7 +65,7 @@ Tags: Client Cache, Cache, KTI, AUC
 
 Author: Mötz Jensen (@Splaxi)
 
-All credits goes to Kenneth Madsen for providing detailed examples on how to achieve this the best way using powershell
+All credits goes to Kenneth Madsen (@KennethGrupp) for providing detailed examples on how to achieve this the best way using powershell
 
 #>
 
