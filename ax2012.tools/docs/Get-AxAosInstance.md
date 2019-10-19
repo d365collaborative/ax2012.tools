@@ -42,7 +42,7 @@ Default value is "*" and will give you all the instances
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: InstanceName
 
 Required: False
 Position: 1
