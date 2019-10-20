@@ -82,6 +82,8 @@ function Clear-AxServerCacheObjects {
         return
     }
 
+    Invoke-TimeSignal -Start
+
     $basePath = (Get-AxAosInstance -InstanceName $InstanceName).BinDirectory
 
     $parms = @{}
@@ -114,4 +116,6 @@ function Clear-AxServerCacheObjects {
             Remove-Item @parms -Recurse -Force -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
         }
     }
+    
+    Invoke-TimeSignal -End
 }

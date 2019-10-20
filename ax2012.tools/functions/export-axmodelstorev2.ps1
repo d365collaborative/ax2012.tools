@@ -35,6 +35,11 @@
         
         Default value is: "c:\temp\ax2012.tools"
         
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+    
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to only generate the needed command and not execute it
         
@@ -52,7 +57,7 @@
 #>
 Function Export-AxModelStoreV2 {
     [CmdletBinding()]
-    [OutputType('System.String')]
+    [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
@@ -64,6 +69,9 @@ Function Export-AxModelStoreV2 {
         
         [string] $Path = $Script:DefaultTempPath,
 
+        [switch] $ShowOriginalProgress,
+
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $OutputCommandOnly
     )
 
@@ -100,7 +108,11 @@ Function Export-AxModelStoreV2 {
         
         $null = Import-Module $Script:AxPowerShellModule
 
-        Export-AxModelStore @params
+        $outputRes = Export-AxModelStore @params
+
+        if ($ShowOriginalProgress) {
+            $outputRes
+        }
 
         Clear-Ax2012StandardPowershellModule
     }

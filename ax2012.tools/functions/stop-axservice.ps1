@@ -112,11 +112,15 @@ function Stop-AxService {
             }
         }
 
+        Invoke-TimeSignal -Start
+
         Write-PSFMessage -Level Verbose -Message "Stopping the specified services." -Target ((Convert-HashToArgString $baseParams) -join ",")
         Get-Service @baseParams | Stop-Service -Force:$Force -ErrorAction SilentlyContinue -WarningAction $warningActionValue
 
         $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = { $Server } }, Name, Status, DisplayName
         $null = $output.Add($service)
+
+        Invoke-TimeSignal -End
     }
 
     end {

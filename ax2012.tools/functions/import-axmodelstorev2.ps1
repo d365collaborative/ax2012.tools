@@ -39,6 +39,11 @@
     .PARAMETER Apply
         Instruct the cmdlet to switch modelstore with the SchemaName in as the current code
         
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to only generate the needed command and not execute it
         
@@ -77,6 +82,9 @@ function Import-AXModelStoreV2 {
         [Parameter(ParameterSetName = "ApplyModelstore")]
         [switch] $Apply,
 
+        [switch] $ShowOriginalProgress,
+
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $OutputCommandOnly
     )
 
@@ -112,8 +120,12 @@ function Import-AXModelStoreV2 {
         Write-PSFMessage -Level Verbose -Message "Starting the export of the model store"
       
         $null = Import-Module $Script:AxPowerShellModule
-        
-        Import-AXModelStore @params
+
+        $outputRes = Import-AXModelStore @params
+
+        if ($ShowOriginalProgress) {
+            $outputRes
+        }
 
         Clear-Ax2012StandardPowershellModule
     }

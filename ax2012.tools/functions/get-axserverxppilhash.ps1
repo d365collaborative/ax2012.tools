@@ -58,8 +58,6 @@ function Get-AxServerXppILHash {
         [string] $FileName
     )
     
-    if (-not (Test-PathExists -Path $Path -Type Container -Create)) { return }
-
     if ([String]::IsNullOrEmpty($InstanceName)) {
         $messageString = "Instance name was <c='em'>empty</c>. You either need to supply it with <c='em'>-InstanceName</c> parameter or configure it using the <c='em'>Set-AxActiveAosConfig</c> cmdlet."
         Write-PSFMessage -Level Host -Message $messageString
@@ -73,6 +71,10 @@ function Get-AxServerXppILHash {
         Stop-PSFFunction -Message "Stopping because of missing instance name parameter." -Exception $([System.Exception]::new($($messageString -replace '<[^>]+>', '')))
         return
     }
+
+    if (-not (Test-PathExists -Path $Path -Type Container -Create)) { return }
+
+    Invoke-TimeSignal -Start
 
     if ([String]::IsNullOrEmpty($FileName)) {
         $filename = "$($env:COMPUTERNAME)_$InstanceName`_XppIL_HashValues.txt"
@@ -100,4 +102,6 @@ function Get-AxServerXppILHash {
 
     Write-PSFMessage -Level Verbose -Message "Generating the hash values and saving the output to path: $outputFile" -Target $outputFile
     $resList.ToArray() | Sort-Object Path | Format-Table Hash, Path -Wrap -AutoSize | Out-String -Width 4000 | Out-File $outputFile -Encoding utf8
+
+    Invoke-TimeSignal -End
 }

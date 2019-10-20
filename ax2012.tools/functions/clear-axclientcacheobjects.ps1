@@ -81,6 +81,8 @@ function Clear-AxClientCacheObjects {
         [switch] $ListOnly
     )
     
+    Invoke-TimeSignal -Start
+
     $basePath = ""
 
     switch ($UserLocation) {
@@ -88,12 +90,12 @@ function Clear-AxClientCacheObjects {
             Write-PSFMessage -Level Verbose -Message "CurrentUser path was selected as the location to clear."
 
             $basePath = $env:LocalAppData
-          }
+        }
         "AllUsers" {
             Write-PSFMessage -Level Verbose -Message "AllUsers path was selected as the location to clear."
 
             $basePath = "$env:LocalAppData" -replace "$env:username", "*"
-          }
+        }
     }
 
     $pathToClear = ""
@@ -103,26 +105,28 @@ function Clear-AxClientCacheObjects {
                 Write-PSFMessage -Level Verbose -Message "Working against cache object type: `"AUC`""
 
                 $pathToClear = Join-Path $basePath "*.auc"
-             }
+            }
             "KTI" {
                 Write-PSFMessage -Level Verbose -Message "Working against cache object type: `"KTI`""
 
                 $pathToClear = Join-Path $basePath "*.kti"
-              }
+            }
             "VSASSEMBLIES" {
                 Write-PSFMessage -Level Verbose -Message "Working against cache object type: `"VSAssemblies`""
 
                 $pathToClear = Join-Path $basePath "Microsoft\Dynamics Ax\VSAssemblies*\*"
-             }
+            }
         }
 
         Write-PSFMessage -Level Verbose -Message "Working against path: $pathToClear" -Target $pathToClear
         
-        if($ListOnly){
+        if ($ListOnly) {
             Get-ChildItem -Path $pathToClear
         }
         else {
             Remove-Item -Path $pathToClear -Force
         }
     }
+
+    Invoke-TimeSignal -End
 }

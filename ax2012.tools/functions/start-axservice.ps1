@@ -106,10 +106,14 @@ function Start-AxService {
             }
         }
 
+        Invoke-TimeSignal -Start
+
         Get-Service @baseParams | Start-Service -ErrorAction SilentlyContinue -WarningAction $warningActionValue
 
         $service = Get-Service @baseParams | Select-Object @{Name = "Server"; Expression = { $Server } }, Name, Status, DisplayName
         $null = $output.Add($service)
+
+        Invoke-TimeSignal -End
     }
 
     end {

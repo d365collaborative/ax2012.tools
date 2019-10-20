@@ -27,9 +27,21 @@
         The built-in logic from AxBuild.exe will choose a number equal to your visible cores
         Leaving it blank or with 0 (Zero) will use the built-in logic from AxBuild.exe
         
-    .PARAMETER Log
+    .PARAMETER OutputPath
         Path to the log file you want AxBuild.exe to output to
         
+        Default location is: "c:\temp\ax2012.tools\AxBuild\"
+
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+        
+    .PARAMETER OutputCommandOnly
+        Instruct the cmdlet to output a script that you can execute manually later
+        
+        Using this will not import any AX 2012 models into the model store
+
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Invoke-AxBuild
         
@@ -48,58 +60,69 @@
 #>
 function Invoke-AxBuild {
     [CmdletBinding()]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     param (
 
-        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 1)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [Alias('Path')]
         [string] $BinDirectory = $Script:ActiveAosBindirectory,
 
         [Alias('AltBin')]
         [string] $AlternativeBinPath = $Script:ClientBin,
         
-        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 3)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [Alias('Aos')]
         [string] $InstanceNumber = $Script:ActiveAosInstanceNumber,
 
-        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 4)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [Alias('DBServer')]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(ValueFromPipelineByPropertyName = $true, Position = 5)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [Alias('Modelstore')]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
 
         [int] $Workers,
 
-        [string] $Log = $(Join-Path $Script:DefaultTempPath "AxBuildLog.txt")
+        [string] $OutputPath = $(Join-Path $Script:DefaultTempPath "AxBuildLog"),
+
+        [switch] $ShowOriginalProgress,
+
+        [Parameter(ParameterSetName = "Generate")]
+        [switch] $OutputCommandOnly
     )
 
     begin {
         $executable = Join-Path $BinDirectory "AXBuild.exe"
         $compiler = Join-Path $BinDirectory "ax32serv.exe"
 
-        if (-not (Test-PathExists -Path (Split-Path -Path $Log -Parent) -Type Container -Create)) { return }
+        if (-not (Test-PathExists -Path $OutputPath -Type Container -Create)) { return }
         if (-not (Test-PathExists -Path $executable, $compiler -Type Leaf)) { return }
     }
     process {
         if (Test-PSFFunctionInterrupt) { return }
 
-        $params = New-Object System.Collections.ArrayList
+        Invoke-TimeSignal -Start
 
-        [void]$params.Add("xppcompileall")
-        [void]$params.Add("/altbin=`"$AlternativeBinPath`"")
-        [void]$params.Add("/aos=$InstanceNumber")
-        [void]$params.Add("/dbserver=`"$DatabaseServer`"")
-        [void]$params.Add("/modelstore=`"$ModelstoreDatabase`"")
-        [void]$params.Add("/log=`"$Log`"")
-        [void]$params.Add("/compiler=`"$compiler`"")
+        $params = New-Object System.Collections.Generic.List[string]
+
+        $params.Add("xppcompileall")
+        $params.Add("/altbin=`"$AlternativeBinPath`"")
+        $params.Add("/aos=$InstanceNumber")
+        $params.Add("/dbserver=`"$DatabaseServer`"")
+        $params.Add("/modelstore=`"$ModelstoreDatabase`"")
+        $params.Add("/log=`"$OutputPath`"")
+        $params.Add("/compiler=`"$compiler`"")
 
         if ((-not ($null -eq $Workers)) -and ($Workers -gt 0)) {
-            [void]$params.Add("/workers=$Workers")
+            $params.Add("/workers=$Workers")
         }
 
         Write-PSFMessage -Level Verbose -Message "Starting $executable with $($params -join " ")" -Target ($params -join " ")
 
-        Start-Process -FilePath $executable -ArgumentList ($params -join " ") -NoNewWindow -Wait
+        Invoke-Process -Executable $executable -Params $($params.ToArray()) -ShowOriginalProgress:$ShowOriginalProgress -OutputCommandOnly:$OutputCommandOnly
+
+        Invoke-TimeSignal -End
+
     }
 }

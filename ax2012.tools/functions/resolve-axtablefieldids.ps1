@@ -63,7 +63,7 @@
 Function Resolve-AxTableFieldIDs {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
     [CmdletBinding()]
-    [OutputType('System.String')]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     Param(
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
@@ -77,6 +77,7 @@ Function Resolve-AxTableFieldIDs {
 
         [Switch] $Force,
 
+        [Parameter(ParameterSetName = "Generate")]
         [Switch] $OutputCommandOnly
     )
 

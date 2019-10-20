@@ -32,6 +32,11 @@
     .PARAMETER CreateDb
         Instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
         
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to only generate the needed command and not execute it
         
@@ -57,7 +62,7 @@
 #>
 function Initialize-AXModelStoreV2 {
     [CmdletBinding(DefaultParameterSetName = "CreateSchema")]
-    [OutputType('System.String')]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     param (
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
@@ -76,6 +81,9 @@ function Initialize-AXModelStoreV2 {
         [Parameter(ParameterSetName = "CreateDB")]
         [switch] $CreateDb,
         
+        [switch] $ShowOriginalProgress,
+
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $OutputCommandOnly
     )
 
@@ -107,11 +115,14 @@ function Initialize-AXModelStoreV2 {
         Write-PSFMessage -Level Verbose -Message "Starting the initialization of the model store"
         
         $null = Import-Module $Script:AxPowerShellModule
+        
+        $outputRes = Initialize-AXModelStore @params
 
-        Initialize-AXModelStore @params
-
+        if ($ShowOriginalProgress) {
+            $outputRes
+        }
+                
         Clear-Ax2012StandardPowershellModule
-
     }
 
     Invoke-TimeSignal -End
