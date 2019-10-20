@@ -30,10 +30,10 @@
         "Reject"
         "Push"
         "Overwrite"
-
+        
     .PARAMETER Detailed
         Instruct the cmdlet to output detailed element names and AOT path while importing the model
-    
+        
     .PARAMETER CreateParents
         Instruct the cmdlet to create missing parents on import
         
@@ -49,7 +49,7 @@
         Instruct the cmdlet to show the standard output in the console
         
         Default is $false which will silence the standard output
-
+        
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to output a script that you can execute manually later
         
