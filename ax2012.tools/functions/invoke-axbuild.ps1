@@ -31,7 +31,7 @@
         Path to the log file you want AxBuild.exe to output to
         
         Default location is: "c:\temp\ax2012.tools\AxBuild\"
-
+        
     .PARAMETER ShowOriginalProgress
         Instruct the cmdlet to show the standard output in the console
         
@@ -41,7 +41,7 @@
         Instruct the cmdlet to output a script that you can execute manually later
         
         Using this will not import any AX 2012 models into the model store
-
+        
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Invoke-AxBuild
         
