@@ -65,6 +65,7 @@
                             'Get-AxMr2012Instance',
 
                             'Get-AxParameterSniffingSetting',
+                            'Get-AxServerXppILHash',
                             'Get-AxService',
                             'Get-AxSsrsConfig',
                             
