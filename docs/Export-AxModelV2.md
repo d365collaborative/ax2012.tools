@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-Switch to instruct the cmdlet to output the script to execute the command in hand
+Instruct the cmdlet to output the script to execute the command in hand
 
 ```yaml
 Type: SwitchParameter

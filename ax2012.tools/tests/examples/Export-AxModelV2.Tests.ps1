@@ -186,7 +186,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -OutputCommandOnly [<SwitchParameter>]
-        Switch to instruct the cmdlet to output the script to execute the command in hand
+        Instruct the cmdlet to output the script to execute the command in hand
         
         Required?                    false
         Position?                    named

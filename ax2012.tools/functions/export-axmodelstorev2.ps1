@@ -36,7 +36,7 @@
         Default value is: "c:\temp\ax2012.tools"
         
     .PARAMETER OutputCommandOnly
-        Switch to instruct the cmdlet to only generate the needed command and not execute it
+        Instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
         PS C:\> Export-AxModelStoreV2

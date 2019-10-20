@@ -10,7 +10,7 @@
         Path to the parent folder where you want the new folder created
         
     .PARAMETER NoCreate
-        Switch to instruct the cmdlet not to create the folder
+        Instruct the cmdlet not to create the folder
         
     .EXAMPLE
         PS C:\> New-FolderWithDateTime -Path "c:\temp\ax2012.tools"

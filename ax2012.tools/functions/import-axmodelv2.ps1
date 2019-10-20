@@ -30,20 +30,28 @@
         "Reject"
         "Push"
         "Overwrite"
-        
+
+    .PARAMETER Detailed
+        Instruct the cmdlet to output detailed element names and AOT path while importing the model
+    
     .PARAMETER CreateParents
-        Switch to instruct the cmdlet to create missing parents on import
+        Instruct the cmdlet to create missing parents on import
         
     .PARAMETER NoOptimize
-        Switch to instruct the cmdlet to skip the optimization on import
+        Instruct the cmdlet to skip the optimization on import
         
         This makes sense if you are import more than 1-2 AX 2012 models at the same time
         
     .PARAMETER NoPrompt
-        Switch to instruct the cmdlet not to prompt you with anything
+        Instruct the cmdlet not to prompt you with anything
         
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+
     .PARAMETER OutputCommandOnly
-        Switch to instruct the cmdlet to output a script that you can execute manually later
+        Instruct the cmdlet to output a script that you can execute manually later
         
         Using this will not import any AX 2012 models into the model store
         
@@ -61,12 +69,12 @@
 #>
 Function Import-AxModelV2 {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName="Generate")]
+    [OutputType()]
     Param(
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
         [Parameter(Mandatory = $false)]
@@ -76,13 +84,16 @@ Function Import-AxModelV2 {
         [ValidateSet("Reject", "Push", "Overwrite")]
         [string] $ConflictMode = "Overwrite",
         
+        [switch] $Detailed,
+
         [switch] $CreateParents,
         
         [switch] $NoOptimize,
 
         [switch] $NoPrompt,
 
-        [Parameter(ParameterSetName = "Generate")]
+        [switch] $ShowOriginalProgress,
+
         [switch] $OutputCommandOnly
     )
 
@@ -97,7 +108,7 @@ Function Import-AxModelV2 {
 
         Invoke-TimeSignal -Start
 
-        $AxModelsPath = (Get-ChildItem -Path $Path | Where-Object {$_.PSIsContainer} | Sort-Object CreationTime -Descending | Select-Object -First 1 | Select-Object Fullname).FullName
+        $AxModelsPath = (Get-ChildItem -Path $Path | Where-Object { $_.PSIsContainer } | Sort-Object CreationTime -Descending | Select-Object -First 1 | Select-Object Fullname).FullName
         Write-PSFMessage -Level Verbose -Message "The newest / latest folder is: $AxModelsPath" -Target $AxModelsPath
 
         $AxModelFiles = Get-ChildItem -Path $AxModelsPath -Recurse -File
@@ -108,18 +119,26 @@ Function Import-AxModelV2 {
         
         $paramsSwitch = Get-HashtableKey -InputObject $PSBoundParameters -Keys @("CreateParents", "NoOptimize", "NoPrompt")
 
+        if($Detailed){
+            $paramsSwitch.Add("Details", $Detailed)
+        }
+        
         foreach ($item in $AxModelFiles) {
             Write-PSFMessage -Level Verbose -Message "Working on file: $($item.FullName)" -Target $item.FullName
             $clonedParams = Get-DeepClone $params
-            $clonedParams += @{ File = $item.FullName }
-
+            $clonedParams.File = $item.FullName
+            
             if ($OutputCommandOnly) {
                 $arguments = Convert-HashToArgString -InputObject $clonedParams
                 $argumentsSwitch = Convert-HashToArgStringSwitch -InputObject $paramsSwitch
                 "Install-AxModel $($arguments -join ' ') $($argumentsSwitch -join ' ')"
             }
             else {
-                Install-AXModel @clonedParams @paramsSwitch
+                $outputRes = Install-AXModel @clonedParams @paramsSwitch
+
+                if($ShowOriginalProgress) {
+                    $outputRes
+                }
             }
         }
         

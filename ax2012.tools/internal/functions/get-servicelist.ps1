@@ -7,16 +7,16 @@
         Extract the services from the list of entries in the HashTable
         
     .PARAMETER AllAxServices
-        Switch to instruct the cmdlet to return all services
+        Instruct the cmdlet to return all services
         
     .PARAMETER Aos
-        Switch to instruct the cmdlet to return AOS
+        Instruct the cmdlet to return AOS
         
     .PARAMETER ManagementReporter
-        Switch to instruct the cmdlet to return ManagementReporter
+        Instruct the cmdlet to return ManagementReporter
         
     .PARAMETER DIXF
-        Switch to instruct the cmdlet to return DIXF
+        Instruct the cmdlet to return DIXF
         
     .EXAMPLE
         PS C:\> Get-ServiceList -All

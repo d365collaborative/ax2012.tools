@@ -27,10 +27,10 @@ function Get-HashtableKey {
     [CmdletBinding()]
     [OutputType([HashTable])]
     param (
-        [parameter(Mandatory = $true, Position = 1)]
+        [parameter(Mandatory = $true)]
         [HashTable] $InputObject,
 
-        [Parameter(Mandatory = $true, Position = 2)]
+        [Parameter(Mandatory = $true)]
         [string[]] $Keys
         
     )

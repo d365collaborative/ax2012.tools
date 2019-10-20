@@ -16,10 +16,10 @@
         Subject string to apply to the email and to the IM message
         
     .PARAMETER IncludeAll
-        Switch to instruct the cmdlet to include all cmdlets (names only) from the pipeline
+        Instruct the cmdlet to include all cmdlets (names only) from the pipeline
         
     .PARAMETER AsJob
-        Switch to instruct the cmdlet to run the invocation as a job (async)
+        Instruct the cmdlet to run the invocation as a job (async)
         
     .EXAMPLE
         PS C:\> Invoke-AxLogicApp -Email administrator@contoso.com -Subject "Work is done" -Url https://prod-35.westeurope.logic.azure.com:443/

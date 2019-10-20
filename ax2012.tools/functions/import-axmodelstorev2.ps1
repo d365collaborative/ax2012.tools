@@ -37,10 +37,10 @@
         "Overwrite"
         
     .PARAMETER Apply
-        Switch to instruct the cmdlet to switch modelstore with the SchemaName in as the current code
+        Instruct the cmdlet to switch modelstore with the SchemaName in as the current code
         
     .PARAMETER OutputCommandOnly
-        Switch to instruct the cmdlet to only generate the needed command and not execute it
+        Instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
         PS C:\> Import-AXModelStoreV2 -SchemaName TempSchema -Path C:\Temp\ax2012.tools\MicrosoftDynamicsAx.axmodelstore

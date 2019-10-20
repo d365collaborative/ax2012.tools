@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShowOriginalProgress
-Switch to instruct the cmdlet to output the status for the service
+Instruct the cmdlet to output the status for the service
 
 ```yaml
 Type: SwitchParameter
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Switch to instruct the cmdlet to force the stopping of the service
+Instruct the cmdlet to force the stopping of the service
 
 ```yaml
 Type: SwitchParameter

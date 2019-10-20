@@ -45,7 +45,7 @@
         Default value is "*" which will search for models in all layers
         
     .PARAMETER OutputCommandOnly
-        Switch to instruct the cmdlet to output the script to execute the command in hand
+        Instruct the cmdlet to output the script to execute the command in hand
         
     .EXAMPLE
         PS C:\> Get-AxAosInstance | Export-AxModelV2

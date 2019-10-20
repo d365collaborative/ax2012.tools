@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -Apply
-Switch to instruct the cmdlet to switch modelstore with the SchemaName in as the current code
+Instruct the cmdlet to switch modelstore with the SchemaName in as the current code
 
 ```yaml
 Type: SwitchParameter
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-Switch to instruct the cmdlet to only generate the needed command and not execute it
+Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter

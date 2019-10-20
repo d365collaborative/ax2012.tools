@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -DropSchema
-Switch to instruct the cmdlet to drop the schema supplied with the -SchemaName parameter
+Instruct the cmdlet to drop the schema supplied with the -SchemaName parameter
 
 ```yaml
 Type: SwitchParameter
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -CreateSchema
-Switch to instruct the cmdlet to create the schema supplied with the -SchemaName parameter
+Instruct the cmdlet to create the schema supplied with the -SchemaName parameter
 
 ```yaml
 Type: SwitchParameter
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -CreateDb
-Switch to instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
+Instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
 
 ```yaml
 Type: SwitchParameter
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-Switch to instruct the cmdlet to only generate the needed command and not execute it
+Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter

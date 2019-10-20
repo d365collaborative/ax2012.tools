@@ -24,10 +24,10 @@
         Designed to work together with the Get-AxEnvironment cmdlet
         
     .PARAMETER ShowOriginalProgress
-        Switch to instruct the cmdlet to output the status for the service
+        Instruct the cmdlet to output the status for the service
         
     .PARAMETER Force
-        Switch to instruct the cmdlet to force the stopping of the service
+        Instruct the cmdlet to force the stopping of the service
         
     .EXAMPLE
         PS C:\> Stop-AxService -Server TEST-AOS-01 -DisplayName *ax*obj*

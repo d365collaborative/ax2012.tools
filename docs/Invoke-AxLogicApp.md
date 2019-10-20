@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeAll
-Switch to instruct the cmdlet to include all cmdlets (names only) from the pipeline
+Instruct the cmdlet to include all cmdlets (names only) from the pipeline
 
 ```yaml
 Type: SwitchParameter
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Switch to instruct the cmdlet to run the invocation as a job (async)
+Instruct the cmdlet to run the invocation as a job (async)
 
 ```yaml
 Type: SwitchParameter

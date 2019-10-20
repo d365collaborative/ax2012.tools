@@ -7,10 +7,10 @@
         Invoke timing logic that keeps track of the time spend inside a function
         
     .PARAMETER Start
-        Switch to instruct the cmdlet that the starting of measurement
+        Instruct the cmdlet that the starting of measurement
         
     .PARAMETER End
-        Switch to instruct the cmdlet that the ending of measurement
+        Instruct the cmdlet that the ending of measurement
         
     .EXAMPLE
         PS C:\> Invoke-TimeSignal -Start

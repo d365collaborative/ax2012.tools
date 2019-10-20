@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -CreateParents
-Switch to instruct the cmdlet to create missing parents on import
+Instruct the cmdlet to create missing parents on import
 
 ```yaml
 Type: SwitchParameter
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoOptimize
-Switch to instruct the cmdlet to skip the optimization on import
+Instruct the cmdlet to skip the optimization on import
 
 This makes sense if you are import more than 1-2 AX 2012 models at the same time
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoPrompt
-Switch to instruct the cmdlet not to prompt you with anything
+Instruct the cmdlet not to prompt you with anything
 
 ```yaml
 Type: SwitchParameter
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-Switch to instruct the cmdlet to output a script that you can execute manually later
+Instruct the cmdlet to output a script that you can execute manually later
 
 Using this will not import any AX 2012 models into the model store
 

@@ -24,16 +24,16 @@
         Default value is: "TempSchema"
         
     .PARAMETER DropSchema
-        Switch to instruct the cmdlet to drop the schema supplied with the -SchemaName parameter
+        Instruct the cmdlet to drop the schema supplied with the -SchemaName parameter
         
     .PARAMETER CreateSchema
-        Switch to instruct the cmdlet to create the schema supplied with the -SchemaName parameter
+        Instruct the cmdlet to create the schema supplied with the -SchemaName parameter
         
     .PARAMETER CreateDb
-        Switch to instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
+        Instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
         
     .PARAMETER OutputCommandOnly
-        Switch to instruct the cmdlet to only generate the needed command and not execute it
+        Instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
         PS C:\> Initialize-AXModelStoreV2 -SchemaName TempSchema -CreateSchema

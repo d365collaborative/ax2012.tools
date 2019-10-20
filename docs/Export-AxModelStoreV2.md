@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-Switch to instruct the cmdlet to only generate the needed command and not execute it
+Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter
