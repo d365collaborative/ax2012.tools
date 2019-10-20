@@ -44,7 +44,7 @@
     .PARAMETER Force
         Instruct the cmdlet to overwrite any existing bak (backup) tables from previous executions
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         When provided the SQL is returned and not executed
         
         Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
@@ -77,7 +77,7 @@ Function Resolve-AxTableFieldIDs {
 
         [Switch] $Force,
 
-        [Switch] $GenerateScript
+        [Switch] $OutputCommandOnly
     )
 
     Invoke-TimeSignal -Start
@@ -101,7 +101,7 @@ Function Resolve-AxTableFieldIDs {
     
     $sqlCommand.CommandText = $commandText.Replace('@DatabaseName', $DatabaseName).Replace('@ModelDatabaseName', $ModelstoreDatabase).Replace("@ForceValue", $forceParameterValue)
 
-    if ($GenerateScript) {
+    if ($OutputCommandOnly) {
         (Get-SqlString $sqlCommand)
     }
     else {

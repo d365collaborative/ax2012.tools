@@ -39,7 +39,7 @@
     .PARAMETER Apply
         Switch to instruct the cmdlet to switch modelstore with the SchemaName in as the current code
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
@@ -77,7 +77,7 @@ function Import-AXModelStoreV2 {
         [Parameter(ParameterSetName = "ApplyModelstore")]
         [switch] $Apply,
 
-        [switch] $GenerateScript
+        [switch] $OutputCommandOnly
     )
 
     Invoke-TimeSignal -Start
@@ -103,7 +103,7 @@ function Import-AXModelStoreV2 {
         $params.Apply = $SchemaName
     }
 
-    if ($GenerateScript) {
+    if ($OutputCommandOnly) {
         $arguments = Convert-HashToArgString -InputObject $params
 
         "Import-AxModelStore $($arguments -join ' ')"

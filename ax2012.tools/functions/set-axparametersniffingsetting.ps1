@@ -22,7 +22,7 @@
     .PARAMETER SqlPwd
         Password of the SQL Server credential that you want to use when working against the database
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         When provided the SQL is returned and not executed
         
         Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
@@ -55,7 +55,7 @@ function Set-AxParameterSniffingSetting {
         [Parameter(Mandatory = $false, Position = 4)]
         [string] $SqlPwd,
 
-        [Switch] $GenerateScript
+        [Switch] $OutputCommandOnly
     )
 
     Invoke-TimeSignal -Start
@@ -73,7 +73,7 @@ function Set-AxParameterSniffingSetting {
 
     $sqlCommand.CommandText = (Get-Content "$script:ModuleRoot\internal\sql\set-axparametersniffingsetting.sql") -join [Environment]::NewLine
 
-    if ($GenerateScript) {
+    if ($OutputCommandOnly) {
         (Get-SqlString $sqlCommand)
     }
     else {

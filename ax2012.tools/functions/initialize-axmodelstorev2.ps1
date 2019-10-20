@@ -32,7 +32,7 @@
     .PARAMETER CreateDb
         Switch to instruct the cmdlet to create a new modelstore inside the supplied -ModelstoreDatabase parameter
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
@@ -76,7 +76,7 @@ function Initialize-AXModelStoreV2 {
         [Parameter(ParameterSetName = "CreateDB")]
         [switch] $CreateDb,
         
-        [switch] $GenerateScript
+        [switch] $OutputCommandOnly
     )
 
     Invoke-TimeSignal -Start
@@ -98,7 +98,7 @@ function Initialize-AXModelStoreV2 {
         $params.CreateDB = $true
     }
 
-    if ($GenerateScript) {
+    if ($OutputCommandOnly) {
         $arguments = Convert-HashToArgString -InputObject $params
 
         "Initialize-AXModelStore $($arguments -join ' ')"

@@ -42,7 +42,7 @@
     .PARAMETER NoPrompt
         Switch to instruct the cmdlet not to prompt you with anything
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         Switch to instruct the cmdlet to output a script that you can execute manually later
         
         Using this will not import any AX 2012 models into the model store
@@ -63,16 +63,16 @@ Function Import-AxModelV2 {
     [CmdletBinding()]
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 1)]
+        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true, Position = 2)]
+        [Parameter(ValueFromPipelineByPropertyName, Mandatory = $false, ValueFromPipeline = $true)]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
-        [Parameter(Mandatory = $false, Position = 3)]
+        [Parameter(Mandatory = $false)]
         [string] $Path = $Script:DefaultTempPath,
 
-        [Parameter(Mandatory = $false, Position = 4)]
+        [Parameter(Mandatory = $false)]
         [ValidateSet("Reject", "Push", "Overwrite")]
         [string] $ConflictMode = "Overwrite",
         
@@ -83,7 +83,7 @@ Function Import-AxModelV2 {
         [switch] $NoPrompt,
 
         [Parameter(ParameterSetName = "Generate")]
-        [switch] $GenerateScript
+        [switch] $OutputCommandOnly
     )
 
     BEGIN {
@@ -113,13 +113,13 @@ Function Import-AxModelV2 {
             $clonedParams = Get-DeepClone $params
             $clonedParams += @{ File = $item.FullName }
 
-            if ($GenerateScript) {
+            if ($OutputCommandOnly) {
                 $arguments = Convert-HashToArgString -InputObject $clonedParams
                 $argumentsSwitch = Convert-HashToArgStringSwitch -InputObject $paramsSwitch
                 "Install-AxModel $($arguments -join ' ') $($argumentsSwitch -join ' ')"
             }
             else {
-                #Install-AXModel @clonedParams @paramsSwitch
+                Install-AXModel @clonedParams @paramsSwitch
             }
         }
         

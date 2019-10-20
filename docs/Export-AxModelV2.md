@@ -14,7 +14,7 @@ Export AX 2012 model
 
 ```
 Export-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>]
- [[-Name] <String>] [[-Id] <String>] [[-Layer] <String>] [-GenerateScript] [<CommonParameters>]
+ [[-Name] <String>] [[-Id] <String>] [[-Layer] <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,7 +158,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 Switch to instruct the cmdlet to output the script to execute the command in hand
 
 ```yaml

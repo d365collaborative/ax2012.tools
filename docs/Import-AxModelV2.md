@@ -14,7 +14,7 @@ Import AX 2012 model
 
 ```
 Import-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>]
- [[-ConflictMode] <String>] [-CreateParents] [-NoOptimize] [-NoPrompt] [-GenerateScript] [<CommonParameters>]
+ [[-ConflictMode] <String>] [-CreateParents] [-NoOptimize] [-NoPrompt] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,7 +156,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 Switch to instruct the cmdlet to output a script that you can execute manually later
 
 Using this will not import any AX 2012 models into the model store

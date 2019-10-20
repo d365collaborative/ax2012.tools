@@ -89,9 +89,9 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter GenerateScript' {
-			$parameter = (Get-Command Resolve-AxTableFieldIDs).Parameters['GenerateScript']
-			$parameter.Name | Should -Be 'GenerateScript'
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Resolve-AxTableFieldIDs).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -107,7 +107,7 @@
 	Describe "Testing parameterset __AllParameterSets" {
 		<#
 		__AllParameterSets -
-		__AllParameterSets -DatabaseServer -DatabaseName -ModelstoreDatabase -SqlUser -SqlPwd -Force -GenerateScript
+		__AllParameterSets -DatabaseServer -DatabaseName -ModelstoreDatabase -SqlUser -SqlPwd -Force -OutputCommandOnly
 		#>
 	}
 

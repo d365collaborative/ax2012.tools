@@ -14,7 +14,7 @@ Export an AX 2012 modelstore file
 
 ```
 Export-AxModelStoreV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-InstanceName] <String>]
- [[-Suffix] <String>] [[-Path] <String>] [-GenerateScript] [<CommonParameters>]
+ [[-Suffix] <String>] [[-Path] <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 Switch to instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml

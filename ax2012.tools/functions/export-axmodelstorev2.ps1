@@ -35,7 +35,7 @@
         
         Default value is: "c:\temp\ax2012.tools"
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         Switch to instruct the cmdlet to only generate the needed command and not execute it
         
     .EXAMPLE
@@ -64,7 +64,7 @@ Function Export-AxModelStoreV2 {
         
         [string] $Path = $Script:DefaultTempPath,
 
-        [switch] $GenerateScript
+        [switch] $OutputCommandOnly
     )
 
     Invoke-TimeSignal -Start
@@ -90,7 +90,7 @@ Function Export-AxModelStoreV2 {
         File     = $ExportPath
     }
 
-    if ($GenerateScript) {
+    if ($OutputCommandOnly) {
         $arguments = Convert-HashToArgString -InputObject $params
 
         "Export-AxModelStore $($arguments -join ' ')"

@@ -14,7 +14,7 @@ Fix table and field ID conflicts
 
 ```
 Resolve-AxTableFieldIDs [[-DatabaseServer] <String>] [[-DatabaseName] <String>]
- [[-ModelstoreDatabase] <String>] [[-SqlUser] <String>] [[-SqlPwd] <String>] [-Force] [-GenerateScript]
+ [[-ModelstoreDatabase] <String>] [[-SqlUser] <String>] [[-SqlPwd] <String>] [-Force] [-OutputCommandOnly]
  [<CommonParameters>]
 ```
 
@@ -144,7 +144,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 When provided the SQL is returned and not executed
 
 Note: This is useful for troubleshooting or providing the script to a DBA with access to the server

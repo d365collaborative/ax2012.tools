@@ -15,13 +15,13 @@ Import an AX 2012 modelstore file
 ### ImportModelstore (Default)
 ```
 Import-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-Path <String>] [-IdConflictMode <String>] [-GenerateScript] [<CommonParameters>]
+ [-Path <String>] [-IdConflictMode <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ### ApplyModelstore
 ```
 Import-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>] [-Apply]
- [-GenerateScript] [<CommonParameters>]
+ [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 Switch to instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml

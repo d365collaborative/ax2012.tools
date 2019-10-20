@@ -14,7 +14,7 @@ Set the parameter sniffing configuration
 
 ```
 Set-AxParameterSniffingSetting [[-DatabaseServer] <String>] [[-DatabaseName] <String>] [[-SqlUser] <String>]
- [[-SqlPwd] <String>] [-GenerateScript] [<CommonParameters>]
+ [[-SqlPwd] <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 When provided the SQL is returned and not executed
 
 Note: This is useful for troubleshooting or providing the script to a DBA with access to the server

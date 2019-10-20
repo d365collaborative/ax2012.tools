@@ -95,9 +95,9 @@
 			$parameter.ParameterSets['CreateDB'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['CreateDB'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter GenerateScript' {
-			$parameter = (Get-Command Initialize-AXModelStoreV2).Parameters['GenerateScript']
-			$parameter.Name | Should -Be 'GenerateScript'
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Initialize-AXModelStoreV2).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -113,19 +113,19 @@
 	Describe "Testing parameterset CreateSchema" {
 		<#
 		CreateSchema -
-		CreateSchema -DatabaseServer -ModelstoreDatabase -SchemaName -CreateSchema -GenerateScript
+		CreateSchema -DatabaseServer -ModelstoreDatabase -SchemaName -CreateSchema -OutputCommandOnly
 		#>
 	}
  	Describe "Testing parameterset Drop" {
 		<#
 		Drop -
-		Drop -DatabaseServer -ModelstoreDatabase -SchemaName -DropSchema -GenerateScript
+		Drop -DatabaseServer -ModelstoreDatabase -SchemaName -DropSchema -OutputCommandOnly
 		#>
 	}
  	Describe "Testing parameterset CreateDB" {
 		<#
 		CreateDB -
-		CreateDB -DatabaseServer -ModelstoreDatabase -CreateDb -GenerateScript
+		CreateDB -DatabaseServer -ModelstoreDatabase -CreateDb -OutputCommandOnly
 		#>
 	}
 

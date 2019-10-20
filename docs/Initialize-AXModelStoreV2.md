@@ -15,19 +15,19 @@ Initialize an AX 2012 modelstore
 ### CreateSchema (Default)
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-CreateSchema] [-GenerateScript] [<CommonParameters>]
+ [-CreateSchema] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ### Drop
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-DropSchema] [-GenerateScript] [<CommonParameters>]
+ [-DropSchema] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ### CreateDB
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-CreateDb]
- [-GenerateScript] [<CommonParameters>]
+ [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GenerateScript
+### -OutputCommandOnly
 Switch to instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml

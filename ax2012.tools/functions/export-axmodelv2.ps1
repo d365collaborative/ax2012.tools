@@ -44,7 +44,7 @@
         
         Default value is "*" which will search for models in all layers
         
-    .PARAMETER GenerateScript
+    .PARAMETER OutputCommandOnly
         Switch to instruct the cmdlet to output the script to execute the command in hand
         
     .EXAMPLE
@@ -67,30 +67,30 @@ Function Export-AxModelV2 {
     [CmdletBinding()]
     [OutputType([System.String], ParameterSetName="Generate")]
     Param(
-        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 1)]
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true, Position = 2)]
+        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true)]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
-        [Parameter(Mandatory = $false, Position = 3)]
+        [Parameter(Mandatory = $false)]
         [string] $Path = $Script:DefaultTempPath,
 
-        [Parameter(Mandatory = $false, Position = 4)]
+        [Parameter(Mandatory = $false)]
         [string] $Name = "*",
 
-        [Parameter(Mandatory = $false, Position = 5)]
+        [Parameter(Mandatory = $false)]
         [string] $Id = "*",
 
-        [Parameter(Mandatory = $false, Position = 6)]
+        [Parameter(Mandatory = $false)]
         [string] $Layer = "*",
 
         [Parameter(ParameterSetName = "Generate")]
-        [switch] $GenerateScript
+        [switch] $OutputCommandOnly
     )
 
     BEGIN {
-        if (-not ($GenerateScript)) {
+        if (-not ($OutputCommandOnly)) {
             if (-not (Test-PathExists -Path $Path -Type Container -Create)) { return }
             $backupFilePath = New-FolderWithDateTime -Path $Path
         }
@@ -145,7 +145,7 @@ Function Export-AxModelV2 {
                     Server = $DatabaseServer; Database = $ModelstoreDatabase
                 }
 
-                if ($GenerateScript) {
+                if ($OutputCommandOnly) {
                     $arguments = Convert-HashToArgString -InputObject $params
 
                     "Export-AXModel $($arguments -join ' ')"
@@ -166,7 +166,7 @@ Function Export-AxModelV2 {
     }
 
     END {
-        if (-not ($GenerateScript)) {
+        if (-not ($OutputCommandOnly)) {
             [PSCustomObject]@{
                 Path = $backupFilePath
             }

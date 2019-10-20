@@ -102,7 +102,7 @@ SYNOPSIS
     
 SYNTAX
     Export-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>] [[-Name] <String>
-    ] [[-Id] <String>] [[-Layer] <String>] [-GenerateScript] [<CommonParameters>]
+    ] [[-Id] <String>] [[-Layer] <String>] [-OutputCommandOnly] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -185,7 +185,7 @@ PARAMETERS
         Accept pipeline input?       false
         Accept wildcard characters?  false
         
-    -GenerateScript [<SwitchParameter>]
+    -OutputCommandOnly [<SwitchParameter>]
         Switch to instruct the cmdlet to output the script to execute the command in hand
         
         Required?                    false

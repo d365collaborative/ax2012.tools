@@ -102,9 +102,9 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter GenerateScript' {
-			$parameter = (Get-Command Import-AxModelV2).Parameters['GenerateScript']
-			$parameter.Name | Should -Be 'GenerateScript'
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Import-AxModelV2).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be 'Generate'
@@ -120,7 +120,7 @@
 	Describe "Testing parameterset Generate" {
 		<#
 		Generate -
-		Generate -DatabaseServer -ModelstoreDatabase -Path -ConflictMode -CreateParents -NoOptimize -NoPrompt -GenerateScript
+		Generate -DatabaseServer -ModelstoreDatabase -Path -ConflictMode -CreateParents -NoOptimize -NoPrompt -OutputCommandOnly
 		#>
 	}
 

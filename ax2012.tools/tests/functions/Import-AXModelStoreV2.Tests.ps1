@@ -95,9 +95,9 @@
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter GenerateScript' {
-			$parameter = (Get-Command Import-AXModelStoreV2).Parameters['GenerateScript']
-			$parameter.Name | Should -Be 'GenerateScript'
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Import-AXModelStoreV2).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -113,13 +113,13 @@
 	Describe "Testing parameterset ImportModelstore" {
 		<#
 		ImportModelstore -
-		ImportModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Path -IdConflictMode -GenerateScript
+		ImportModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Path -IdConflictMode -OutputCommandOnly
 		#>
 	}
  	Describe "Testing parameterset ApplyModelstore" {
 		<#
 		ApplyModelstore -
-		ApplyModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Apply -GenerateScript
+		ApplyModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Apply -OutputCommandOnly
 		#>
 	}
 
