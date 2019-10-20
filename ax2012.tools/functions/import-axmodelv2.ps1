@@ -63,6 +63,17 @@
         The Database Server is set to the default value of "localhost".
         The Modelstore Database is set to the default value of "MicrosoftDynamicsAx_model".
         
+
+    .EXAMPLE
+        PS C:\> Import-AxModelV2 -Path "c:\temp\ax2012.tools\dev-models" -ShowOriginalProgress
+        
+        The cmdlet will look for all the AX 2012 models located in "c:\temp\ax2012.tools\dev-models" or any of its sub folders.
+        The ConflictMode is set to the default value of "OverWrite".
+        The Database Server is set to the default value of "localhost".
+        The Modelstore Database is set to the default value of "MicrosoftDynamicsAx_model".
+
+        It will show the original progress output for the import of the model file in real time.
+        
     .NOTES
         Author: Mötz Jensen (@Splaxi)
         

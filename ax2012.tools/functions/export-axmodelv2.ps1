@@ -44,6 +44,11 @@
         
         Default value is "*" which will search for models in all layers
         
+    .PARAMETER ShowOriginalProgress
+        Instruct the cmdlet to show the standard output in the console
+        
+        Default is $false which will silence the standard output
+
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to output the script to execute the command in hand
         
@@ -65,27 +70,24 @@
 #>
 Function Export-AxModelV2 {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName="Generate")]
+    [OutputType()]
     Param(
-        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
-        [Parameter(Mandatory = $false, ValueFromPipelineByPropertyName = $true)]
+        [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $ModelstoreDatabase = $Script:ActiveAosModelstoredatabase,
         
-        [Parameter(Mandatory = $false)]
         [string] $Path = $Script:DefaultTempPath,
 
-        [Parameter(Mandatory = $false)]
         [string] $Name = "*",
 
-        [Parameter(Mandatory = $false)]
         [string] $Id = "*",
 
-        [Parameter(Mandatory = $false)]
         [string] $Layer = "*",
 
-        [Parameter(ParameterSetName = "Generate")]
+        [switch] $ShowOriginalProgress,
+
         [switch] $OutputCommandOnly
     )
 
@@ -154,7 +156,11 @@ Function Export-AxModelV2 {
                     if (-not (Test-PathExists -Path $tempPath -Type Container -Create)) { return }
 
                     Write-PSFMessage -Level Verbose -Message "Starting the export of the ax model file"
-                    $null = Export-AXModel @params
+                    $outputRes = Export-AXModel @params
+
+                    if ($ShowOriginalProgress) {
+                        $outputRes
+                    }
                 }
             }
             else {

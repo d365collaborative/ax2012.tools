@@ -14,7 +14,8 @@ Import AX 2012 model
 
 ```
 Import-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>]
- [[-ConflictMode] <String>] [-CreateParents] [-NoOptimize] [-NoPrompt] [-OutputCommandOnly] [<CommonParameters>]
+ [[-ConflictMode] <String>] [-Detailed] [-CreateParents] [-NoOptimize] [-NoPrompt] [-ShowOriginalProgress]
+ [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,9 +46,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: $Script:ActiveAosDatabaseserver
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -66,9 +67,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: $Script:ActiveAosModelstoredatabase
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -83,7 +84,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 3
 Default value: $Script:DefaultTempPath
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -103,8 +104,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: Overwrite
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Detailed
+Instruct the cmdlet to output detailed element names and AOT path while importing the model
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -156,6 +172,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OutputCommandOnly
 Instruct the cmdlet to output a script that you can execute manually later
 
@@ -180,7 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
 ## NOTES
 Author: Mötz Jensen (@Splaxi)
 

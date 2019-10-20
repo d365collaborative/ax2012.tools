@@ -13,8 +13,8 @@ Export AX 2012 model
 ## SYNTAX
 
 ```
-Export-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>]
- [[-Name] <String>] [[-Id] <String>] [[-Layer] <String>] [-OutputCommandOnly] [<CommonParameters>]
+Export-AxModelV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-Path <String>] [-Name <String>]
+ [-Id <String>] [-Layer <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -72,7 +72,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -89,7 +89,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: $Script:DefaultTempPath
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -110,7 +110,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: *
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -131,7 +131,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: *
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -152,7 +152,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: *
 Accept pipeline input: False
 Accept wildcard characters: False
