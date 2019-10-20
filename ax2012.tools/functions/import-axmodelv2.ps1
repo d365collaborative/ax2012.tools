@@ -80,7 +80,7 @@
 #>
 Function Import-AxModelV2 {
     [CmdletBinding()]
-    [OutputType()]
+    [OutputType([System.String], ParameterSetName="Generate")]
     Param(
         [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
@@ -105,6 +105,7 @@ Function Import-AxModelV2 {
 
         [switch] $ShowOriginalProgress,
 
+        [Parameter(ParameterSetName = "Generate")]
         [switch] $OutputCommandOnly
     )
 
