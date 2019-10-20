@@ -8,7 +8,7 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Import-AXModelStoreV2).ParameterSets.Name | Should -Be 'ImportModelstore', 'ApplyModelstore'
+			(Get-Command Import-AXModelStoreV2).ParameterSets.Name | Should -Be 'ImportModelstore', 'ApplyModelstore', 'Generate'
 		}
 		
 		It 'Should have the expected parameter DatabaseServer' {
@@ -95,9 +95,9 @@
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['ApplyModelstore'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter OutputCommandOnly' {
-			$parameter = (Get-Command Import-AXModelStoreV2).Parameters['OutputCommandOnly']
-			$parameter.Name | Should -Be 'OutputCommandOnly'
+		It 'Should have the expected parameter ShowOriginalProgress' {
+			$parameter = (Get-Command Import-AXModelStoreV2).Parameters['ShowOriginalProgress']
+			$parameter.Name | Should -Be 'ShowOriginalProgress'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -108,18 +108,37 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Import-AXModelStoreV2).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
+			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
+			$parameter.IsDynamic | Should -Be $False
+			$parameter.ParameterSets.Keys | Should -Be 'Generate'
+			$parameter.ParameterSets.Keys | Should -Contain 'Generate'
+			$parameter.ParameterSets['Generate'].IsMandatory | Should -Be $False
+			$parameter.ParameterSets['Generate'].Position | Should -Be -2147483648
+			$parameter.ParameterSets['Generate'].ValueFromPipeline | Should -Be $False
+			$parameter.ParameterSets['Generate'].ValueFromPipelineByPropertyName | Should -Be $False
+			$parameter.ParameterSets['Generate'].ValueFromRemainingArguments | Should -Be $False
+		}
 	}
 	
 	Describe "Testing parameterset ImportModelstore" {
 		<#
 		ImportModelstore -
-		ImportModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Path -IdConflictMode -OutputCommandOnly
+		ImportModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Path -IdConflictMode -ShowOriginalProgress
 		#>
 	}
  	Describe "Testing parameterset ApplyModelstore" {
 		<#
 		ApplyModelstore -
-		ApplyModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Apply -OutputCommandOnly
+		ApplyModelstore -DatabaseServer -ModelstoreDatabase -SchemaName -Apply -ShowOriginalProgress
+		#>
+	}
+ 	Describe "Testing parameterset Generate" {
+		<#
+		Generate -
+		Generate -DatabaseServer -ModelstoreDatabase -ShowOriginalProgress -OutputCommandOnly
 		#>
 	}
 

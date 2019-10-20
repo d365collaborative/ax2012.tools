@@ -8,7 +8,7 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Initialize-AXModelStoreV2).ParameterSets.Name | Should -Be 'CreateSchema', 'Drop', 'CreateDB'
+			(Get-Command Initialize-AXModelStoreV2).ParameterSets.Name | Should -Be 'CreateSchema', 'Drop', 'CreateDB', 'Generate'
 		}
 		
 		It 'Should have the expected parameter DatabaseServer' {
@@ -95,9 +95,9 @@
 			$parameter.ParameterSets['CreateDB'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['CreateDB'].ValueFromRemainingArguments | Should -Be $False
 		}
-		It 'Should have the expected parameter OutputCommandOnly' {
-			$parameter = (Get-Command Initialize-AXModelStoreV2).Parameters['OutputCommandOnly']
-			$parameter.Name | Should -Be 'OutputCommandOnly'
+		It 'Should have the expected parameter ShowOriginalProgress' {
+			$parameter = (Get-Command Initialize-AXModelStoreV2).Parameters['ShowOriginalProgress']
+			$parameter.Name | Should -Be 'ShowOriginalProgress'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
 			$parameter.ParameterSets.Keys | Should -Be '__AllParameterSets'
@@ -108,24 +108,43 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromPipelineByPropertyName | Should -Be $False
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
+		It 'Should have the expected parameter OutputCommandOnly' {
+			$parameter = (Get-Command Initialize-AXModelStoreV2).Parameters['OutputCommandOnly']
+			$parameter.Name | Should -Be 'OutputCommandOnly'
+			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
+			$parameter.IsDynamic | Should -Be $False
+			$parameter.ParameterSets.Keys | Should -Be 'Generate'
+			$parameter.ParameterSets.Keys | Should -Contain 'Generate'
+			$parameter.ParameterSets['Generate'].IsMandatory | Should -Be $False
+			$parameter.ParameterSets['Generate'].Position | Should -Be -2147483648
+			$parameter.ParameterSets['Generate'].ValueFromPipeline | Should -Be $False
+			$parameter.ParameterSets['Generate'].ValueFromPipelineByPropertyName | Should -Be $False
+			$parameter.ParameterSets['Generate'].ValueFromRemainingArguments | Should -Be $False
+		}
 	}
 	
 	Describe "Testing parameterset CreateSchema" {
 		<#
 		CreateSchema -
-		CreateSchema -DatabaseServer -ModelstoreDatabase -SchemaName -CreateSchema -OutputCommandOnly
+		CreateSchema -DatabaseServer -ModelstoreDatabase -SchemaName -CreateSchema -ShowOriginalProgress
 		#>
 	}
  	Describe "Testing parameterset Drop" {
 		<#
 		Drop -
-		Drop -DatabaseServer -ModelstoreDatabase -SchemaName -DropSchema -OutputCommandOnly
+		Drop -DatabaseServer -ModelstoreDatabase -SchemaName -DropSchema -ShowOriginalProgress
 		#>
 	}
  	Describe "Testing parameterset CreateDB" {
 		<#
 		CreateDB -
-		CreateDB -DatabaseServer -ModelstoreDatabase -CreateDb -OutputCommandOnly
+		CreateDB -DatabaseServer -ModelstoreDatabase -CreateDb -ShowOriginalProgress
+		#>
+	}
+ 	Describe "Testing parameterset Generate" {
+		<#
+		Generate -
+		Generate -DatabaseServer -ModelstoreDatabase -ShowOriginalProgress -OutputCommandOnly
 		#>
 	}
 
