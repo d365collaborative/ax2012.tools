@@ -1,4 +1,46 @@
-﻿function Clear-AxInstanceGlobalGuid {
+﻿<#
+.SYNOPSIS
+Clear the Global Guid id from the AX 2012 database
+
+.DESCRIPTION
+Reset the Global Guid located in the SysSqmSettings table
+
+This guid (id) is used by the client to identify cache objects, so resetting this can be useful when troubleshooting
+
+    .PARAMETER DatabaseServer
+        Server name of the database server
+        
+        Default value is: "localhost"
+        
+    .PARAMETER ModelstoreDatabase
+        Name of the modelstore database
+        
+        Default value is: "MicrosoftDynamicsAx_model"
+        
+        Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
+
+    .PARAMETER SqlUser
+        User name of the SQL Server credential that you want to use when working against the database
+        
+    .PARAMETER SqlPwd
+        Password of the SQL Server credential that you want to use when working against the database
+
+    .PARAMETER OutputCommandOnly
+        Instruct the cmdlet to only generate the needed command and not execute it
+
+.EXAMPLE
+PS C:\> Clear-AxInstanceGlobalGuid
+
+This will clear the current global guid in the AX 2012 database.
+
+.NOTES
+Tags:
+
+Author: Mötz Jensen (@Splaxi)
+
+#>
+
+function Clear-AxInstanceGlobalGuid {
     [CmdletBinding()]
     [OutputType([System.String], ParameterSetName = "Generate")]
     param (
