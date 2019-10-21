@@ -1,48 +1,12 @@
-﻿
-<#
-    .SYNOPSIS
-        Set the parameter sniffing configuration
-        
-    .DESCRIPTION
-        Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
-        
-    .PARAMETER DatabaseServer
-        Server name of the database server
-        
-        Default value is: "localhost"
-        
-    .PARAMETER DatabaseName
-        Name of the database
-        
-        Default value is: "MicrosoftDynamicsAx"
-        
-    .PARAMETER SqlUser
-        User name of the SQL Server credential that you want to use when working against the database
-        
-    .PARAMETER SqlPwd
-        Password of the SQL Server credential that you want to use when working against the database
-        
-    .PARAMETER OutputCommandOnly
-        When provided the SQL is returned and not executed
-        
-        Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
-        
-    .EXAMPLE
-        PS C:\> Set-AxParameterSniffingSetting
-        
-        This will configure the correct parameter sniffing settings.
-        
-    .NOTES
-        Author: Mötz Jensen (@Splaxi)
-        
-    .LINK
-        https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
-#>
-function Set-AxParameterSniffingSetting {
+﻿function Set-AxAdmin {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '')]
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName="Generate")]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     param (
+        
+        [Parameter(Mandatory = $true)]
+        [string] $Username,
+
         [Parameter(ValueFromPipelineByPropertyName = $true)]
         [string] $DatabaseServer = $Script:ActiveAosDatabaseserver,
 
@@ -59,6 +23,8 @@ function Set-AxParameterSniffingSetting {
 
     Invoke-TimeSignal -Start
 
+    $userInfo = Get-DomainUserDetails -Username $Username
+
     $baseParams = Get-DeepClone $PSBoundParameters
     $baseParams.Add("TrustedConnection", $true)
 
@@ -70,7 +36,12 @@ function Set-AxParameterSniffingSetting {
 
     $sqlCommand = Get-SqlCommand @SqlParams -TrustedConnection $UseTrustedConnection
 
-    $sqlCommand.CommandText = (Get-Content "$script:ModuleRoot\internal\sql\set-axparametersniffingsetting.sql") -join [Environment]::NewLine
+    $sqlCommand.CommandText = (Get-Content "$script:ModuleRoot\internal\sql\set-axadmin.sql") -join [Environment]::NewLine
+    $null = $sqlCommand.Parameters.AddWithValue('@NetworkDomain', $userInfo.Domain)
+    $null = $sqlCommand.Parameters.AddWithValue('@NetworkAlias', $userInfo.UserId)
+    $null = $sqlCommand.Parameters.AddWithValue('@SID', $userInfo.Sid)
+
+    # UPDATE [dbo].[USERINFO] SET [NETWORKDOMAIN] = @NetworkDomain, [NETWORKALIAS] = @NetworkAlias, [SID] = @SID WHERE [ID] = 'Admin'
 
     if ($OutputCommandOnly) {
         (Get-SqlString $sqlCommand)

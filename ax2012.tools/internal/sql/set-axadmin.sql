@@ -1,0 +1,1 @@
+﻿UPDATE [dbo].[USERINFO] SET [NETWORKDOMAIN] = @NetworkDomain, [NETWORKALIAS] = @NetworkAlias, [SID] = @SID WHERE [ID] = 'Admin'

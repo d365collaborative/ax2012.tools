@@ -85,6 +85,8 @@
                             
                             'Set-AxActiveAosConfig',
                             'Set-AxActiveEnvironmentConfig',
+                            'Set-AxAdmin',
+                            
                             'Set-AxLogicAppConfig',
                             
                             'Set-AxParameterSniffingSetting',
