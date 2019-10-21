@@ -41,12 +41,12 @@
 	
     # Functions to export from this module
     FunctionsToExport = @(
+                            'Clear-AxActiveEnvironmentConfig',
                             'Clear-AxClientCacheObjects',
+                            'Clear-AxInstanceGlobalGuid',
                             'Clear-AxServerCacheObjects',
 
                             'Add-AxEnvironmentConfig',
-
-                            'Clear-AxActiveEnvironmentConfig',
                             
                             'Export-AxModelV2',
                             'Export-AxModelStoreV2',
@@ -86,7 +86,7 @@
                             'Set-AxActiveAosConfig',
                             'Set-AxActiveEnvironmentConfig',
                             'Set-AxAdmin',
-                            
+
                             'Set-AxLogicAppConfig',
                             
                             'Set-AxParameterSniffingSetting',
