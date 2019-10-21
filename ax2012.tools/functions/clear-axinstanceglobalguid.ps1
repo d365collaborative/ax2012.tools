@@ -13,12 +13,10 @@
         
         Default value is: "localhost"
         
-    .PARAMETER ModelstoreDatabase
-        Name of the modelstore database
+    .PARAMETER DatabaseName
+        Name of the database
         
-        Default value is: "MicrosoftDynamicsAx_model"
-        
-        Note: From AX 2012 R2 and upwards you need to provide the full name for the modelstore database. E.g. "AX2012R3_PROD_model"
+        Default value is: "MicrosoftDynamicsAx"
         
     .PARAMETER SqlUser
         User name of the SQL Server credential that you want to use when working against the database
