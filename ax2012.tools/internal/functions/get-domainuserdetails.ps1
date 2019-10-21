@@ -1,30 +1,31 @@
-﻿<#
-.SYNOPSIS
-Get details about the user
-
-.DESCRIPTION
-Extract the FQDM and Sid from the user account
-
-.PARAMETER Username
-User name with the domain name included, in either PRE-2000 or UPN style
-
-.EXAMPLE
-PS C:\> Get-DomainUserDetails -Username "Test@ACME.LOCAL"
-
-This will return the details from the user account "Test@ACME.LOCAL".
-
-.EXAMPLE
-PS C:\> Get-DomainUserDetails -Username "ACME.LOCAL\Test"
-
-This will return the details from the user account "ACME.LOCAL\Test".
-
-.EXAMPLE
-PS C:\> Get-DomainUserDetails -Username "ACME\Test"
-
-This will return the details from the user account "ACME\Test".
-
-.NOTES
-Author: Mötz Jensen (@Splaxi)
+﻿
+<#
+    .SYNOPSIS
+        Get details about the user
+        
+    .DESCRIPTION
+        Extract the FQDM and Sid from the user account
+        
+    .PARAMETER Username
+        User name with the domain name included, in either PRE-2000 or UPN style
+        
+    .EXAMPLE
+        PS C:\> Get-DomainUserDetails -Username "Test@ACME.LOCAL"
+        
+        This will return the details from the user account "Test@ACME.LOCAL".
+        
+    .EXAMPLE
+        PS C:\> Get-DomainUserDetails -Username "ACME.LOCAL\Test"
+        
+        This will return the details from the user account "ACME.LOCAL\Test".
+        
+    .EXAMPLE
+        PS C:\> Get-DomainUserDetails -Username "ACME\Test"
+        
+        This will return the details from the user account "ACME\Test".
+        
+    .NOTES
+        Author: Mötz Jensen (@Splaxi)
 #>
 
 function Get-DomainUserDetails {

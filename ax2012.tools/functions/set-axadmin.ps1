@@ -1,15 +1,16 @@
-﻿<#
-.SYNOPSIS
-Set the admin account inside the AX 2012 database
-
-.DESCRIPTION
-Set the user account details (credentails) that will be the considered as the admin account in the AX 2012 database
-
-.PARAMETER Username
-Username of the user that you want to be the new admin in the database
-
-Must include domain details, either in PRE-2000 or UPN style
-
+﻿
+<#
+    .SYNOPSIS
+        Set the admin account inside the AX 2012 database
+        
+    .DESCRIPTION
+        Set the user account details (credentails) that will be the considered as the admin account in the AX 2012 database
+        
+    .PARAMETER Username
+        Username of the user that you want to be the new admin in the database
+        
+        Must include domain details, either in PRE-2000 or UPN style
+        
     .PARAMETER DatabaseServer
         Server name of the database server
         
@@ -19,25 +20,25 @@ Must include domain details, either in PRE-2000 or UPN style
         Name of the database
         
         Default value is: "MicrosoftDynamicsAx"
-
+        
     .PARAMETER SqlUser
         User name of the SQL Server credential that you want to use when working against the database
         
     .PARAMETER SqlPwd
         Password of the SQL Server credential that you want to use when working against the database
-
+        
     .PARAMETER OutputCommandOnly
         Instruct the cmdlet to only generate the needed command and not execute it
-
-.EXAMPLE
-PS C:\> Set-AxAdmin -Username "ACME.local\test"
-
-This will update the admin record in the AX 2012 database to "ACME.local\test".
-
-.NOTES
-Tags:
-
-Author: Mötz Jensen (@Splaxi)
+        
+    .EXAMPLE
+        PS C:\> Set-AxAdmin -Username "ACME.local\test"
+        
+        This will update the admin record in the AX 2012 database to "ACME.local\test".
+        
+    .NOTES
+        Tags:
+        
+        Author: Mötz Jensen (@Splaxi)
 #>
 
 function Set-AxAdmin {
