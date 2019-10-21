@@ -1,4 +1,4 @@
-﻿Describe "Set-AxParameterSniffingSetting Unit Tests" -Tag "Unit" {
+﻿Describe "Clear-AxInstanceGlobalGuid Unit Tests" -Tag "Unit" {
 	BeforeAll {
 		# Place here all things needed to prepare for the tests
 	}
@@ -8,11 +8,11 @@
 	
 	Describe "Ensuring unchanged command signature" {
 		It "should have the expected parameter sets" {
-			(Get-Command Set-AxParameterSniffingSetting).ParameterSets.Name | Should -Be 'Generate'
+			(Get-Command Clear-AxInstanceGlobalGuid).ParameterSets.Name | Should -Be 'Generate'
 		}
 		
 		It 'Should have the expected parameter DatabaseServer' {
-			$parameter = (Get-Command Set-AxParameterSniffingSetting).Parameters['DatabaseServer']
+			$parameter = (Get-Command Clear-AxInstanceGlobalGuid).Parameters['DatabaseServer']
 			$parameter.Name | Should -Be 'DatabaseServer'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -25,7 +25,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter DatabaseName' {
-			$parameter = (Get-Command Set-AxParameterSniffingSetting).Parameters['DatabaseName']
+			$parameter = (Get-Command Clear-AxInstanceGlobalGuid).Parameters['DatabaseName']
 			$parameter.Name | Should -Be 'DatabaseName'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -38,7 +38,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter SqlUser' {
-			$parameter = (Get-Command Set-AxParameterSniffingSetting).Parameters['SqlUser']
+			$parameter = (Get-Command Clear-AxInstanceGlobalGuid).Parameters['SqlUser']
 			$parameter.Name | Should -Be 'SqlUser'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -51,7 +51,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter SqlPwd' {
-			$parameter = (Get-Command Set-AxParameterSniffingSetting).Parameters['SqlPwd']
+			$parameter = (Get-Command Clear-AxInstanceGlobalGuid).Parameters['SqlPwd']
 			$parameter.Name | Should -Be 'SqlPwd'
 			$parameter.ParameterType.ToString() | Should -Be System.String
 			$parameter.IsDynamic | Should -Be $False
@@ -64,7 +64,7 @@
 			$parameter.ParameterSets['__AllParameterSets'].ValueFromRemainingArguments | Should -Be $False
 		}
 		It 'Should have the expected parameter OutputCommandOnly' {
-			$parameter = (Get-Command Set-AxParameterSniffingSetting).Parameters['OutputCommandOnly']
+			$parameter = (Get-Command Clear-AxInstanceGlobalGuid).Parameters['OutputCommandOnly']
 			$parameter.Name | Should -Be 'OutputCommandOnly'
 			$parameter.ParameterType.ToString() | Should -Be System.Management.Automation.SwitchParameter
 			$parameter.IsDynamic | Should -Be $False
