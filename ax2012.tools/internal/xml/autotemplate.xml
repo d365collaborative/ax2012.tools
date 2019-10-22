@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AxaptaAutoRun exitWhenDone="{{ExitWhenDone}}" version="4.0" logFile="{{LogPath}}">
+{{Action}}
+</AxaptaAutoRun>

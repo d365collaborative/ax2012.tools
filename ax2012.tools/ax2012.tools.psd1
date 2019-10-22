@@ -56,6 +56,8 @@
                             'Get-AxAosInstance',
                             'Get-AxAosServerFromDB',
 
+                            'Get-AxAutoRunXml',
+                            
                             'Get-AxClientBuild',
                             'Get-AxClientConfig',
                             'Get-AxEnvironmentConfig',
