@@ -57,7 +57,7 @@
 
 function Invoke-Process {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName="Generate")]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     param (
         [Parameter(Mandatory = $true)]
         
@@ -66,6 +66,8 @@ function Invoke-Process {
 
         [Parameter(Mandatory = $true)]
         [string[]] $Params,
+
+        [int32] $TimeoutInMinutes = 0,
 
         [switch] $ShowOriginalProgress,
 
@@ -77,9 +79,20 @@ function Invoke-Process {
 
     Invoke-TimeSignal -Start
 
-    if (-not (Test-PathExists -Path $Path -Type Leaf)) {return}
+    if (-not (Test-PathExists -Path $Path -Type Leaf)) { return }
 
     if (Test-PSFFunctionInterrupt) { return }
+
+    [Int32] $millisecondFactor = 60000
+
+    [Int32] $timeoutForExit = 0
+
+    if ($TimeoutInMinutes -eq 0) {
+        $timeoutForExit = [Int32]::MaxValue
+    }
+    else {
+        $timeoutForExit = $TimeoutInMinutes * $millisecondFactor
+    }
 
     $tool = Split-Path -Path $Path -Leaf
 
@@ -101,7 +114,7 @@ function Invoke-Process {
 
     Write-PSFMessage -Level Verbose "Starting the $tool" -Target "$($params -join " ")"
 
-    if($OutputCommandOnly){
+    if ($OutputCommandOnly) {
         Write-PSFMessage -Level Host "$Path $($pinfo.Arguments)"
         return
     }
@@ -114,15 +127,27 @@ function Invoke-Process {
     }
 
     Write-PSFMessage -Level Verbose "Waiting for the $tool to complete"
-    $p.WaitForExit()
 
+    if(-not ($p.WaitForExit($timeoutForExit))) {
+        Write-PSFMessage -Level Host "Timeout for exit has been <c='em'>reached</c>. Will execute a kill operation now."
+        
+        $p.Kill()
+
+        Write-PSFMessage -Level Host "Standard output was: \r\n $stdout"
+        Write-PSFMessage -Level Host "Error output was: \r\n $stderr"
+
+        $messageString = "Stopping because Timeout has been reached."
+        Stop-PSFFunction -Message "Stopping because of Timeout." -Exception $([System.Exception]::new($($messageString -replace '<[^>]+>', ''))) -StepsUpward 1
+        return
+    }
+    
     if ($p.ExitCode -ne 0 -and (-not $ShowOriginalProgress)) {
         Write-PSFMessage -Level Host "Exit code from $tool indicated an error happened. Will output both standard stream and error stream."
         Write-PSFMessage -Level Host "Standard output was: \r\n $stdout"
         Write-PSFMessage -Level Host "Error output was: \r\n $stderr"
 
         $messageString = "Stopping because an Exit Code from $tool wasn't 0 (zero) like expected."
-        Stop-PSFFunction -Message "Stopping because of Exit Code." -Exception $([System.Exception]::new($($messageString -replace '<[^>]+>',''))) -StepsUpward 1
+        Stop-PSFFunction -Message "Stopping because of Exit Code." -Exception $([System.Exception]::new($($messageString -replace '<[^>]+>', ''))) -StepsUpward 1
         return
     }
     else {

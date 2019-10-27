@@ -77,6 +77,7 @@
                             
                             'Invoke-AxBuild',
                             'Invoke-AxLogicApp',
+                            'Invoke-AxStartAutoRun',
 
                             'Import-AxModelV2',
                             'Import-AXModelStoreV2',

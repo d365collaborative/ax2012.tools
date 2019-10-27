@@ -103,5 +103,9 @@ function Get-AxServerXppILHash {
     Write-PSFMessage -Level Verbose -Message "Generating the hash values and saving the output to path: $outputFile" -Target $outputFile
     $resList.ToArray() | Sort-Object Path | Format-Table Hash, Path -Wrap -AutoSize | Out-String -Width 4000 | Out-File $outputFile -Encoding utf8
 
+    [PSCustomObject]@{
+        Path = $outputFile
+    }
+
     Invoke-TimeSignal -End
 }

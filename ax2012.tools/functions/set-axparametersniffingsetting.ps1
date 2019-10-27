@@ -80,7 +80,7 @@ function Set-AxParameterSniffingSetting {
             Write-PSFMessage -Level InternalComment -Message "Executing a script against the database." -Target (Get-SqlString $sqlCommand)
 
             $sqlCommand.Connection.Open()
-            $sqlCommand.ExecuteNonQuery()
+            $null = $sqlCommand.ExecuteNonQuery()
 
             Write-PSFMessage -Level Verbose -Message "SQL query executed."
         }

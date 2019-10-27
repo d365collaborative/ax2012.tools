@@ -114,4 +114,6 @@ function Get-AxAutoRunXml {
     $resXml = $resXml.Replace("{{Action}}", $($autoRunXml.ToArray() -join [Environment]::NewLine))
 
     $resXml | Out-File -FilePath $OutputPath -Encoding utf8
+
+    
 }
