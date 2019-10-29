@@ -13,7 +13,7 @@ Path to the AX 2012 Client (ax32.exe) file, which is needed to run the automated
 
 The default value is read from the registry on the local machine
 
-.PARAMETER TimeoutInMinute
+.PARAMETER TimeoutInMinutes
 Number of minutes the autorun task is allowed to run, before you want it to exit
 
 Default value is: 360 minutes (6 hours)

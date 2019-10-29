@@ -11,6 +11,9 @@
         
     .PARAMETER Params
         Array of string parameters that you want to pass to the executable
+
+    .PARAMETER TimeoutInMinutes
+        Number of minutes the process is allowed to run, before you want it to exit
         
     .PARAMETER ShowOriginalProgress
         Instruct the cmdlet to show the standard output in the console
