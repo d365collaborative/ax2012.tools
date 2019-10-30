@@ -15,18 +15,24 @@ Initialize an AX 2012 modelstore
 ### CreateSchema (Default)
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-CreateSchema] [-OutputCommandOnly] [<CommonParameters>]
+ [-CreateSchema] [-ShowOriginalProgress] [<CommonParameters>]
 ```
 
 ### Drop
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-DropSchema] [-OutputCommandOnly] [<CommonParameters>]
+ [-DropSchema] [-ShowOriginalProgress] [<CommonParameters>]
 ```
 
 ### CreateDB
 ```
 Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-CreateDb]
+ [-ShowOriginalProgress] [<CommonParameters>]
+```
+
+### Generate
+```
+Initialize-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-ShowOriginalProgress]
  [-OutputCommandOnly] [<CommonParameters>]
 ```
 
@@ -157,12 +163,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OutputCommandOnly
 Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Generate
 Aliases:
 
 Required: False

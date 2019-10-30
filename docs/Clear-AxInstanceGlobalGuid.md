@@ -1,33 +1,35 @@
 ﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
-online version: https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
+online version:
 schema: 2.0.0
 ---
 
-# Set-AxParameterSniffingSetting
+# Clear-AxInstanceGlobalGuid
 
 ## SYNOPSIS
-Set the parameter sniffing configuration
+Clear the Global Guid id from the AX 2012 database
 
 ## SYNTAX
 
 ```
-Set-AxParameterSniffingSetting [-DatabaseServer <String>] [-DatabaseName <String>] [-SqlUser <String>]
+Clear-AxInstanceGlobalGuid [-DatabaseServer <String>] [-DatabaseName <String>] [-SqlUser <String>]
  [-SqlPwd <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
+Reset the Global Guid located in the SysSqmSettings table
+
+This guid (id) is used by the client to identify cache objects, so resetting this can be useful when troubleshooting
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-AxParameterSniffingSetting
+Clear-AxInstanceGlobalGuid
 ```
 
-This will configure the correct parameter sniffing settings.
+This will clear the current global guid in the AX 2012 database.
 
 ## PARAMETERS
 
@@ -96,9 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-When provided the SQL is returned and not executed
-
-Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
+Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter
@@ -121,9 +121,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 ## NOTES
+Tags:
+
 Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
-
-[https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step](https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step)
-

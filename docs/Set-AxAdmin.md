@@ -1,35 +1,52 @@
 ﻿---
 external help file: ax2012.tools-help.xml
 Module Name: ax2012.tools
-online version: https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step
+online version:
 schema: 2.0.0
 ---
 
-# Set-AxParameterSniffingSetting
+# Set-AxAdmin
 
 ## SYNOPSIS
-Set the parameter sniffing configuration
+Set the admin account inside the AX 2012 database
 
 ## SYNTAX
 
 ```
-Set-AxParameterSniffingSetting [-DatabaseServer <String>] [-DatabaseName <String>] [-SqlUser <String>]
+Set-AxAdmin -Username <String> [-DatabaseServer <String>] [-DatabaseName <String>] [-SqlUser <String>]
  [-SqlPwd <String>] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set the parameter sniffing value in the database based on the released hotfix from Microsoft for AX 2012
+Set the user account details (credentails) that will be the considered as the admin account in the AX 2012 database
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-AxParameterSniffingSetting
+Set-AxAdmin -Username "ACME.local\test"
 ```
 
-This will configure the correct parameter sniffing settings.
+This will update the admin record in the AX 2012 database to "ACME.local\test".
 
 ## PARAMETERS
+
+### -Username
+Username of the user that you want to be the new admin in the database
+
+Must include domain details, either in PRE-2000 or UPN style
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseServer
 Server name of the database server
@@ -96,9 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputCommandOnly
-When provided the SQL is returned and not executed
-
-Note: This is useful for troubleshooting or providing the script to a DBA with access to the server
+Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter
@@ -121,9 +136,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 ## NOTES
+Tags:
+
 Author: Mötz Jensen (@Splaxi)
 
 ## RELATED LINKS
-
-[https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step](https://community.dynamics.com/365/financeandoperations/b/axsupport/posts/how-to-proactively-avoid-parameter-sniffing-step-by-step)
-

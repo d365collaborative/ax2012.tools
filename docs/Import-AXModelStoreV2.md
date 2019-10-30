@@ -15,12 +15,18 @@ Import an AX 2012 modelstore file
 ### ImportModelstore (Default)
 ```
 Import-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>]
- [-Path <String>] [-IdConflictMode <String>] [-OutputCommandOnly] [<CommonParameters>]
+ [-Path <String>] [-IdConflictMode <String>] [-ShowOriginalProgress] [<CommonParameters>]
 ```
 
 ### ApplyModelstore
 ```
 Import-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-SchemaName <String>] [-Apply]
+ [-ShowOriginalProgress] [<CommonParameters>]
+```
+
+### Generate
+```
+Import-AXModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-ShowOriginalProgress]
  [-OutputCommandOnly] [<CommonParameters>]
 ```
 
@@ -87,7 +93,7 @@ Default value is: "TempSchema"
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ImportModelstore, ApplyModelstore
 Aliases:
 
 Required: False
@@ -149,12 +155,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OutputCommandOnly
 Instruct the cmdlet to only generate the needed command and not execute it
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Generate
 Aliases:
 
 Required: False

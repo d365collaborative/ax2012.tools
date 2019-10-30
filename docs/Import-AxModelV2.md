@@ -13,8 +13,8 @@ Import AX 2012 model
 ## SYNTAX
 
 ```
-Import-AxModelV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-Path] <String>]
- [[-ConflictMode] <String>] [-Detailed] [-CreateParents] [-NoOptimize] [-NoPrompt] [-ShowOriginalProgress]
+Import-AxModelV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-Path <String>]
+ [-ConflictMode <String>] [-Detailed] [-CreateParents] [-NoOptimize] [-NoPrompt] [-ShowOriginalProgress]
  [-OutputCommandOnly] [<CommonParameters>]
 ```
 
@@ -33,6 +33,18 @@ The ConflictMode is set to the default value of "OverWrite".
 The Database Server is set to the default value of "localhost".
 The Modelstore Database is set to the default value of "MicrosoftDynamicsAx_model".
 
+### EXAMPLE 2
+```
+Import-AxModelV2 -Path "c:\temp\ax2012.tools\dev-models" -ShowOriginalProgress
+```
+
+The cmdlet will look for all the AX 2012 models located in "c:\temp\ax2012.tools\dev-models" or any of its sub folders.
+The ConflictMode is set to the default value of "OverWrite".
+The Database Server is set to the default value of "localhost".
+The Modelstore Database is set to the default value of "MicrosoftDynamicsAx_model".
+
+It will show the original progress output for the import of the model file in real time.
+
 ## PARAMETERS
 
 ### -DatabaseServer
@@ -46,7 +58,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -67,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -84,7 +96,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: $Script:DefaultTempPath
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,7 +116,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: Overwrite
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -213,6 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.String
 ## NOTES
 Author: Mötz Jensen (@Splaxi)
 

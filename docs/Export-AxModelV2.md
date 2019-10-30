@@ -14,7 +14,7 @@ Export AX 2012 model
 
 ```
 Export-AxModelV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-Path <String>] [-Name <String>]
- [-Id <String>] [-Layer <String>] [-OutputCommandOnly] [<CommonParameters>]
+ [-Id <String>] [-Layer <String>] [-ShowOriginalProgress] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,6 +154,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: *
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

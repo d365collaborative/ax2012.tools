@@ -13,9 +13,9 @@ Start the AxBuild.exe
 ## SYNTAX
 
 ```
-Invoke-AxBuild [[-BinDirectory] <String>] [-AlternativeBinPath <String>] [[-InstanceNumber] <String>]
- [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [-Workers <Int32>] [-Log <String>]
- [<CommonParameters>]
+Invoke-AxBuild [-BinDirectory <String>] [-AlternativeBinPath <String>] [-InstanceNumber <String>]
+ [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-Workers <Int32>] [-OutputPath <String>]
+ [-ShowOriginalProgress] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Parameter Sets: (All)
 Aliases: Path
 
 Required: False
-Position: 2
+Position: Named
 Default value: $Script:ActiveAosBindirectory
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -81,7 +81,7 @@ Parameter Sets: (All)
 Aliases: Aos
 
 Required: False
-Position: 4
+Position: Named
 Default value: $Script:ActiveAosInstanceNumber
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,7 +96,7 @@ Parameter Sets: (All)
 Aliases: DBServer
 
 Required: False
-Position: 5
+Position: Named
 Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -111,7 +111,7 @@ Parameter Sets: (All)
 Aliases: Modelstore
 
 Required: False
-Position: 6
+Position: Named
 Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -135,8 +135,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Log
+### -OutputPath
 Path to the log file you want AxBuild.exe to output to
+
+Default location is: "c:\temp\ax2012.tools\AxBuild\"
 
 ```yaml
 Type: String
@@ -145,7 +147,41 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: $(Join-Path $Script:DefaultTempPath "AxBuildLog.txt")
+Default value: $(Join-Path $Script:DefaultTempPath "AxBuildLog")
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputCommandOnly
+Instruct the cmdlet to output a script that you can execute manually later
+
+Using this will not import any AX 2012 models into the model store
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -157,6 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.String
 ## NOTES
 Author: Mötz Jensen (@Splaxi)
 

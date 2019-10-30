@@ -13,8 +13,8 @@ Export an AX 2012 modelstore file
 ## SYNTAX
 
 ```
-Export-AxModelStoreV2 [[-DatabaseServer] <String>] [[-ModelstoreDatabase] <String>] [[-InstanceName] <String>]
- [[-Suffix] <String>] [[-Path] <String>] [-OutputCommandOnly] [<CommonParameters>]
+Export-AxModelStoreV2 [-DatabaseServer <String>] [-ModelstoreDatabase <String>] [-InstanceName <String>]
+ [-Suffix <String>] [-Path <String>] [-ShowOriginalProgress] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -66,7 +66,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: $Script:ActiveAosInstancename
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -102,7 +102,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: $((Get-Date).ToString("yyyyMMdd"))
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -119,8 +119,25 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: $Script:DefaultTempPath
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShowOriginalProgress
+Instruct the cmdlet to show the standard output in the console
+
+Default is $false which will silence the standard output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

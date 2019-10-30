@@ -13,9 +13,8 @@ Fix table and field ID conflicts
 ## SYNTAX
 
 ```
-Resolve-AxTableFieldIDs [[-DatabaseServer] <String>] [[-DatabaseName] <String>]
- [[-ModelstoreDatabase] <String>] [[-SqlUser] <String>] [[-SqlPwd] <String>] [-Force] [-OutputCommandOnly]
- [<CommonParameters>]
+Resolve-AxTableFieldIDs [-DatabaseServer <String>] [-DatabaseName <String>] [-ModelstoreDatabase <String>]
+ [-SqlUser <String>] [-SqlPwd <String>] [-Force] [-OutputCommandOnly] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +58,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: $Script:ActiveAosDatabaseserver
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -76,7 +75,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: $Script:ActiveAosDatabase
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -93,7 +92,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: $Script:ActiveAosModelstoredatabase
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,7 +107,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -123,7 +122,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
