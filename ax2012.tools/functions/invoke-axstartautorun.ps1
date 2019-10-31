@@ -105,7 +105,6 @@ function Invoke-AxStartAutoRun {
         # $xmlSettings.NewLineHandling = [System.Xml.NewLineHandling]::Entitize
         
         # $xmlWriter = [System.Xml.XmlWriter]::Create($stringWriter, $xmlSettings)
-         
         
         # # $xmlWriter.Indentation = 4
         
