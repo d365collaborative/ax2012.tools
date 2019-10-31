@@ -70,6 +70,14 @@ function Get-AxAutoRunXml {
         
     )
 
+    if ([System.IO.Path]::HasExtension($OutputPath)) {
+        $parentPath = Split-Path -Path $OutputPath -Parent
+
+        if (-not (Test-PathExists -Path $parentPath -Type Container -Create)) { return }
+
+        if (Test-PSFFunctionInterrupt) { return }
+    }
+
     $actions = New-Object System.Collections.Generic.List[string]
     
     if ($SynchronizeDB) {
@@ -114,7 +122,9 @@ function Get-AxAutoRunXml {
 
     $resXml = $resXml.Replace("{{Action}}", $($autoRunXml.ToArray() -join [Environment]::NewLine))
 
-    $resXml | Out-File -FilePath $OutputPath -Encoding utf8
+    $resXml | Out-File -FilePath $OutputPath -Encoding utf8 -Force
 
-    
+    [PSCustomObject]@{
+        Path = $OutputPath
+    }
 }

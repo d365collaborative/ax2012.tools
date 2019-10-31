@@ -48,9 +48,10 @@
 
 function Invoke-AxStartAutoRun {
     [CmdletBinding()]
-    [OutputType([System.String], ParameterSetName="Generate")]
+    [OutputType([System.String], ParameterSetName = "Generate")]
     param (
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true)]
+        [Alias('AutoRunXml')]
         [string] $Path,
 
         [string] $AxClientExePath = $(Join-Path $Script:ClientBin "Ax32.exe"),
@@ -66,8 +67,22 @@ function Invoke-AxStartAutoRun {
     )
 
     $executable = $AxClientExePath
+    $logPath = ""
+
+    if (-not (Test-PathExists -Path $Path, $executable, $AxClientExePath -Type Leaf)) { return }
+
+    if (Test-PSFFunctionInterrupt) { return }
+
+    $autoRunNode = Select-Xml -Path $Path -XPath "//AxaptaAutoRun"
     
-    if (-not (Test-PathExists -Path $executable -Type Leaf)) { return }
+    if ([System.IO.Path]::HasExtension($($autoRunNode.Node.logFile))) {
+        $logPath = $autoRunNode.Node.logFile
+        $parentPath = Split-Path -Path $logPath -Parent
+
+        if (-not (Test-PathExists -Path $parentPath -Type Container -Create)) { return }
+
+        if (Test-PSFFunctionInterrupt) { return }
+    }
 
     $params = New-Object System.Collections.Generic.List[string]
 
@@ -76,4 +91,22 @@ function Invoke-AxStartAutoRun {
     $params.Add("-StartupCmd=autorun_`"$Path`"")
 
     Invoke-Process -Executable $executable -Params $($params.ToArray()) -TimeoutInMinutes $TimeoutInMinutes -ShowOriginalProgress:$ShowOriginalProgress -OutputCommandOnly:$OutputCommandOnly -EnableException:$EnableException
+
+    if (-not ($OutputCommandOnly)) {
+        [xml]$outputContent = Get-Content -Path $logPath -Raw
+
+        $stringWriter = New-Object System.IO.StringWriter
+        $xmlWriter = New-Object System.Xml.XmlTextWriter $stringWriter
+        $xmlWriter.Formatting = [System.Xml.Formatting]::Indented
+        $xmlWriter.Indentation = 4
+        $outputContent.WriteTo($xmlWriter)
+        $xmlWriter.Flush()
+        $stringWriter.Flush()
+        $outputContent.LoadXml($stringWriter.ToString())
+        $outputContent.Save($logPath)
+
+        [PSCustomObject]@{
+            Path = $logPath
+        }
+    }
 }
