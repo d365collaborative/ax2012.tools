@@ -40,7 +40,7 @@ Path to the autorun xml file that contains the desired automation tasks that you
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: AutoRunXml
 
 Required: True
 Position: Named
